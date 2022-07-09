@@ -1,0 +1,8 @@
+/node_modules
+/fdocs
+/fdocs-sjis
+*.map
+.sass-cache/
+Thumbs.db
+.DS_Store
+.vscode/

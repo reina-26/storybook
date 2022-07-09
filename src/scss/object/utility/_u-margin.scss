@@ -1,0 +1,19 @@
+@for $value from 0 through 100 {
+  .u-m {
+    &a#{$value} {
+      margin: #{math.div(($value) , 16 )}rem!important;
+    }
+    &b#{$value} {
+      margin-bottom: #{math.div(($value) , 16 )}rem!important;
+    }
+    &t#{$value} {
+      margin-top: #{math.div(($value) , 16 )}rem!important;
+    }
+    &l#{$value} {
+      margin-left: #{math.div(($value) , 16 )}rem!important;
+    }
+    &r#{$value} {
+      margin-right: #{math.div(($value) , 16 )}rem!important;
+    }
+  }
+}
