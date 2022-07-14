@@ -1,0 +1,62 @@
+@use '../../global/' as global;
+
+/* --------------------------------------------------------------------------------
+   .c-btn-more : 汎用のボタン
+   --------------------------------------------------------------------------------
+    - ボタンは a か button 要素で利用可能です
+----------------------------------------------------------------------------------- */
+
+.c-btn-more,
+a.c-btn-more {
+  position: relative;
+  display: inline-block;
+  min-width: 30rem;
+  padding: 0 3rem;
+  font-size: 1.6rem;
+  font-weight: bold;
+  line-height: 6rem;
+  text-align: center;
+  text-decoration: none;
+  letter-spacing: .1em;
+  color: global.$c-gray-8;
+  outline: 0;
+  border: 0;
+  border-radius: 6rem;
+  background-color: global.$c-gray-2;
+  transition: all .1s linear;
+
+  &::after {
+    content: '\f078';
+    position: absolute;
+    right: 3rem;
+    top: 0;
+    bottom: 0;
+    height: 2rem;
+    margin: auto;
+    font-family: 'Font Awesome 5 Free';
+    font-size: 2rem;
+    font-weight: 600;
+    line-height: 1;
+    color: global.$c-gray-6;
+  }
+
+  &:visited {
+    text-decoration: none;
+    color: global.$c-gray-8;
+  }
+
+  &:hover {
+    color: global.$c-main-text;
+    background-color: global.$c-main-bg;
+
+    &::after {
+      color: global.$c-main-text;
+    }
+  }
+
+  @include global.mq-down(tab) {
+  }
+
+  @include global.mq-down(sp) {
+  }
+}

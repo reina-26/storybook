@@ -1,0 +1,47 @@
+@use "../global/" as global;
+
+/* --------------------------------------------------------------------------------
+   .l-pagetop : ページトップ
+----------------------------------------------------------------------------------- */
+
+.l-pagetop {
+  z-index: 30; // モーダル、メガメニュー、吹き出し通知より下
+  position: fixed;
+  right: 2rem;
+  bottom: -8rem;
+  width: 5rem;
+  height: 5rem;
+  padding: 0;
+  opacity: .15;
+  outline: 0;
+  border: 0;
+  background: none;
+  transition: all 0.1s linear;
+
+  &::after {
+    content: '\f0aa';
+    font-family: 'Font Awesome 5 Free';
+    font-size: 4.8rem;
+    font-weight: 600;
+    line-height: 1;
+  }
+
+  &.is-active {
+    bottom: 2rem;
+  }
+
+  &:hover {
+    opacity: .3;
+  }
+
+  @include global.mq-down(tab) {
+  }
+
+  @include global.mq-down(sp) {
+    right: .5rem;
+
+    &.is-active {
+      bottom: .5rem;
+    }
+  }
+}

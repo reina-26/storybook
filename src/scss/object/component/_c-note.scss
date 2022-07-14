@@ -1,0 +1,27 @@
+@use "../../global/" as global;
+
+/* --------------------------------------------------------------------------------
+   .c-note : 備考・補足テキスト
+----------------------------------------------------------------------------------- */
+
+.c-note {
+  font-size: 1.4rem;
+
+  &:first-child {
+    margin-top: 0;
+  }
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+
+  &.is-gray {
+    color: global.$c-gray-7;
+  }
+
+  @include global.mq-down(tab) {
+  }
+
+  @include global.mq-down(sp) {
+  }
+}

@@ -1,0 +1,36 @@
+@use "../../global/" as global;
+
+/* --------------------------------------------------------------------------------
+   .c-theme-label : 学習テーマラベル
+----------------------------------------------------------------------------------- */
+
+.c-theme-label {
+  display: inline-block;
+  min-width: 5rem;
+  padding: 0 .4rem;
+  font-size: 1.2rem;
+  line-height: 2rem;
+  text-align: center;
+  color: global.$c-white;
+  white-space: nowrap;
+  border-radius: .3rem;
+  background-color: global.$c-gray-6;
+
+  &.is-hissu {
+    background-color: global.$c-red-light;
+  }
+
+  &.is-suishou {
+    background-color: global.$c-main-light;
+  }
+
+  &.is-shindan {
+    background-color: global.$c-accent-light;
+  }
+
+  @include global.mq-down(tab) {
+  }
+
+  @include global.mq-down(sp) {
+  }
+}

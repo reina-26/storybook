@@ -1,0 +1,28 @@
+@use "../../global/" as global;
+
+/* --------------------------------------------------------------------------------
+   .p-attachment-list : 添付ファイル一覧
+----------------------------------------------------------------------------------- */
+
+.p-attachment-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+
+  /* IE対応 */
+
+  @media all and (-ms-high-contrast: none) {
+    > * {
+      margin-left: 1rem;
+      margin-right: 1rem;
+    }
+  }
+
+  @include global.mq-down(tab) {
+  }
+
+  @include global.mq-down(sp) {
+    gap: 1rem;
+    justify-content: center;
+  }
+}

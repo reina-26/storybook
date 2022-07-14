@@ -1,0 +1,65 @@
+@use "../../global/" as global;
+
+.p-top-list01 {
+  padding: 2rem 0 1.5rem;
+  background-color: rgba(0, 156, 225, 0.05);
+
+  &__list {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &__item {
+    width: 15rem;
+  }
+
+  &__link {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.4rem;
+    text-decoration: none;
+    color: global.$c-main-text;
+    transition: all 0.1s linear;
+
+    &:hover {
+      transform: scale(1.1);
+      opacity: 1;
+    }
+  }
+
+  &__ico {
+    display: flex;
+    align-items: center;
+    height: 4rem;
+
+    img {
+      height: 100%;
+    }
+  }
+
+  &__txt {
+    margin-top: 1rem;
+    font-weight: bold;
+    line-height: 1.3;
+    white-space: nowrap;
+    color: global.$c-main-text!important;
+  }
+
+  @include global.mq-down(sp) {
+    &__item {
+      width: 30%;
+      padding: 0 1rem;
+    }
+
+    &__link {
+      font-size: 1.2rem;
+    }
+
+    &__ico {
+      height: 3.2rem;
+    }
+  }
+}

@@ -1,0 +1,69 @@
+@use "../../global/" as global;
+
+/* --------------------------------------------------------------------------------
+   .p-stage-tbl : ステージ説明
+----------------------------------------------------------------------------------- */
+
+.p-stage-tbl {
+  thead {
+    th {
+      padding: .5rem 2.5rem;
+      text-align: left;
+      white-space: nowrap;
+      color: global.$c-gray-7;
+      border: 0;
+      border-bottom: .1rem solid global.$c-gray-3;
+      background-color: transparent;
+    }
+  }
+
+  tbody {
+    th,
+    td {
+      padding: .5rem 2.5rem;
+      font-size: 1.6rem;
+      font-weight: bold;
+      line-height: 1.5;
+      vertical-align: middle;
+      border: 0;
+      border-bottom: .1rem solid global.$c-gray-3;
+    }
+
+    th {
+      background-color: global.$c-main-bg;
+
+      img {
+        margin: 0 2rem;
+        vertical-align: middle;
+      }
+    }
+
+    td {
+      color: global.$c-main-text;
+    }
+  }
+
+  @include global.mq-down(tab) {
+    tbody {
+      th,
+      td {
+        padding: .5rem 1rem;
+      }
+
+      th {
+        text-align: center;
+
+        img {
+          display: block;
+          width: 5rem;
+          margin: 0 auto;
+        }
+
+        span {
+          display: block;
+          font-size: 1.4rem;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,79 @@
+@use "../../global/" as global;
+
+/* --------------------------------------------------------------------------------
+   .p-report-footer : レポート下部固定ボタン
+----------------------------------------------------------------------------------- */
+
+.p-report-footer {
+  z-index: 29; // モーダル、メガメニュー、吹き出し通知、ページトップより下
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+  width: 100%;
+  height: 8rem;
+  padding: 0 2rem;
+  background-color: global.$c-main-text;
+
+  &__save {
+    position: absolute;
+    left: 2rem;
+    top: 2.2rem;
+    margin-right: auto;
+  }
+
+  /* IE対応 */
+
+  @media all and (-ms-high-contrast: none) {
+    > * {
+      margin-left: 2rem;
+      margin-right: 2rem;
+    }
+  }
+
+  @include global.mq-down(tab) {
+    display: flex;
+    gap: 1rem;
+    height: auto;
+    padding: 1rem;
+
+    &__prev,
+    &__next,
+    &__save {
+      width: 10rem !important;
+      min-width: 0 !important;
+      height: 4rem !important;
+      font-size: 1.2rem !important;
+
+      &::before,
+      &::after {
+        margin: 0 .5rem !important;
+        font-size: 1.4rem !important;
+      }
+
+      &.is-send {
+        width: 14rem !important;
+      }
+    }
+
+    &__save {
+      top: 1rem;
+    }
+  }
+
+  @include global.mq-down(sp) {
+    &__save {
+      left: calc(50% - 6rem);
+      top: auto;
+      height: 3rem !important;
+      bottom: calc(100% + 1rem);
+      border-radius: 3rem;
+      border-color: rgba(global.$c-main-light, .5) !important;
+      background-color: rgba(global.$c-main-bg, .9) !important;
+      box-shadow: 0 .3rem .3rem rgba(global.$c-main-text, .15);
+    }
+  }
+}

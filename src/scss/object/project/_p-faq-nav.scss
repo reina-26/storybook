@@ -1,0 +1,39 @@
+@use "../../global/" as global;
+
+/* --------------------------------------------------------------------------------
+   .p-faq-nav : FAQナビ
+----------------------------------------------------------------------------------- */
+
+.p-faq-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .5em 2em;
+  padding: 2rem;
+  border-radius: 1rem;
+  background-color: global.$c-main-bg;
+
+  &__selected {
+    font-weight: bold;
+    text-decoration: none;
+  }
+
+  @include global.mq-down(tab) {
+  }
+
+  @include global.mq-down(tabS) {
+    flex-direction: column;
+
+    .c-link {
+      display: inline-block;
+      margin-left: 1em;
+      line-height: 1.5;
+      text-indent: -.6em;
+
+      &::before {
+        display: inline-block;
+        width: .3em;
+        text-decoration: none;
+      }
+    }
+  }
+}

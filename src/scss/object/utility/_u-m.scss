@@ -1,0 +1,212 @@
+@use '../../global/' as global;
+
+/* --------------------------------------------------------------------------------
+   ユーティリティクラス - マージン
+   --------------------------------------------------------------------------------
+     - 単位 px ※実際の指定では px ではなく rem が使われている（10px = 1rem）
+         マージン　: u-m-0,  u-m-5  ... u-m-150,  u-m-auto
+         上マージン: u-mt-0, u-mt-5 ... u-mt-150, u-mt-auto
+         下マージン: u-mb-0, u-mb-5 ... u-mb-150, u-mb-auto
+         左マージン: u-ml-0, u-ml-5 ... u-ml-150, u-ml-auto
+         右マージン: u-mr-0, u-mr-5 ... u-mr-150, u-mr-auto
+         縦マージン: u-my-0, u-my-5 ... u-my-150, u-my-auto
+         横マージン: u-mx-0, u-mx-5 ... u-mx-150, u-mx-auto
+
+     - 単位 em（0.5em から 0.5em 刻みで 10em まで）
+         マージン　: u-m-0em,  u-m-05em,  u-m-1em,  u-m-15em,  u-m-2em  ... u-m-10em
+         上マージン: u-mt-0em, u-mt-05em, u-mt-1em, u-mt-15em, u-mt-2em ... u-mt-10em
+         下マージン: u-mb-0em, u-mb-05em, u-mb-1em, u-mb-15em, u-mb-2em ... u-mb-10em
+         左マージン: u-ml-0em, u-ml-05em, u-ml-1em, u-ml-15em, u-ml-2em ... u-ml-10em
+         右マージン: u-mr-0em, u-mr-05em, u-mr-1em, u-mr-15em, u-mr-2em ... u-mr-10em
+         縦マージン: u-my-0em, u-my-05em, u-my-1em, u-my-15em, u-my-2em ... u-my-10em
+         横マージン: u-mx-0em, u-mx-05em, u-mx-1em, u-mx-15em, u-mx-2em ... u-mx-10em
+
+     - u- の後ろに sp- を付加するとスマホ用のクラスになる
+----------------------------------------------------------------------------------- */
+
+/* 単位: px */
+
+@for $value from 0 through 30 {
+  .u-m-#{$value * 5} {
+    margin        : calc(5rem * $value / 10) !important;
+  }
+  .u-mt-#{$value * 5} {
+    margin-top    : calc(5rem * $value / 10) !important;
+  }
+  .u-mb-#{$value * 5} {
+    margin-bottom : calc(5rem * $value / 10) !important;
+  }
+  .u-ml-#{$value * 5} {
+    margin-left   : calc(5rem * $value / 10) !important;
+  }
+  .u-mr-#{$value * 5} {
+    margin-right  : calc(5rem * $value / 10) !important;
+  }
+  .u-my-#{$value * 5} {
+    margin-top    : calc(5rem * $value / 10) !important;
+    margin-bottom : calc(5rem * $value / 10) !important;
+  }
+  .u-mx-#{$value * 5} {
+    margin-left   : calc(5rem * $value / 10) !important;
+    margin-right  : calc(5rem * $value / 10) !important;
+  }
+}
+
+/* 単位: em */
+
+$value: 5;
+@while $value <= 100 {
+  $num: $value;
+
+  // 0.5em と整数 em のとき
+  @if $value == 5 {
+    $num: '05';
+  } @else if $value % 10 == 0 {
+    $num: calc($value / 10);
+  }
+
+  .u-m-#{$num}em {
+    margin        : #{calc($value / 10)}em !important;
+  }
+  .u-mt-#{$num}em {
+    margin-top    : #{calc($value / 10)}em !important;
+  }
+  .u-mb-#{$num}em {
+    margin-bottom : #{calc($value / 10)}em !important;
+  }
+  .u-ml-#{$num}em {
+    margin-left   : #{calc($value / 10)}em !important;
+  }
+  .u-mr-#{$num}em {
+    margin-right  : #{calc($value / 10)}em !important;
+  }
+  .u-my-#{$num}em {
+    margin-top    : #{calc($value / 10)}em !important;
+    margin-bottom : #{calc($value / 10)}em !important;
+  }
+  .u-mx-#{$num}em {
+    margin-left   : #{calc($value / 10)}em !important;
+    margin-right  : #{calc($value / 10)}em !important;
+  }
+  $value: $value + 5;
+}
+
+.u-m-auto {
+  margin        : auto !important;
+}
+.u-mt-auto {
+  margin-top    : auto !important;
+}
+.u-mb-auto {
+  margin-bottom : auto !important;
+}
+.u-ml-auto {
+  margin-left   : auto !important;
+}
+.u-mr-auto {
+  margin-right  : auto !important;
+}
+.u-my-auto {
+  margin-top    : auto !important;
+  margin-bottom : auto !important;
+}
+.u-mx-auto {
+  margin-left   : auto !important;
+  margin-right  : auto !important;
+}
+
+/* SP版：プリフィクス sp- を付加 */
+
+@include global.mq-down(sp) {
+
+  /* 単位: px */
+
+  @for $value from 0 through 30 {
+    .u-sp-m-#{$value * 5} {
+      margin: 5px * $value !important;
+    }
+    .u-sp-mt-#{$value * 5} {
+      margin-top: 5px * $value !important;
+    }
+    .u-sp-mb-#{$value * 5} {
+      margin-bottom: 5px * $value !important;
+    }
+    .u-sp-ml-#{$value * 5} {
+      margin-left: 5px * $value !important;
+    }
+    .u-sp-mr-#{$value * 5} {
+      margin-right: 5px * $value !important;
+    }
+    .u-sp-my-#{$value * 5} {
+      margin-top: 5px * $value !important;
+      margin-bottom: 5px * $value !important;
+    }
+    .u-sp-mx-#{$value * 5} {
+      margin-left: 5px * $value !important;
+      margin-right: 5px * $value !important;
+    }
+  }
+
+  /* 単位: em */
+
+  $value: 5;
+  @while $value <= 100 {
+    $num: $value;
+
+    // 0.5em と整数 em のとき
+    @if $value == 5 {
+      $num: '05';
+    } @else if $value % 10 == 0 {
+      $num: calc($value / 10);
+    }
+
+    .u-sp-m-#{$num}em {
+      margin       : #{calc($value / 10)}em !important;
+    }
+    .u-sp-mt-#{$num}em {
+      margin-top   : #{calc($value / 10)}em !important;
+    }
+    .u-sp-mb-#{$num}em {
+      margin-bottom: #{calc($value / 10)}em !important;
+    }
+    .u-sp-ml-#{$num}em {
+      margin-left  : #{calc($value / 10)}em !important;
+    }
+    .u-sp-mr-#{$num}em {
+      margin-right : #{calc($value / 10)}em !important;
+    }
+    .u-sp-my-#{$num}em {
+      margin-top   : #{calc($value / 10)}em !important;
+      margin-bottom: #{calc($value / 10)}em !important;
+    }
+    .u-sp-mx-#{$num}em {
+      margin-left  : #{calc($value / 10)}em !important;
+      margin-right : #{calc($value / 10)}em !important;
+    }
+    $value: $value + 5;
+  }
+
+  .u-sp-m-auto {
+    margin        : auto !important;
+  }
+  .u-sp-mt-auto {
+    margin-top    : auto !important;
+  }
+  .u-sp-mb-auto {
+    margin-bottom : auto !important;
+  }
+  .u-sp-ml-auto {
+    margin-left   : auto !important;
+  }
+  .u-sp-mr-auto {
+    margin-right  : auto !important;
+  }
+  .u-sp-my-auto {
+    margin-top    : auto !important;
+    margin-bottom : auto !important;
+  }
+  .u-sp-mx-auto {
+    margin-left   : auto !important;
+    margin-right  : auto !important;
+  }
+}

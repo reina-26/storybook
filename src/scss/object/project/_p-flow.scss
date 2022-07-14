@@ -1,0 +1,228 @@
+@use "../../global/" as global;
+
+/* --------------------------------------------------------------------------------
+   .p-flow : 学習の流れ・フローチャート
+----------------------------------------------------------------------------------- */
+
+.p-flow {
+  position: relative;
+  width: 90rem;
+  margin: 3rem auto 0;
+  padding: 0 0 2rem 8rem;
+  background: global.$c-white url(../images/page_flow/flow_arrow_up.svg) no-repeat 0 25rem;
+  background-size: 8rem auto;
+
+  &__item {
+    position: relative;
+    display: flex;
+    align-items: center;
+    margin-bottom: 3rem;
+    padding: 1rem 1rem 1rem 0;
+    border: .1rem solid global.$c-main;
+    border-radius: .5rem;
+    background-color: global.$c-main-bg;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+
+    /* 矢印 */
+
+    &::after {
+      content: "";
+      position: absolute;
+      left: calc(50% - 1rem);
+      top: 100%;
+      width: 2rem;
+      height: 3rem;
+      background: url(../images/page_flow/flow_arrow_down.svg) no-repeat center bottom;
+      background-size: auto 5rem;
+    }
+
+    &:last-child::after {
+      display: none;
+    }
+  }
+
+  /* 左の見出し */
+
+  &__heading {
+    width: 30%;
+    text-align: center;
+
+    h3 {
+      em {
+        position: absolute;
+        left: -1rem;
+        top: -1rem;
+        width: 4rem;
+        height: 4rem;
+        font-family: "Roboto Condensed";
+        font-size: 2.4rem;
+        font-weight: 700;
+        line-height: 4rem;
+        color: global.$c-white;
+        border-radius: 100%;
+        background-color: global.$c-main;
+      }
+
+      span {
+        display: block;
+        margin-top: 1rem;
+        font-size: 1.6rem;
+        font-weight: bold;
+        line-height: 1.5;
+        letter-spacing: 0.1em;
+        color: global.$c-main;
+      }
+    }
+
+    p {
+      font-weight: bold;
+      line-height: 1.5;
+    }
+  }
+
+  /* 右の詳細 */
+
+  &__detail {
+    width: 70%;
+    margin: 0;
+
+    li:not(:last-child) {
+      margin-bottom: .5rem;
+    }
+
+    dl {
+      display: flex;
+      align-items: center;
+      min-height: 6.5rem;
+      padding: 1rem;
+      line-height: 1.5;
+      background-color: global.$c-white;
+
+      dt {
+        width: 20%;
+        padding-right: 1rem;
+        font-weight: bold;
+        color: global.$c-main;
+      }
+
+      dd {
+        width: 80%;
+      }
+    }
+  }
+
+  &.is-stydy-flow-period {
+    background: none;
+    padding: 0;
+    .p-flow__item {
+      margin-bottom: 2rem;
+      &::after {
+        content: none;
+      }
+    }
+    .p-flow__heading {
+      margin-bottom: 0;
+    }
+    .p-flow__detail {
+      background-color: global.$c-white;
+      padding: 1.3em;
+      line-height: 1.5;
+      span {
+        font-weight: bold;
+      }
+    }
+  }
+
+  @include global.mq-down(tab) {
+    width: 100%;
+    padding: 0 1rem;
+    background: none;
+
+    &::after {
+      content: "\02460へ戻って繰り返し";
+      display: block;
+      font-size: 1.6rem;
+      line-height: 5rem;
+      text-align: center;
+      color: global.$c-white;
+      border-radius: .5rem;
+      background-color: global.$c-main;
+    }
+
+    .page-first-login.is-study-flow-term &::after {
+      display: none;
+    }
+
+    &__item {
+      flex-direction: column;
+      padding: 2rem 1rem;
+
+      &:last-child {
+        margin-bottom: 3rem;
+
+        &::after {
+          display: block;
+        }
+      }
+    }
+
+    /* 左の見出し */
+
+    &__heading {
+      width: 100%;
+      margin-bottom: 2rem;
+
+      h3 {
+        span {
+          font-size: 2rem;
+        }
+      }
+
+      p {
+        br {
+          display: none;
+        }
+      }
+    }
+
+    /* 右の詳細 */
+
+    &__detail {
+      width: 100%;
+
+      dl {
+        flex-direction: column;
+        align-items: flex-start;
+
+        dt,
+        dd {
+          width: 100%;
+        }
+      }
+    }
+
+    &.is-stydy-flow-period {
+      background-size: 4rem auto;
+      background-position: left 2rem top 5rem;
+      .p-flow__item {
+        &::after {
+          content: none;
+        }
+      }
+      .p-flow__heading {
+        margin-bottom: 0;
+      }
+      .p-flow__detail {
+        background-color: global.$c-white;
+        padding: 1.3em;
+        line-height: 1.5;
+        span {
+          font-weight: bold;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,29 @@
+/* --------------------------------------------------------------------------------
+   ブレークポイント
+----------------------------------------------------------------------------------- */
+
+$breakpoint-up: (
+  'sp' : 'print, screen and (min-width:    0px)', // スマホ
+  'tabS':'print, screen and (min-width:  600px)', // タブレット
+  'tab': 'print, screen and (min-width:  769px)', // タブレット
+  'pcS': 'print, screen and (min-width: 1025px)', // PC・小
+  'pcM': 'print, screen and (min-width: 1281px)', // PC・中
+  'pcL': 'print, screen and (min-width: 1921px)', // PC・大
+) !default;
+
+$breakpoint-down: (
+  'spS' : 'print, screen and (max-width:  350px)', // スマホ・小（あまり使わない）
+  'sp' : 'print, screen and (max-width:  599px)', // スマホ
+  'tabS': 'print, screen and (max-width: 768px)', // タブレット
+  'tab': 'print, screen and (max-width: 1024px)', // タブレット
+  'pcS': 'print, screen and (max-width: 1280px)', // PC・小
+  'pcM': 'print, screen and (max-width: 1920px)', // PC・中
+  'pcL': 'print, screen and (max-width: 9999px)', // PC・大
+) !default;
+
+$breakpoint-between: (
+  'sp-tab' : 'print, screen and (min-width:  300px) and (max-width: 1024px)', // スマホ ～ タブレット
+  'tab-pcS': 'print, screen and (min-width:  600px) and (max-width: 1280px)', // タブレット ～ PC・小
+  'pcS-pcM': 'print, screen and (min-width: 1025px) and (max-width: 1920px)', // PC・小 ～ PC・中
+  'pcM-pcL': 'print, screen and (min-width: 1281px) and (max-width: 9999px)', // PC・中 ～ PC・大
+) !default;

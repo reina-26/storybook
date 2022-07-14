@@ -1,0 +1,347 @@
+/* --------------------------------------------------------------------------------
+   .c-btn : 汎用のボタン
+   --------------------------------------------------------------------------------
+    - ボタンは a か button 要素で利用可能です
+    - 以下のバリエーションを用意しています
+          1. デフォルト: a.c-btn または button.c-btn
+          2. サイズ: is-xl, is-lg, （未指定）, is-sm, is-xs
+          3. レベル: （未指定）, is-primary, is-primary-alt, .is-outline
+          4. 状態: disabled 属性
+          5. ローディング: .is-loading 付加でボタン文言をローディングアイコンに変更
+             ※注： .is-loading の付加だけではボタンとしての機能は活きている状態なので
+                    disalbed 属性も JavaScript 等で付加すること
+----------------------------------------------------------------------------------- */
+.c-btn,
+a.c-btn {
+  /* 基本スタイル */
+  position: relative;
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  min-width: 18rem;
+  height: 3.6rem;
+  padding: 0 2rem;
+  font-size: 1.4rem;
+  font-weight: normal;
+  line-height: 1.2;
+  text-align: center;
+  text-decoration: none;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  color: #0A416A;
+  outline: 0;
+  border-radius: 0.5rem;
+  border: 0.1rem solid #DAE0E6;
+  background-color: #DAE0E6;
+  -webkit-transition: all 0.1s linear;
+  transition: all 0.1s linear;
+  /* サイズ */
+  /* レベル */
+  /* 通常ボタンの線バージョン　※グレー背景の場所などで使用 */
+  /* プライマリボタン */
+  /* プライマリボタン（黄色バージョン）※青背景の場所などで使用 */
+  /* disabled */
+  /* ローディング */
+  /* アイコン付きボタン - 共通スタイル */
+  /* アイコン付きボタン - 左矢印 */
+  /* アイコン付きボタン - 右矢印 */
+  /* アイコン付きボタン - プラス */
+  /* アイコン付きボタン - 提出、送る */
+  /* アイコン付きボタン - ファイル */
+  /* アイコンのみの場合はアイコン左右のマージンなし */
+  /* アイコン付きボタン - 再生 */
+}
+.c-btn:visited,
+a.c-btn:visited {
+  text-decoration: none;
+  color: #0A416A;
+}
+.c-btn:hover, .c-btn:active,
+a.c-btn:hover,
+a.c-btn:active {
+  color: #007EB8;
+  border-color: #019CE1;
+  background-color: #F0F6FC;
+}
+.c-btn.is-xl,
+a.c-btn.is-xl {
+  min-width: 20rem;
+  height: 6rem;
+  padding: 0 3rem;
+  font-size: 1.6rem;
+}
+.c-btn.is-lg,
+a.c-btn.is-lg {
+  min-width: 18rem;
+  height: 4.8rem;
+  padding: 0 3rem;
+  font-size: 1.4rem;
+}
+.c-btn.is-sm,
+a.c-btn.is-sm {
+  min-width: 13rem;
+  height: 2.4rem;
+  padding: 0 2rem;
+  font-size: 1.3rem;
+}
+.c-btn.is-xs,
+a.c-btn.is-xs {
+  min-width: 11rem;
+  height: 2rem;
+  padding: 0 1rem;
+  font-size: 1.2rem;
+}
+.c-btn.is-outline,
+a.c-btn.is-outline {
+  background-color: #FFFFFF;
+}
+.c-btn.is-primary,
+a.c-btn.is-primary {
+  color: #FFFFFF;
+  font-weight: bold;
+  border: 0.1rem solid #007EB8;
+  background-color: #007EB8;
+}
+.c-btn.is-primary:hover, .c-btn.is-primary:active,
+a.c-btn.is-primary:hover,
+a.c-btn.is-primary:active {
+  color: #FFFFFF;
+  border-color: #D8B844;
+  background-color: #D8B844;
+}
+.c-btn.is-primary-alt,
+a.c-btn.is-primary-alt {
+  color: #000000;
+  font-weight: bold;
+  border: 0.1rem solid #D8B844;
+  border-color: #FFFFFF;
+  background-color: #D8B844;
+}
+.c-btn.is-primary-alt:hover, .c-btn.is-primary-alt:active,
+a.c-btn.is-primary-alt:hover,
+a.c-btn.is-primary-alt:active {
+  color: #FFFFFF;
+  border-color: #FFFFFF;
+  background-color: #019CE1;
+}
+.c-btn:disabled,
+a.c-btn:disabled {
+  font-weight: normal;
+  color: #AEB7BF;
+  cursor: default;
+  border-color: #E9ECEF;
+  background-color: #E9ECEF;
+}
+.c-btn:disabled i.fas,
+a.c-btn:disabled i.fas {
+  color: #AEB7BF;
+}
+.c-btn:disabled:hover, .c-btn:disabled:active,
+a.c-btn:disabled:hover,
+a.c-btn:disabled:active {
+  -webkit-transform: none;
+          transform: none;
+}
+.c-btn.is-loading,
+a.c-btn.is-loading {
+  font-weight: normal;
+  color: #DAE0E6;
+  cursor: default;
+  border-color: #DAE0E6;
+  background-color: #DAE0E6;
+}
+.c-btn.is-loading i.fas,
+a.c-btn.is-loading i.fas {
+  color: #DAE0E6;
+}
+.c-btn.is-loading::after,
+a.c-btn.is-loading::after {
+  content: "\f110";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  color: #D8B844;
+  font-family: "Font Awesome 5 Free";
+  font-weight: 600;
+  color: #AEB7BF;
+  -webkit-animation: spin 1s linear infinite;
+          animation: spin 1s linear infinite;
+}
+@-webkit-keyframes spin {
+  0% {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
+}
+@keyframes spin {
+  0% {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
+}
+.c-btn.is-loading:hover, .c-btn.is-loading:active,
+a.c-btn.is-loading:hover,
+a.c-btn.is-loading:active {
+  -webkit-transform: none;
+          transform: none;
+}
+.c-btn.is-left::before, .c-btn.is-left::after, .c-btn.is-right::before, .c-btn.is-right::after, .c-btn.is-plus::before, .c-btn.is-plus::after, .c-btn.is-send::before, .c-btn.is-send::after, .c-btn.is-file::before, .c-btn.is-file::after, .c-btn.is-play::before, .c-btn.is-play::after,
+a.c-btn.is-left::before,
+a.c-btn.is-left::after,
+a.c-btn.is-right::before,
+a.c-btn.is-right::after,
+a.c-btn.is-plus::before,
+a.c-btn.is-plus::after,
+a.c-btn.is-send::before,
+a.c-btn.is-send::after,
+a.c-btn.is-file::before,
+a.c-btn.is-file::after,
+a.c-btn.is-play::before,
+a.c-btn.is-play::after {
+  margin-right: 1rem;
+  font-family: "Font Awesome 5 Free";
+  font-size: 2rem;
+  font-weight: 600;
+  line-height: 1;
+  color: #0A416A;
+}
+.c-btn.is-left.is-primary::before, .c-btn.is-left.is-primary::after, .c-btn.is-right.is-primary::before, .c-btn.is-right.is-primary::after, .c-btn.is-plus.is-primary::before, .c-btn.is-plus.is-primary::after, .c-btn.is-send.is-primary::before, .c-btn.is-send.is-primary::after, .c-btn.is-file.is-primary::before, .c-btn.is-file.is-primary::after, .c-btn.is-play.is-primary::before, .c-btn.is-play.is-primary::after,
+a.c-btn.is-left.is-primary::before,
+a.c-btn.is-left.is-primary::after,
+a.c-btn.is-right.is-primary::before,
+a.c-btn.is-right.is-primary::after,
+a.c-btn.is-plus.is-primary::before,
+a.c-btn.is-plus.is-primary::after,
+a.c-btn.is-send.is-primary::before,
+a.c-btn.is-send.is-primary::after,
+a.c-btn.is-file.is-primary::before,
+a.c-btn.is-file.is-primary::after,
+a.c-btn.is-play.is-primary::before,
+a.c-btn.is-play.is-primary::after {
+  color: #FFFFFF;
+}
+.c-btn.is-left.is-primary-alt::before, .c-btn.is-left.is-primary-alt::after, .c-btn.is-right.is-primary-alt::before, .c-btn.is-right.is-primary-alt::after, .c-btn.is-plus.is-primary-alt::before, .c-btn.is-plus.is-primary-alt::after, .c-btn.is-send.is-primary-alt::before, .c-btn.is-send.is-primary-alt::after, .c-btn.is-file.is-primary-alt::before, .c-btn.is-file.is-primary-alt::after, .c-btn.is-play.is-primary-alt::before, .c-btn.is-play.is-primary-alt::after,
+a.c-btn.is-left.is-primary-alt::before,
+a.c-btn.is-left.is-primary-alt::after,
+a.c-btn.is-right.is-primary-alt::before,
+a.c-btn.is-right.is-primary-alt::after,
+a.c-btn.is-plus.is-primary-alt::before,
+a.c-btn.is-plus.is-primary-alt::after,
+a.c-btn.is-send.is-primary-alt::before,
+a.c-btn.is-send.is-primary-alt::after,
+a.c-btn.is-file.is-primary-alt::before,
+a.c-btn.is-file.is-primary-alt::after,
+a.c-btn.is-play.is-primary-alt::before,
+a.c-btn.is-play.is-primary-alt::after {
+  color: #000000;
+}
+.c-btn.is-left.is-sm::before, .c-btn.is-left.is-sm::after, .c-btn.is-right.is-sm::before, .c-btn.is-right.is-sm::after, .c-btn.is-plus.is-sm::before, .c-btn.is-plus.is-sm::after, .c-btn.is-send.is-sm::before, .c-btn.is-send.is-sm::after, .c-btn.is-file.is-sm::before, .c-btn.is-file.is-sm::after, .c-btn.is-play.is-sm::before, .c-btn.is-play.is-sm::after,
+a.c-btn.is-left.is-sm::before,
+a.c-btn.is-left.is-sm::after,
+a.c-btn.is-right.is-sm::before,
+a.c-btn.is-right.is-sm::after,
+a.c-btn.is-plus.is-sm::before,
+a.c-btn.is-plus.is-sm::after,
+a.c-btn.is-send.is-sm::before,
+a.c-btn.is-send.is-sm::after,
+a.c-btn.is-file.is-sm::before,
+a.c-btn.is-file.is-sm::after,
+a.c-btn.is-play.is-sm::before,
+a.c-btn.is-play.is-sm::after {
+  font-size: 1.5rem;
+}
+.c-btn.is-left.is-xs::before, .c-btn.is-left.is-xs::after, .c-btn.is-right.is-xs::before, .c-btn.is-right.is-xs::after, .c-btn.is-plus.is-xs::before, .c-btn.is-plus.is-xs::after, .c-btn.is-send.is-xs::before, .c-btn.is-send.is-xs::after, .c-btn.is-file.is-xs::before, .c-btn.is-file.is-xs::after, .c-btn.is-play.is-xs::before, .c-btn.is-play.is-xs::after,
+a.c-btn.is-left.is-xs::before,
+a.c-btn.is-left.is-xs::after,
+a.c-btn.is-right.is-xs::before,
+a.c-btn.is-right.is-xs::after,
+a.c-btn.is-plus.is-xs::before,
+a.c-btn.is-plus.is-xs::after,
+a.c-btn.is-send.is-xs::before,
+a.c-btn.is-send.is-xs::after,
+a.c-btn.is-file.is-xs::before,
+a.c-btn.is-file.is-xs::after,
+a.c-btn.is-play.is-xs::before,
+a.c-btn.is-play.is-xs::after {
+  font-size: 1.2rem;
+}
+.c-btn.is-left::before,
+a.c-btn.is-left::before {
+  content: "\f104";
+}
+.c-btn.is-right::after,
+a.c-btn.is-right::after {
+  content: "\f105";
+  margin-left: 1rem;
+  margin-right: 0;
+}
+.c-btn.is-plus::before,
+a.c-btn.is-plus::before {
+  content: "+";
+  margin-bottom: 0.3rem;
+}
+.c-btn.is-send::before,
+a.c-btn.is-send::before {
+  content: "\f1d8";
+}
+.c-btn.is-file::before,
+a.c-btn.is-file::before {
+  content: "\f0c6";
+  font-size: 1.6rem;
+}
+.c-btn:empty.is-left::before, .c-btn:empty.is-left::after, .c-btn:empty.is-right::before, .c-btn:empty.is-right::after, .c-btn:empty.is-plus::before, .c-btn:empty.is-plus::after, .c-btn:empty.is-send::before, .c-btn:empty.is-send::after, .c-btn:empty.is-file::before, .c-btn:empty.is-file::after,
+a.c-btn:empty.is-left::before,
+a.c-btn:empty.is-left::after,
+a.c-btn:empty.is-right::before,
+a.c-btn:empty.is-right::after,
+a.c-btn:empty.is-plus::before,
+a.c-btn:empty.is-plus::after,
+a.c-btn:empty.is-send::before,
+a.c-btn:empty.is-send::after,
+a.c-btn:empty.is-file::before,
+a.c-btn:empty.is-file::after {
+  margin: 0;
+}
+.c-btn.is-play::before,
+a.c-btn.is-play::before {
+  content: "\f144";
+}
+@media print, screen and (max-width: 599px) {
+  .c-btn,
+a.c-btn {
+    width: 100% !important;
+    /* サイズ（スマホでは sm と xs でも通常サイズとする） */
+  }
+  .c-btn.is-sm, .c-btn.is-xs,
+a.c-btn.is-sm,
+a.c-btn.is-xs {
+    height: 3.2rem;
+    font-size: 1.4rem;
+  }
+}

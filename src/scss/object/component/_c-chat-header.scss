@@ -1,0 +1,79 @@
+@use "../../global/" as global;
+
+/* --------------------------------------------------------------------------------
+   .c-chat-header : ビュッフェチャットのヘッダ情報
+----------------------------------------------------------------------------------- */
+
+.c-chat-header {
+  ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0 1.5rem;
+    margin-bottom: 0;
+  }
+
+  &__user {
+    font-weight: bold;
+
+    &::before {
+      content: '\f007';
+      margin-right: .5em;
+      font-family: 'Font Awesome 5 Free';
+      font-weight: 600;
+      line-height: 1;
+    }
+  }
+
+  &__date {
+    margin-right: auto;
+    color: global.$c-gray-7;
+  }
+
+  &__reply {
+    color: global.$c-gray-7;
+  }
+
+  h3 {
+    margin: .5em 0;
+    font-size: 1.8rem;
+  }
+
+  /* IE対応 */
+
+  @media all and (-ms-high-contrast: none) {
+    ul > * {
+      margin-left: .75rem;
+      margin-right: .75rem;
+    }
+  }
+
+  @include global.mq-down(tabS) {
+    &__user {
+      width: 100%;
+    }
+  }
+
+  @include global.mq-down(sp) {
+    ul {
+      flex-wrap: wrap;
+      gap: .5rem;
+      line-height: 1.5;
+    }
+
+    &__user,
+    &__date {
+      width: 100%;
+    }
+
+    &__reply,
+    &__delete,
+    &__edit {
+      margin-right: 1rem;
+    }
+
+    h3 {
+      font-size: 1.6rem;
+      line-height: 1.5;
+    }
+  }
+}

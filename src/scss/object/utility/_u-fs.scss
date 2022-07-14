@@ -1,0 +1,38 @@
+@use '../../global/' as global;
+
+/* --------------------------------------------------------------------------------
+   ユーティリティクラス - フォントサイズ / .u-fs-*, .u-sp-fs-*
+   --------------------------------------------------------------------------------
+     - 単位 px → u-fs-5, u-fs-6  ... u-fs-64
+       ※実際の指定では px ではなく rem が使われている（10px = 1rem）
+     - 単位 vw → u-fs-1v,  u-fs-2v ... u-fs-100v
+     - u- の後ろに sp- を付加するとスマホ用のクラスになる
+----------------------------------------------------------------------------------- */
+
+@for $value from 5 through 64 {
+  .u-fs-#{$value} {
+    font-size: #{calc($value / 10)}rem !important;
+  }
+}
+
+@for $value from 1 through 100 {
+  .u-fs-#{$value}v {
+    font-size: #{$value}vw !important;
+  }
+}
+
+/* SP版：プリフィクス sp- を付加 */
+
+@include global.mq-down(sp) {
+  @for $value from 5 through 64 {
+    .u-sp-fs-#{$value} {
+      font-size: #{calc($value / 10)}rem !important;
+    }
+  }
+
+  @for $value from 1 through 100 {
+    .u-sp-fs-#{$value}v {
+      font-size: #{$value}vw !important;
+    }
+  }
+}

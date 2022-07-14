@@ -1,0 +1,318 @@
+@use '../../global/' as global;
+
+/* --------------------------------------------------------------------------------
+   .c-btn : 汎用のボタン
+   --------------------------------------------------------------------------------
+    - ボタンは a か button 要素で利用可能です
+    - 以下のバリエーションを用意しています
+          1. デフォルト: a.c-btn または button.c-btn
+          2. サイズ: is-xl, is-lg, （未指定）, is-sm, is-xs
+          3. レベル: （未指定）, is-primary, is-primary-alt, .is-outline
+          4. 状態: disabled 属性
+          5. ローディング: .is-loading 付加でボタン文言をローディングアイコンに変更
+             ※注： .is-loading の付加だけではボタンとしての機能は活きている状態なので
+                    disalbed 属性も JavaScript 等で付加すること
+----------------------------------------------------------------------------------- */
+
+.c-btn,
+a.c-btn {
+
+  /* 基本スタイル */
+
+  position: relative;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  min-width: 18rem;
+  height: 3.6rem;
+  padding: 0 2rem;
+  font-size: 1.4rem;
+  font-weight: normal;
+  line-height: 1.2;
+  text-align: center;
+  text-decoration: none;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  color: global.$c-main-text-dark;
+  outline: 0;
+  border-radius: .5rem;
+  border: .1rem solid global.$c-gray-3;
+  background-color: global.$c-gray-3;
+  transition: all .1s linear;
+
+  &:visited {
+    text-decoration: none;
+    color: global.$c-main-text-dark;
+  }
+
+  &:hover,
+  &:active {
+    color: global.$c-main-text;
+    border-color: global.$c-main;
+    background-color: global.$c-main-bg;
+  }
+
+  /* サイズ */
+
+  &.is-xl {
+    min-width: 20rem;
+    height: 6rem;
+    padding: 0 3rem;
+    font-size: 1.6rem;
+  }
+
+  &.is-lg {
+    min-width: 18rem;
+    height: 4.8rem;
+    padding: 0 3rem;
+    font-size: 1.4rem;
+  }
+
+  &.is-sm {
+    min-width: 13rem;
+    height: 2.4rem;
+    padding: 0 2rem;
+    font-size: 1.3rem;
+  }
+
+  &.is-xs {
+    min-width: 11rem;
+    height: 2rem;
+    padding: 0 1rem;
+    font-size: 1.2rem;
+  }
+
+  /* レベル */
+
+  /* 通常ボタンの線バージョン　※グレー背景の場所などで使用 */
+
+  &.is-outline {
+    background-color: global.$c-white;
+  }
+
+  /* プライマリボタン */
+
+  &.is-primary {
+    color: global.$c-white;
+    font-weight: bold;
+    border: .1rem solid global.$c-main-text;
+    background-color: global.$c-main-text;
+
+    &:hover,
+    &:active {
+      color: global.$c-white;
+      border-color: global.$c-accent;
+      background-color: global.$c-accent;
+    }
+  }
+
+  /* プライマリボタン（黄色バージョン）※青背景の場所などで使用 */
+
+  &.is-primary-alt {
+    color: global.$c-black;
+    font-weight: bold;
+    border: .1rem solid global.$c-accent;
+    border-color: global.$c-white;
+    background-color: global.$c-accent;
+
+    &:hover,
+    &:active {
+      color: global.$c-white;
+      border-color: global.$c-white;
+      background-color: global.$c-main;
+    }
+  }
+
+  /* disabled */
+
+  &:disabled {
+    font-weight: normal;
+    color: global.$c-gray-5;
+    cursor: default;
+    border-color: global.$c-gray-2;
+    background-color: global.$c-gray-2;
+
+    i.fas {
+      color: global.$c-gray-5;
+    }
+
+    &:hover,
+    &:active {
+      transform: none;
+    }
+  }
+
+  /* ローディング */
+
+  &.is-loading {
+    font-weight: normal;
+    color: global.$c-gray-3;
+    cursor: default;
+    border-color: global.$c-gray-3;
+    background-color: global.$c-gray-3;
+
+    i.fas {
+      color: global.$c-gray-3;
+    }
+
+    &::after {
+      content: '\f110';
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: global.$c-accent;
+      font-family: 'Font Awesome 5 Free';
+      font-weight: 600;
+      color: global.$c-gray-5;
+      animation: spin 1s linear infinite;
+
+      @keyframes spin {
+        0% {
+          transform: rotate(0deg);
+        }
+        100% {
+          transform: rotate(360deg);
+        }
+      }
+    }
+
+    &:hover,
+    &:active {
+      transform: none;
+    }
+  }
+
+  /* アイコン付きボタン - 共通スタイル */
+
+  &.is-left,
+  &.is-right,
+  &.is-plus,
+  &.is-send,
+  &.is-file,
+  &.is-play, {
+    &::before,
+    &::after {
+      margin-right: 1rem;
+      font-family: 'Font Awesome 5 Free';
+      font-size: 2rem;
+      font-weight: 600;
+      line-height: 1;
+      color: global.$c-main-text-dark;
+    }
+
+    &.is-primary {
+      &::before,
+      &::after {
+        color: global.$c-white;
+      }
+    }
+
+    &.is-primary-alt {
+      &::before,
+      &::after {
+        color: global.$c-black;
+      }
+    }
+
+    &.is-sm {
+      &::before,
+      &::after {
+        font-size: 1.5rem;
+      }
+    }
+
+    &.is-xs {
+      &::before,
+      &::after {
+        font-size: 1.2rem;
+      }
+    }
+  }
+
+  /* アイコン付きボタン - 左矢印 */
+
+  &.is-left {
+    &::before {
+      content: '\f104';
+    }
+  }
+
+  /* アイコン付きボタン - 右矢印 */
+
+  &.is-right {
+    &::after {
+      content: '\f105';
+      margin-left: 1rem;
+      margin-right: 0;
+    }
+  }
+
+  /* アイコン付きボタン - プラス */
+
+  &.is-plus {
+    &::before {
+      content: '\2b';
+      margin-bottom: .3rem;
+    }
+  }
+
+  /* アイコン付きボタン - 提出、送る */
+
+  &.is-send {
+    &::before {
+      content: '\f1d8';
+    }
+  }
+
+  /* アイコン付きボタン - ファイル */
+
+  &.is-file {
+    &::before {
+      content: '\f0c6';
+      font-size: 1.6rem;
+    }
+  }
+
+  /* アイコンのみの場合はアイコン左右のマージンなし */
+
+  &:empty.is-left,
+  &:empty.is-right,
+  &:empty.is-plus,
+  &:empty.is-send,
+  &:empty.is-file {
+    &::before,
+    &::after {
+      margin: 0;
+    }
+  }
+
+    /* アイコン付きボタン - 再生 */
+
+  &.is-play {
+    &::before {
+      content: '\f144';
+    }
+  }
+
+
+  @include global.mq-down(tab) {
+  }
+
+  @include global.mq-down(sp) {
+    width: 100%!important;
+
+    /* サイズ（スマホでは sm と xs でも通常サイズとする） */
+
+    &.is-sm,
+    &.is-xs {
+      height: 3.2rem;
+      font-size: 1.4rem;
+    }
+  }
+}

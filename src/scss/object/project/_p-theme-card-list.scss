@@ -1,0 +1,61 @@
+@use "../../global/" as global;
+
+/* --------------------------------------------------------------------------------
+   .p-theme-card-list : テーマカードリスト
+----------------------------------------------------------------------------------- */
+
+.p-theme-card-list {
+  // position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0 1rem;
+  margin: 0;
+  margin-bottom: -2rem !important;
+
+  > li {
+    width: 21rem;
+    margin-bottom: 2rem;
+
+    &.is-filler {
+      margin-bottom: 0;
+    }
+  }
+
+  /* コンポーネントページにおける説明用 */
+
+  &.is-for-test {
+    gap: 5rem 2rem;
+
+    .c-note {
+      position: absolute;
+      top: -2.5rem;
+    }
+  }
+
+  /* IE対応 */
+
+  @media all and (-ms-high-contrast: none) {
+    > * {
+      margin-left: 1rem;
+      margin-right: 1rem;
+    }
+  }
+
+  @include global.mq-down(pcS) {
+  }
+
+  @include global.mq-down(tab) {
+  }
+
+  @include global.mq-down(sp) {
+    display: block;
+    margin-bottom: -1rem !important;
+
+    > li {
+      width: 100%;
+      margin-right: 0;
+      margin-bottom: 1rem;
+    }
+  }
+}

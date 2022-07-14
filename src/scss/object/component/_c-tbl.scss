@@ -1,0 +1,116 @@
+@use "../../global/" as global;
+
+/* --------------------------------------------------------------------------------
+   .c-tbl : テーブル
+----------------------------------------------------------------------------------- */
+
+.c-tbl {
+  margin: 2rem 0;
+
+  &:first-child {
+    margin-top: 0;
+  }
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+
+  th,
+  td {
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    line-height: 1.5;
+    border-left: 0;
+    border-right: 0;
+    background-color: global.$c-white;
+  }
+
+  thead {
+    th {
+      font-weight: normal;
+      text-align: left;
+      vertical-align: middle;
+      color: global.$c-gray-8;
+      background-color: global.$c-gray-3;
+      border-right: .1rem solid global.$c-white;
+    }
+  }
+
+  /* 1行おきに色をつける */
+
+  tbody {
+    tr:nth-child(2n) {
+      th,
+      td {
+        background-color: global.$c-gray-1;
+      }
+    }
+  }
+
+  /* 1行おきに色をつけたくない場合 */
+
+  &.is-flat {
+    tbody {
+      tr:nth-child(2n) {
+        th,
+        td {
+          background-color: global.$c-white;
+        }
+      }
+    }
+  }
+
+  /* ヘッダなしで左に項目ラベル（th）があるタイプのテーブル */
+
+  &.is-no-head {
+    tbody {
+      th {
+        background-color: global.$c-gray-1;
+      }
+
+      tr:nth-child(2n) {
+        td {
+          background-color: global.$c-white;
+        }
+      }
+    }
+  }
+
+  @include global.mq-down(tab) {
+  }
+
+  @include global.mq-down(sp) {
+  }
+}
+
+/* datatablesのソートボタンのカスタマイズ */
+
+table.dataTable thead .sorting {
+  padding-right: 2.5rem;
+  background-image: url('../images/datatables-sort-both.svg');
+  background-size: 1.8rem;
+}
+
+table.dataTable thead .sorting_asc {
+  padding-right: 2.5rem;
+  background-image: url('../images/datatables-sort-asc.svg') !important;
+  background-size: 1.8rem;
+}
+
+table.dataTable thead .sorting_desc {
+  padding-right: 2.5rem;
+  background-image: url('../images/datatables-sort-desc.svg') !important;
+  background-size: 1.8rem;
+}
+
+table.dataTable thead .sorting_asc_disabled {
+  padding-right: 2.5rem;
+  background-image: url('../images/datatables-sort-asc-disabled.svg');
+  background-size: 1.8rem;
+}
+
+table.dataTable thead .sorting_desc_disabled {
+  padding-right: 2.5rem;
+  background-image: url('../images/datatables-sort-desc-disabled.svg');
+  background-size: 1.8rem;
+}

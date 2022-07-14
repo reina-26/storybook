@@ -1,0 +1,38 @@
+@use "../../global/" as global;
+
+/* --------------------------------------------------------------------------------
+   .p-legend : 凡例リスト
+----------------------------------------------------------------------------------- */
+
+.p-legend {
+  display: flex;
+  align-items: center;
+  margin: 3rem 0;
+  margin-left: auto;
+  font-size: 1.4rem;
+  line-height: 1.5;
+
+  &:first-child {
+    margin-top: 0;
+  }
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+
+  > li {
+    margin-right: 1.5rem;
+  }
+
+  @include global.mq-down(tabS) {
+    font-size: 1.2rem;
+  }
+
+  @include global.mq-down(sp) {
+    display: block;
+
+    li:not(:last-child) {
+      margin-bottom: .5rem;
+    }
+  }
+}

@@ -1,0 +1,64 @@
+@use '../../global/' as global;
+
+/* --------------------------------------------------------------------------------
+   ユーティリティクラス - 文字関連
+----------------------------------------------------------------------------------- */
+
+/* 行揃え */
+
+.u-txt-left {
+  text-align: left !important;
+}
+
+.u-txt-right {
+  text-align: right !important;
+}
+
+.u-txt-center {
+  text-align: center !important;
+}
+
+.u-txt-justify {
+  text-align: justify !important;
+}
+
+/* スタイル */
+
+.u-txt-bold {
+  font-weight: bold;
+}
+
+.u-txt-no-bold {
+  font-weight: normal;
+}
+
+.u-txt-sans-serif {
+  font-family: "Hiragino Kaku Gothic ProN", Meiryo, "Helvetica Neue", Verdana, sans-serif;
+}
+
+.u-txt-serif {
+  font-family: "ヒラギノ明朝 Pro", "Hiragino Mincho Pro", "ＭＳ Ｐ明朝", "MS PMincho", serif;
+}
+
+.u-txt-mono {
+  font-family: monospace;
+}
+
+.u-txt-break-all {
+  word-break: break-all;
+}
+
+.u-txt-nowrap {
+  white-space: nowrap;
+}
+
+.u-txt-palt {
+  /* 文字を詰める */
+  // iOSとmacOSのSafari10で、palt を使うと、約物（句読点・疑問符・括弧・アクセント）の直後にリンク要素があると、約物の文字の間隔が潰れる。
+  font-feature-settings: 'palt';
+}
+
+.u-txt-no-palt {
+  /* 文字を詰めない */
+  font-feature-settings: normal;
+}

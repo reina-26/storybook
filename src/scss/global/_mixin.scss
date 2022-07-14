@@ -1,0 +1,55 @@
+@use "./variable" as variable;
+@use "./color" as color;
+
+// --------------------------------------------------------------------------------
+// メディアクエリ
+// --------------------------------------------------------------------------------
+
+@mixin mq-up($breakpoint: sp) {
+  @media #{map-get(variable.$breakpoint-up, $breakpoint)} {
+    @content;
+  }
+}
+
+@mixin mq-down($breakpoint: pcL) {
+  @media #{map-get(variable.$breakpoint-down, $breakpoint)} {
+    @content;
+  }
+}
+
+@mixin mq-between($breakpoint: sp-tab) {
+  @media #{map-get(variable.$breakpoint-between, $breakpoint)} {
+    @content;
+  }
+}
+
+// --------------------------------------------------------------------------------
+// いい感じのカスタムスクロールバー
+// --------------------------------------------------------------------------------
+
+@mixin scrollbar($width: .8rem) {
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+
+  &::-webkit-scrollbar {
+    width: $width;
+  }
+
+  &::-webkit-scrollbar-track {
+    border-radius: $width;
+    background-color: rgba(color.$c-white, .5);
+
+    &:hover {
+      background-color: rgba(color.$c-white, .65);
+    }
+  }
+
+  &::-webkit-scrollbar-thumb {
+    border-radius: $width;
+    background-color: color.$c-main-text;
+
+    &:hover {
+      background-color: color.$c-main;
+    }
+  }
+}

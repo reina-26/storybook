@@ -1,0 +1,88 @@
+@use "../global/" as global;
+
+/* --------------------------------------------------------------------------------
+   .l-section : 汎用のセクション
+----------------------------------------------------------------------------------- */
+
+.l-section {
+  position: relative;
+  padding: 3rem max(2rem, (100% - 1200px) / 2);
+  padding: 3rem 2rem; // IE向けフォールバック
+  border-top: .1rem solid global.$c-gray-3;
+
+  &__inner {
+    max-width: 120rem;
+    margin: 0 auto;
+  }
+
+  &__inner-full {
+    width: 100%;
+  }
+
+  // inner は max 1200
+  // window inner padding
+  // 1500   1200  100     --
+  // 1400   1200  100     (100% - 1200px) / 2
+  // 1350   1200   75     (100% - 1200px) / 2
+  // 1300   1200   50     (100% - 1200px) / 2
+  // 1280   1200   40     (100% - 1200px) / 2
+  // 1250   1200   25     (100% - 1200px) / 2
+  // 1240   1200   20     (100% - 1200px) / 2
+  // 1200   1160   20     20
+  // 1150   1110   20     20
+  // 1100   1060   20     20
+  // 1000    960   20     20
+
+  // 学習の流れページで必要になる可能性あり
+  // &._flow {
+  //   position: relative;
+  //   overflow: visible;
+  //   margin-bottom: 0;
+  //   padding-bottom: 50px;
+  //   border-bottom: 1px solid global.$c-main;
+  //   box-shadow: 0 5px 5px rgba(global.$c-black, .05);
+
+  //   &::after {
+  //     content: '';
+  //     position: absolute;
+  //     left: calc(50% - 30px);
+  //     bottom: -30px;
+  //     width: 60px;
+  //     height: 60px;
+  //     border: 1px solid global.$c-main;
+  //     border-left: 0;
+  //     border-top: 0;
+  //     background-color: global.$c-white;
+  //     box-shadow: 5px 5px 5px rgba(global.$c-black, .05);
+  //     transform-origin: center;
+  //     transform: rotate(45deg);
+  //   }
+  // }
+
+  // &._start {
+  //   margin-top: 0;
+  //   margin-bottom: 0;
+  // }
+
+  @include global.mq-down(pcS) {
+    padding: 3rem 1rem;
+
+    &__inner {
+      min-width: 99rem;
+    }
+  }
+
+  @include global.mq-down(tab) {
+    &__inner {
+      min-width: 0;
+    }
+  }
+
+  @include global.mq-down(sp) {
+    padding: 3rem 1rem;
+
+    &__inner {
+      max-width: 100%;
+    }
+  }
+}

@@ -1,0 +1,6 @@
+.page-mov{
+    .c-link.is-play::before {
+        content: '\f144';
+        display: inline-block;
+    }
+}

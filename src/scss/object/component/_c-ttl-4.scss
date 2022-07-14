@@ -1,0 +1,28 @@
+@use "../../global/" as global;
+
+/* --------------------------------------------------------------------------------
+   .c-ttl-4 : 見出し（レベル4）
+----------------------------------------------------------------------------------- */
+
+.c-ttl-4 {
+  margin-top: 1.5rem;
+  margin-bottom: 1rem;
+  font-size: 1.6rem;
+  font-weight: bold;
+  line-height: 1.5;
+  color: global.$c-gray-9;
+
+  &:first-child {
+    margin-top: 0;
+  }
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+
+  @include global.mq-down(tab) {
+  }
+
+  @include global.mq-down(sp) {
+  }
+}

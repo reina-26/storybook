@@ -1,0 +1,101 @@
+@use "../../global/" as global;
+
+/* --------------------------------------------------------------------------------
+   .c-msgbox : メッセージボックス
+   --------------------------------------------------------------------------------
+    - 以下のバリエーションを用意しています
+        0. プレーン      : モディファイアなし
+        1. 通常メッセージ: .is-info
+        2. 成功メッセージ: .is-success
+        3. 注意メッセージ: .is-warning
+        4. 警告メッセージ: .is-danger
+        5. 備考メッセージ: .is-note (通常メッセージより弱い、補足的情報)
+
+    - モディファイア .is-pad-10 でパディングを 1rem に、.is-pad-20 でパディングを 2rem に調整できます（デフォルトは 30）。
+----------------------------------------------------------------------------------- */
+
+.c-msgbox {
+  margin: 1.5rem 0;
+  padding: 1rem 1.5rem;
+  border: 1px solid global.$c-gray-3;
+  border-radius: 1rem;
+  background-color: global.$c-white;
+
+  a {
+    font-weight: bold;
+  }
+
+  &.is-pad-10 {
+    margin: 1rem 0;
+    padding: 1rem;
+  }
+
+  &.is-pad-20 {
+    margin: 2rem 0;
+    padding: 2rem;
+  }
+
+  &.is-info {
+    color: global.$c-main-text;
+    border-color: global.$c-main-light;
+    background-color: global.$c-main-bg;
+
+    a {
+      color: global.$c-main-text;
+    }
+  }
+
+  &.is-success {
+    color: global.$c-green-text;
+    border-color: global.$c-green-light;
+    background-color: global.$c-green-bg;
+
+    a {
+      color: global.$c-green-text;
+    }
+  }
+
+  &.is-warning {
+    color: global.$c-accent-text;
+    border-color: global.$c-accent-light;
+    background-color: global.$c-accent-bg;
+
+    a {
+      color: global.$c-accent-text;
+    }
+  }
+
+  &.is-danger {
+    color: global.$c-red-text;
+    border-color: global.$c-red-light;
+    background-color: global.$c-red-bg;
+
+    a {
+      color: global.$c-red-text;
+    }
+  }
+
+  &.is-note {
+    color: global.$c-text;
+    border-color: global.$c-gray-3;
+    background-color: global.$c-gray-1;
+
+    a {
+      color: global.$c-text;
+    }
+  }
+
+  &:first-child {
+    margin-top: 0;
+  }
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+
+  @include global.mq-down(tab) {
+  }
+
+  @include global.mq-down(sp) {
+  }
+}

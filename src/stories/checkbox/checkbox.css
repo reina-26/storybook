@@ -1,0 +1,164 @@
+/* --------------------------------------------------------------------------------
+   .c-form-checkbox : チェックボックス
+   --------------------------------------------------------------------------------
+    - 次のように記述することを想定（span 必須。ラベルテキストがない場合は空の span）
+        <label class="c-form-checkbox">
+          <input type="checkbox">
+          <span>ラベル</span>
+        </label>
+
+    - 以下のバリエーションを用意しています
+        1. エラー時（当該要素、または先祖要素に .is-error を付加）
+        2. disabled 属性
+----------------------------------------------------------------------------------- */
+.c-form-checkbox {
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 0.6rem 0;
+  /* エラー時のスタイル */
+  /* サイズ */
+  /* ラベルテキストがないとき */
+}
+.c-form-checkbox input[type=checkbox] {
+  position: absolute;
+  opacity: 0;
+}
+.c-form-checkbox input[type=checkbox] + span {
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-right: 1em;
+  padding-right: 1rem;
+  font-size: 1.4rem;
+  line-height: 1.5;
+}
+.c-form-checkbox input[type=checkbox] + span::before {
+  content: "";
+  -ms-flex-negative: 0;
+      flex-shrink: 0;
+  position: relative;
+  display: inline-block;
+  width: 2.4rem;
+  height: 2.4rem;
+  margin-right: 0.6rem;
+  line-height: 0;
+  border: 0.1rem solid #AEB7BF;
+  border-radius: 0.4rem;
+  background-color: #FFFFFF;
+  -webkit-box-shadow: 0 0 0.3rem rgba(1, 156, 225, .25) inset;
+          box-shadow: 0 0 0.3rem rgba(1, 156, 225, .25) inset;
+  -webkit-transition: all 0.2s ease;
+  transition: all 0.2s ease;
+}
+@media all and (-ms-high-contrast: none) {
+  .c-form-checkbox input[type=checkbox] + span::before {
+    border-radius: 0;
+  }
+}
+.c-form-checkbox input[type=checkbox] + span:hover::before {
+  border: 0.1rem solid #019CE1;
+  background-color: #e2f6ff;
+}
+.c-form-checkbox input[type=checkbox]:checked + span::before {
+  background-color: #019CE1;
+  -webkit-box-shadow: inset 0 0 0 0.4rem #FFFFFF;
+          box-shadow: inset 0 0 0 0.4rem #FFFFFF;
+}
+.c-form-checkbox input[type=checkbox]:disabled + span {
+  cursor: default;
+  color: #949DA6;
+}
+.c-form-checkbox input[type=checkbox]:disabled + span::before {
+  border-color: #DAE0E6;
+  background: #E9ECEF;
+}
+.c-form-checkbox input[type=checkbox] + span:empty {
+  padding-right: 0;
+}
+.c-form-checkbox input[type=checkbox] + span:empty::before {
+  margin-right: 0;
+}
+.c-form-checkbox.is-error input[type=checkbox] + span, .is-error .c-form-checkbox input[type=checkbox] + span {
+  color: #C73D3D;
+}
+.c-form-checkbox.is-error input[type=checkbox] + span::before, .is-error .c-form-checkbox input[type=checkbox] + span::before {
+  border-color: #D34C4C;
+  background-color: #FAF2F2;
+}
+.c-form-checkbox.is-error input[type=checkbox]:checked + span::before, .is-error .c-form-checkbox input[type=checkbox]:checked + span::before {
+  border-color: #AEB7BF;
+  background-color: #019CE1;
+}
+.c-form-checkbox.is-error input[type=checkbox]:disabled + span, .is-error .c-form-checkbox input[type=checkbox]:disabled + span {
+  cursor: default;
+  color: #949DA6;
+}
+.c-form-checkbox.is-error input[type=checkbox]:disabled + span::before, .is-error .c-form-checkbox input[type=checkbox]:disabled + span::before {
+  border-color: #DAE0E6;
+  background: #E9ECEF;
+}
+.c-form-checkbox.is-lg {
+  padding: 0.8rem 0;
+}
+.c-form-checkbox.is-lg input[type=checkbox] + span {
+  margin-right: 1em;
+}
+.c-form-checkbox.is-lg input[type=checkbox] + span::before {
+  width: 3.2rem;
+  height: 3.2rem;
+  margin-right: 0.8rem;
+  border-radius: 0.6rem;
+}
+.c-form-checkbox.is-sm {
+  padding: 0.2rem 0;
+}
+.c-form-checkbox.is-sm input[type=checkbox] + span {
+  margin-right: 0;
+  font-size: 1.3rem;
+}
+.c-form-checkbox.is-sm input[type=checkbox] + span::before {
+  width: 1.6rem;
+  height: 1.6rem;
+  margin-right: 0.4rem;
+  border-radius: 0.2rem;
+}
+.c-form-checkbox.is-sm input[type=checkbox]:checked + span::before {
+  -webkit-box-shadow: inset 0 0 0 0.2rem #FFFFFF;
+          box-shadow: inset 0 0 0 0.2rem #FFFFFF;
+}
+.c-form-checkbox input[type=checkbox] + span:empty {
+  margin-right: 0;
+  padding-right: 0;
+}
+.c-form-checkbox input[type=checkbox] + span:empty::before {
+  margin-right: 0;
+}
+@media print, screen and (max-width: 599px) {
+  .c-form-checkbox {
+    /* スマホで hover 状態が残っても大丈夫なように hover に通常スタイルを当てる */
+  }
+  .c-form-checkbox input[type=checkbox] {
+    /* :checked のときはちゃんとチェックがつくようにする */
+    /* :disabled のときはちゃんと disabled のままになるようにする */
+  }
+  .c-form-checkbox input[type=checkbox] + span:hover::before {
+    border-color: #AEB7BF;
+    background-color: #FFFFFF;
+  }
+  .c-form-checkbox input[type=checkbox]:checked + span::before, .c-form-checkbox input[type=checkbox]:checked + span:hover::before {
+    background-color: #019CE1;
+    -webkit-box-shadow: inset 0 0 0 0.4rem #FFFFFF;
+            box-shadow: inset 0 0 0 0.4rem #FFFFFF;
+  }
+  .c-form-checkbox input[type=checkbox]:disabled + span::before, .c-form-checkbox input[type=checkbox]:disabled + span:hover::before {
+    border-color: #DAE0E6;
+    background: #E9ECEF;
+  }
+}

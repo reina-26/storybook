@@ -1,0 +1,38 @@
+@use "../../global/" as global;
+
+/* --------------------------------------------------------------------------------
+   .p-plan-usage : 学習計画の使い方
+----------------------------------------------------------------------------------- */
+
+.p-plan-usage {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+  border-radius: .5rem;
+  background-color: global.$c-gray-1;
+
+  h4 {
+    padding-right: 3rem;
+    font-size: 1.6rem;
+    white-space: nowrap;
+    color: global.$c-main-text-dark;
+  }
+
+  ol {
+    flex-shrink: 1;
+  }
+
+  @include global.mq-down(tabS) {
+  }
+
+  @include global.mq-down(sp) {
+    flex-direction: column;
+    margin-bottom: 1rem;
+
+    h4 {
+      margin-right: 0;
+      font-size: 2rem;
+    }
+  }
+}

@@ -1,7 +1,7 @@
 {
   "name": "jmam-student",
   "version": "1.0.0",
-  "description": "[node.js version 14.x](https://qiita.com/taiponrock/items/9001ae194571feb63a5e)\r [yarn install](https://www.suzu6.net/posts/124-yarn-windows/)",
+  "description": "",
   "main": "gulpfile.js",
   "scripts": {
     "bs": "browser-sync start --config bs-config.js",
@@ -17,12 +17,16 @@
     "@storybook/addon-essentials": "^6.5.9",
     "@storybook/addon-interactions": "^6.5.9",
     "@storybook/addon-links": "^6.5.9",
+    "@storybook/addon-notes": "^5.3.21",
     "@storybook/builder-webpack4": "^6.5.9",
+    "@storybook/builder-webpack5": "^6.5.9",
     "@storybook/html": "^6.5.9",
     "@storybook/manager-webpack4": "^6.5.9",
+    "@storybook/manager-webpack5": "^6.5.9",
     "@storybook/testing-library": "0.0.13",
     "babel-loader": "^8.2.5",
     "browser-sync": "^2.27.7",
+    "css-loader": "^6.7.1",
     "gulp": "^4.0.2",
     "gulp-autoprefixer": "^8.0.0",
     "gulp-changed": "^4.0.3",
@@ -41,7 +45,10 @@
     "jquery": "^3.6.0",
     "postcss": "^8.4.5",
     "postcss-cssnext": "^3.1.1",
-    "sass": "^1.49.0"
+    "sass": "^1.22.10",
+    "sass-loader": "^7.2.0",
+    "sass-resources-loader": "^2.2.5",
+    "style-loader": "^3.3.1"
   },
   "browserslist": [
     "last 2 version",
@@ -49,10 +56,7 @@
     "ie >= 11"
   ],
   "dependencies": {
+    "@storybook/addon-knobs": "^6.4.0",
     "chart.js": "^3.7.1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://takaki-fsi.backlog.com/git/BI_SL_ID/storybook_test.git"
   }
 }

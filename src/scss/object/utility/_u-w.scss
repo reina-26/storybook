@@ -1,0 +1,93 @@
+@use '../../global/' as global;
+
+/* --------------------------------------------------------------------------------
+   ユーティリティクラス - 幅
+   --------------------------------------------------------------------------------
+     - 単位 px → u-w-5,   u-w-10  ... u-w-100, u-w-110, u-w-120, ..., u-w-1000
+     - 100pxまでは5px刻み、以降は10px刻み
+       ※実際の指定では px ではなく rem が使われている（10px = 1rem）
+     - 単位 em → u-w-1em, u-w-2em ... u-w-10em
+     - 単位 %  → u-w-1p,  u-w-2p  ... u-w-100p
+     - 単位 vw → u-w-5v,  u-w-10v ... u-w-100v
+     - u- の後ろに sp- を付加するとスマホ用のクラスになる
+----------------------------------------------------------------------------------- */
+
+/* 単位：em */
+@for $value from 1 through 10 {
+  .u-w-#{$value}em {
+    width: #{$value}em !important;
+  }
+}
+
+/* 単位：px（rem） */
+$value: 5;
+@while $value < 100 {
+  .u-w-#{$value} {
+    width: #{calc($value / 10)}rem !important;
+  }
+  $value : $value + 5;
+}
+
+/* 単位：100px以上は10px刻み */
+$value: 100;
+@while $value <= 1000 {
+  .u-w-#{$value} {
+    width: #{calc($value / 10)}rem !important;
+  }
+  $value : $value + 10;
+}
+
+/* 単位：パーセント、vw */
+$value: 1;
+@while $value <= 100 {
+  .u-w-#{$value}p {
+    // %の場合だけCompassのコンパイルでDEPRECATION WARNINGが出たので、推奨に従い unquote する
+    width: unquote("#{$value}% !important");
+  }
+  .u-w-#{$value}v {
+    width: #{$value}vw !important;
+  }
+  $value : $value + 1;
+}
+
+/* SP版：プリフィクス sp- を付加 */
+
+@include global.mq-down(sp) {
+  /* 単位：em */
+  @for $value from 1 through 10 {
+    .u-sp-w-#{$value}em {
+      width: #{$value}em !important;
+    }
+  }
+
+  /* 単位：px（rem） */
+  $value: 5;
+  @while $value < 100 {
+    .u-sp-w-#{$value} {
+      width: #{calc($value / 10)}rem !important;
+    }
+    $value : $value + 5;
+  }
+
+  /* 単位：100px以上は10px刻み */
+  $value: 100;
+  @while $value <= 1000 {
+    .u-sp-w-#{$value} {
+      width: #{calc($value / 10)}rem !important;
+    }
+    $value : $value + 10;
+  }
+
+  /* 単位：パーセント、vw */
+  $value: 1;
+  @while $value <= 100 {
+    .u-sp-w-#{$value}p {
+      // %の場合だけCompassのコンパイルでDEPRECATION WARNINGが出たので、推奨に従い unquote する
+      width: unquote("#{$value}% !important");
+    }
+    .u-sp-w-#{$value}v {
+      width: #{$value}vw !important;
+    }
+    $value : $value + 1;
+  }
+}

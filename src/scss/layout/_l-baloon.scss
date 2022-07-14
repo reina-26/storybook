@@ -1,0 +1,74 @@
+@use '../global/' as global;
+
+/* --------------------------------------------------------------------------------
+   .l-baloon : 吹き出し通知
+----------------------------------------------------------------------------------- */
+
+.l-baloon {
+  z-index: 40; // モーダル、メガメニューより下
+  position: fixed;
+  left: 0;
+  top: 9rem;
+  display: none;
+  max-width: 150rem;
+  padding: 1rem 6.5rem 1rem 4rem;
+  text-align: center;
+  color: global.$c-accent-text;
+  border: .1rem solid global.$c-accent-light;
+  border-radius: 1rem;
+  background-color: global.$c-accent-bg;
+  box-shadow: 0 .2rem 1rem rgba(global.$c-black, .2);
+
+  &::before {
+    content: '';
+    position: absolute;
+    left: calc(50% - 1.5rem);
+    top: -1.1rem;
+    width: 2rem;
+    height: 2rem;
+    border: .1rem solid global.$c-accent-light;
+    border-width: .1rem  .1rem 0 0;
+    border-radius: .3rem;
+    background-color: global.$c-accent-bg;
+    transform: rotate(-45deg);
+  }
+
+  /* 表示中 */
+
+  &.is-visible {
+    display: block;
+  }
+
+  /* 閉じるボタン */
+
+  &__close {
+    position: absolute;
+    right: 1rem;
+    top: 1.4rem;
+    padding: 0;
+    font-size: 2rem;
+    color: global.$c-accent-light;
+    outline: 0;
+    border: 0;
+    background: none;
+
+    &:hover {
+      color: global.$c-accent;
+    }
+  }
+
+  /* リンクもカーキ */
+
+  a {
+    font-weight: bold;
+    color: global.$c-accent-text;
+  }
+
+  @include global.mq-down(tab) {
+  }
+
+  @include global.mq-down(tabS) {
+    max-width: 95%;
+    padding: 1rem 4.5rem 1rem 2rem;
+  }
+}

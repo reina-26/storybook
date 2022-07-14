@@ -1,0 +1,189 @@
+@use "../../global/" as global;
+
+/* --------------------------------------------------------------------------------
+   .p-enq-point-scale : アンケート（4-5件法）
+----------------------------------------------------------------------------------- */
+
+.p-enq-point-scale {
+  position: relative;
+
+  th,
+  td {
+    text-align: center;
+    vertical-align: middle;
+  }
+
+  thead {
+    z-index: 1;
+    position: sticky;
+    top: -.1rem; /* 上になぜか 1px の隙間があく対処 */
+
+    th {
+      text-align: center;
+      color: global.$c-main-text-dark;
+      white-space: nowrap;
+    }
+
+    th:first-child {
+      text-align: left;
+    }
+
+    th.p-enq-point-scale__your-answer {
+      color: global.$c-white;
+      background-color: global.$c-main-text;
+    }
+  }
+
+  tbody {
+    th {
+      text-align: left;
+    }
+
+    tr:nth-child(2n) {
+      th,
+      td {
+        background-color: global.$c-white;
+      }
+    }
+
+    tr,
+    tr:nth-child(2n) {
+      > :nth-child(2),
+      > :nth-child(4) {
+        background-color: global.$c-gray-1;
+      }
+
+      td.p-enq-point-scale__your-answer {
+        color: global.$c-main-text;
+        background-color: global.$c-main-bg;
+      }
+    }
+  }
+
+  /* 設問 */
+
+  &__q {
+    display: flex;
+    align-items: center;
+
+    &__num {
+      flex-shrink: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 3.6rem;
+      height: 3.6rem;
+      margin-right: 1em;
+      font-family: 'Roboto', sans-serif;
+      font-weight: bold;
+      color: global.$c-white;
+      border-radius: 100%;
+      background-color: global.$c-main;
+    }
+
+    &__text {
+      font-weight: normal;
+    }
+  }
+
+  /* ラジオボタンのセル */
+
+  &__clickable {
+    cursor: pointer;
+
+    &:hover {
+      background-color: global.$c-accent-bg !important;
+    }
+
+    /* PCではラベル文言非表示なのでマージンもゼロに */
+
+    .c-form-radio.is-lg input[type=radio] + span,
+    .c-form-radio.is-lg input[type=radio] + span::before {
+      margin-right: 0;
+    }
+  }
+
+  /* 確認画面のチェックマーク */
+
+  i.fa-check-circle {
+    font-size: 3.2rem;
+    color: global.$c-accent;
+  }
+
+  @include global.mq-down(tabS) {
+    thead,
+    tbody {
+      th {
+        font-size: 1.2rem;
+      }
+    }
+
+    /* 設問 */
+
+    &__q {
+      &__num {
+        width: 2rem;
+        height: 2rem;
+      }
+
+      &__text {
+        font-weight: normal;
+      }
+    }
+  }
+
+  @include global.mq-down(sp) {
+    display: block;
+
+    thead {
+      display: none;
+    }
+
+
+    tbody {
+      display: block;
+
+      tr {
+        display: block;
+        margin-bottom: 2rem;
+        border-radius: 1rem;
+        border: .1rem solid global.$c-gray-3;
+      }
+
+      td,
+      th {
+        display: block;
+        text-align: left;
+        border: 0;
+        background-color: transparent !important;
+      }
+
+      th {
+        border-bottom: .1rem solid global.$c-gray-3;
+        background-color: global.$c-gray-1 !important;
+      }
+
+      td {
+        padding: 0 2rem;
+
+        &.p-enq-point-scale__your-answer {
+          padding: 2rem;
+          vertical-align: middle;
+          line-height: 1;
+          background-color: global.$c-main-bg !important;
+        }
+
+        .fas.fa-check-circle {
+           display: inline-block;
+           margin: 1rem;
+        }
+      }
+    }
+
+    /* SPではラベル文言表示するのでマージン設定 */
+
+    .c-form-radio.is-lg input[type=radio] + span::before {
+      margin-right: 1rem;
+    }
+  }
+}

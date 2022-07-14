@@ -1,0 +1,106 @@
+@use "../../global/" as global;
+
+/* --------------------------------------------------------------------------------
+   テーマ詳細 : 元の（2021年6月改修前の）style.css
+----------------------------------------------------------------------------------- */
+
+.p-theme-detail {
+
+  /* タイトル */
+
+  &__title {
+    margin-bottom: 2rem;
+    padding: 0 0 0 2rem;
+    border-left: .5rem solid global.$c-main;
+
+    span {
+      display: block;
+      margin-bottom: .3em;
+      font-size: 1.4rem;
+      font-weight: normal;
+      line-height: 1.5;
+      color: global.$c-main;
+    }
+
+    em {
+      display: block;
+      font-size: 2rem;
+      font-weight: bold;
+      line-height: 1.5;
+      letter-spacing: .1em;
+      color: global.$c-main;
+    }
+  }
+
+  &__img {
+    width: 40%;
+    text-align: right;
+
+    img {
+      object-fit: cover;
+      height: 100%;
+    }
+  }
+
+  /* タグ */
+
+  &__tag-list {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 2rem;
+
+    > li {
+      margin-right: 1rem;
+    }
+  }
+
+  /* カリキュラム詳細 */
+
+  &__curriculum {
+    li {
+      display: flex;
+      border-bottom: .1rem solid #ccc;
+
+      &:first-child {
+        border-top: .1rem solid #ccc;
+      }
+
+      em {
+        display: block;
+        padding: .5rem 2rem;
+        line-height: 1.6;
+        white-space: nowrap;
+      }
+
+      span {
+        display: block;
+        padding: .5rem 0;
+        line-height: 1.6;
+      }
+    }
+  }
+
+  @include global.mq-down(tabS) {
+  }
+
+  @include global.mq-down(sp) {
+    &__img {
+      width: 100%;
+      height: 20rem;
+
+      img {
+        width: 100%;
+      }
+    }
+
+    /* タグ */
+
+    &__tag-list {
+      margin-top: .5rem;
+
+      > li {
+        margin-right: .5rem;
+      }
+    }
+  }
+}

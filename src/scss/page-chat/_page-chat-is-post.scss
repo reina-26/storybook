@@ -1,0 +1,11 @@
+@use "../global/" as global;
+
+.page-chat.is-post {
+  @include global.mq-down(sp) {
+    .p-btns {
+      > * {
+        width: 100%;
+      }
+    }
+  }
+}

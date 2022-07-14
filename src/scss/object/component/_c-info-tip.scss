@@ -1,0 +1,39 @@
+@use "../../global/" as global;
+
+/* --------------------------------------------------------------------------------
+   .c-info-tip : インフォチップ
+----------------------------------------------------------------------------------- */
+
+.c-info-tip {
+  display: inline-flex;
+  justify-content: center;
+  margin: 0;
+  padding: 0 .5em;
+  font-size: 1.2rem;
+  border: .1rem solid global.$c-gray-3;
+
+  dt {
+    color: global.$c-main-text;
+    white-space: nowrap;
+
+    &::after {
+      content: ':';
+      margin: 0 .3em;
+    }
+  }
+
+  &.is-alert {
+    dd {
+      font-weight: bold;
+      color: global.$c-red-text;
+      white-space: nowrap;
+    }
+  }
+
+  @include global.mq-down(tab) {
+  }
+
+  @include global.mq-down(spS) {
+    font-size: 1rem;
+  }
+}

@@ -1,0 +1,27 @@
+@use '../global/' as global;
+
+/* --------------------------------------------------------------------------------
+   .l-mini-msg : メイン
+----------------------------------------------------------------------------------- */
+
+.l-mini-msg {
+  z-index: 200; // モーダルよりも上（これが一番上か？）
+  position: fixed;
+  left: 3rem;
+  top: -15rem;
+  min-width: 30rem;
+  max-width: 90%;
+  padding: 1rem 2rem;
+  text-align: center;
+  color: global.$c-green-text;
+  border-radius: .5rem;
+  border: .1rem solid global.$c-green-light;
+  background-color: global.$c-green-bg;
+  box-shadow: 0 .2rem 1rem rgba(global.$c-black, .2);
+
+  @include global.mq-down(tab) {
+  }
+
+  @include global.mq-down(sp) {
+  }
+}

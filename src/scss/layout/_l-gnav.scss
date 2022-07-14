@@ -1,0 +1,131 @@
+@use "../global/" as global;
+
+/* --------------------------------------------------------------------------------
+   .l-gnav : グロナビ
+----------------------------------------------------------------------------------- */
+
+.l-gnav {
+  display: flex;
+  margin: 0;
+  border-right: .1rem solid global.$c-gray-3;
+
+  > li {
+    width: 15rem;
+    border-left: .1rem solid global.$c-gray-3;
+  }
+
+  &__btn {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 5rem;
+    padding-top: 0;
+    font-size: 1.4rem;
+    font-weight: bold;
+    line-height: 1;
+    text-align: center;
+    color: global.$c-black;
+    border: 0;
+    outline: 0;
+    background-color: transparent;
+
+    > span:not(.c-icon-notice) {
+      position: relative;
+
+      &::after {
+        content: '\f0dd';
+        position: absolute;
+        left: calc(50% - 1.5rem);
+        bottom: -1.5rem;
+        font-family: 'Font Awesome 5 Free';
+        font-weight: 600;
+        line-height: 1;
+        color: global.$c-main-text;
+      }
+    }
+
+    &::before {
+      content: '';
+      width: 2.4rem;
+      height: 2.4rem;
+      margin-right: .5rem;
+      background-repeat: no-repeat;
+      background-position: center center;
+      background-size: 1.6rem;
+    }
+
+    &.is-item-1::before {
+      background-image: url(../images/icon_book_black.svg);
+    }
+
+    &.is-item-2::before {
+      background-image: url(../images/icon_graph_black.svg);
+      background-size: 2rem;
+    }
+
+    &.is-item-3::before {
+      background-image: url(../images/icon_user_black.svg);
+    }
+
+    .c-icon-notice {
+      position: absolute;
+      right: .5rem;
+      top: .5rem;
+    }
+  }
+
+  // ホバー状態
+
+  > li:hover {
+    background-image: linear-gradient(75deg, global.$c-main-text 0, global.$c-main 100%);
+    background-position: center;
+    background-size: 128rem;
+
+    .l-gnav__btn {
+      color: global.$c-white;
+
+      > span:not(.c-icon-notice) {
+        position: relative;
+
+        &::after {
+          color: global.$c-white;
+        }
+      }
+
+      &.is-item-1::before {
+        background-image: url(../images/icon_book_white.svg);
+      }
+
+      &.is-item-2::before {
+        background-image: url(../images/icon_graph_white.svg);
+      }
+
+      &.is-item-3::before {
+        background-image: url(../images/icon_user_white.svg);
+      }
+    }
+  }
+
+  @include global.mq-down(tab) {
+    > li {
+      width: 12.5rem;
+    }
+  }
+
+  @include global.mq-down(tabS) {
+    display: none;
+  }
+}
+
+// 期間学習向け
+.is-period {
+  .l-gnav {
+    @include global.mq-down(tab) {
+      > li {
+        width: 11.2rem;
+      }
+    }
+  }
+}

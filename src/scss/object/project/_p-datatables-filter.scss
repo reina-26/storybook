@@ -1,0 +1,100 @@
+@use "../../global/" as global;
+
+/* --------------------------------------------------------------------------------
+   .p-datatables-filter : 学習実績一覧のフィルタエリア
+----------------------------------------------------------------------------------- */
+
+.p-datatables-filter {
+  margin-bottom: 0;
+
+  &__sort,
+  &__toggle {
+    display: none;
+  }
+
+  .p-form__item {
+    background-color: transparent;
+  }
+
+  .p-form__label {
+    display: none;
+  }
+
+  @include global.mq-down(tab) {
+    z-index: 1;
+    position: sticky;
+    top: 1rem;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    width: 100%;
+    margin: auto;
+    padding: 1rem 0;
+    border: .1rem solid global.$c-gray-3;
+    border-radius: 1rem;
+    background-color: global.$c-white;
+
+    > * {
+      margin-bottom: 0;
+      margin-right: 1rem;
+    }
+
+    &__sort {
+      display: flex;
+    }
+
+    .p-form__item {
+      flex-direction: row;
+      align-items: center;
+    }
+
+    .p-form__label {
+      display: block;
+      width: auto;
+      padding-right: .7rem;
+      font-weight: bold;
+    }
+
+    &__filter {
+      .p-form__group > * {
+        margin-right: -1.5rem;
+      }
+    }
+
+    &__toggle {
+      display: none;
+    }
+  }
+
+  @include global.mq-down(sp) {
+    position: static;
+    display: block;
+    padding: 0;
+    border: 0;
+
+    > * {
+      margin-right: 0;
+    }
+
+    &__sort,
+    &__toggle {
+      display: flex;
+    }
+
+    .p-form__item {
+      flex-direction: row;
+      align-items: center;
+    }
+
+    .p-form__label {
+      display: block;
+      width: 7rem;
+    }
+
+    &__filter {
+      .p-form__group > * {
+        margin-right: -1.5rem;
+      }
+    }
+  }
+}

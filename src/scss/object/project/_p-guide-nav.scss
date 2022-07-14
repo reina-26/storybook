@@ -1,0 +1,26 @@
+@use "../../global/" as global;
+
+/* --------------------------------------------------------------------------------
+   .p-guide-nav : ご利用ガイドナビ
+----------------------------------------------------------------------------------- */
+
+.p-guide-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .5em 2em;
+  padding: 2rem;
+  border-radius: 1rem;
+  background-color: global.$c-main-bg;
+
+  &__selected {
+    font-weight: bold;
+    text-decoration: none;
+  }
+
+  @include global.mq-down(tab) {
+  }
+
+  @include global.mq-down(tabS) {
+    gap: 0 1.5em;
+  }
+}

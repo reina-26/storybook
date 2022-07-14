@@ -1,0 +1,200 @@
+@use "../../global/" as global;
+
+/* --------------------------------------------------------------------------------
+   .c-form-radio : ラジオボタン
+   --------------------------------------------------------------------------------
+    - 次のように記述することを想定（span 必須。ラベルテキストがない場合は空の span）
+        <label class="c-form-radio">
+          <input type="radio">
+          <span>ラベル</span>
+        </label>
+
+    - 以下のバリエーションを用意しています
+        1. エラー時（当該要素、または先祖要素に .is-error を付加）
+        2. disabled 属性
+----------------------------------------------------------------------------------- */
+
+.c-form-radio {
+  display: inline-flex;
+  align-items: center;
+  padding: .6rem 0;
+
+  input[type="radio"] {
+    position: absolute;
+    opacity: 0;
+
+    + span {
+      display: inline-flex;
+      align-items: center;
+      margin-right: 1em;
+      padding-right: .1rem;
+      font-size: 1.4rem;
+      line-height: 1.5;
+      color: global.$c-main-text-dark;
+
+      &::before {
+        content: '';
+        flex-shrink: 0;
+        position: relative;
+        display: inline-block;
+        width: 2.4rem;
+        height: 2.4rem;
+        margin-right: .6rem;
+        line-height: 0;
+        border: .1rem solid global.$c-gray-5;
+        border-radius: 100%;
+        background-color: global.$c-white;
+        box-shadow: 0 0 .3rem rgba(global.$c-main, .25) inset;
+        transition: all .2s ease;
+      }
+
+      &:hover {
+        &::before {
+          border: .1rem solid global.$c-main;
+          background-color: rgba(global.$c-main, .05);
+        }
+      }
+    }
+
+    &:checked {
+      + span {
+        &::before {
+          background-color: global.$c-main;
+          box-shadow: inset 0 0 0 .4rem global.$c-white;
+        }
+      }
+    }
+
+    &:disabled {
+      + span {
+        cursor: default;
+        color: global.$c-gray-6;
+
+        &::before {
+          border-color: global.$c-gray-3;
+          background: global.$c-gray-2;
+        }
+      }
+    }
+  }
+
+  /* エラー時のスタイル */
+
+  &.is-error,
+  .is-error & {
+    input[type="radio"] {
+      + span {
+        color: global.$c-red-text;
+
+        &::before {
+          border-color: global.$c-red;
+          background-color: global.$c-red-bg;
+        }
+      }
+
+      &:checked {
+        + span {
+          &::before {
+            border-color: global.$c-gray-5;
+            background-color: global.$c-main;
+          }
+        }
+      }
+
+      &:disabled {
+        + span {
+          cursor: default;
+          color: global.$c-gray-6;
+
+          &::before {
+            border-color: global.$c-gray-3;
+            background: global.$c-gray-2;
+          }
+        }
+      }
+
+      + span:empty {
+        padding-right: 0;
+
+        &::before {
+          margin-right: 0;
+        }
+      }
+    }
+  }
+
+  /* サイズ */
+
+  &.is-lg {
+    padding: .8rem 0;
+
+    input[type="radio"] {
+      + span {
+        margin-right: 1em;
+
+        &::before {
+          width: 3.2rem;
+          height: 3.2rem;
+          margin-right: .7rem;
+        }
+      }
+    }
+  }
+
+  &.is-sm {
+    padding: .2rem 0;
+
+    input[type="radio"] {
+      + span {
+        margin-right: 0;
+        font-size: 1.3rem;
+
+        &::before {
+          width: 1.6rem;
+          height: 1.6rem;
+          margin-right: .4rem;
+        }
+      }
+
+      &:checked {
+        + span {
+          &::before {
+            box-shadow: inset 0 0 0 .2rem global.$c-white;
+          }
+        }
+      }
+    }
+  }
+
+  /* ラベルテキストがないとき */
+
+  input[type="radio"] {
+    + span:empty {
+      margin-right: 0;
+      padding-right: 0;
+
+      &::before {
+        margin-right: 0;
+      }
+    }
+  }
+
+  @include global.mq-down(tab) {
+  }
+
+  @include global.mq-down(sp) {
+
+    /* スマホで hover 状態が残っても大丈夫なようにする */
+
+    input[type="checkbox"] {
+      + span {
+        &:hover {
+          &::before {
+            border-color: global.$c-gray-5;
+            background-color: global.$c-white;
+          }
+        }
+      }
+    }
+  }
+}

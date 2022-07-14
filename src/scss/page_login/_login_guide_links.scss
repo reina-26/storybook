@@ -1,0 +1,94 @@
+@use "../global/" as global;
+
+/* --------------------------------------------------------------------------------
+   .login_guide_links : ログインフォーム下のガイド欄
+----------------------------------------------------------------------------------- */
+
+body.page_login {
+  .login_guide_links {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 25px 0;
+    background-color: rgba(global.$c-main, .05);
+
+    ul {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      li {
+        padding: 0 80px;
+      }
+
+      a {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        font-size: 16px;
+        text-decoration: none;
+        color: global.$c-main;
+        transition: all .1s linear;
+
+        &:hover {
+          transform: scale(1.1);
+          opacity: 1;
+        }
+
+        ._icon {
+          display: flex;
+          align-items: center;
+          height: 50px;
+        }
+
+        span {
+          margin-top: 10px;
+          font-weight: bold;
+        }
+      }
+    }
+
+    @include global.mq-down(tab) {
+    }
+
+    @include global.mq-down(sp) {
+      min-height: 100px;
+
+      ul {
+        width: 100%;
+
+        li {
+          width: 33.333%;
+          padding: 0;
+        }
+
+        a {
+          font-size: 14px;
+
+          ._icon {
+            height: 32px;
+
+            img {
+              width: 32px;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  // 教育担当者向け画面
+
+  &._kyoiku {
+    .login_guide_links {
+      background-color: rgba(global.$c-main-kyoiku, .05);
+
+      ul {
+        a {
+          color: global.$c-main-kyoiku;
+        }
+      }
+    }
+  }
+}

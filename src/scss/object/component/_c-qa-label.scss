@@ -1,0 +1,35 @@
+@use "../../global/" as global;
+
+/* --------------------------------------------------------------------------------
+   .c-qa-label : QAラベル
+----------------------------------------------------------------------------------- */
+
+.c-qa-label {
+  display: inline-block;
+  width: 3rem;
+  height: 3rem;
+  font-family: 'Roboto', sans-serif;
+  font-size: 1.8rem;
+  font-weight: bold;
+  font-style: italic;
+  line-height: 3rem;
+  text-align: center;
+  text-indent: -.5rem;
+  color: global.$c-white;
+  border-radius: 100%;
+  background-color: global.$c-gray-6;
+
+  &.is-q {
+    background-color: global.$c-main;
+  }
+
+  &.is-a {
+    background-color: global.$c-accent;
+  }
+
+  @include global.mq-down(tab) {
+  }
+
+  @include global.mq-down(sp) {
+  }
+}

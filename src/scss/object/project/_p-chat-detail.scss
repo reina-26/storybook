@@ -1,0 +1,117 @@
+@use "../../global/" as global;
+
+/* --------------------------------------------------------------------------------
+   .p-chat-detail : ビュッフェチャット詳細
+----------------------------------------------------------------------------------- */
+
+.p-chat-detail {
+  header {
+    margin-bottom: 2rem;
+
+    h3 {
+      margin-top: 2rem;
+    }
+  }
+
+  /* 返信 */
+
+  &__children {
+    margin-top: 2rem;
+    padding-left: 5rem;
+    border-top: .1rem solid global.$c-gray-3;
+
+    &__item {
+      padding: 2rem 0;
+      border-bottom: .1rem solid global.$c-gray-3;
+
+      header {
+        margin-bottom: 1rem;
+      }
+    }
+
+    &__item:last-child {
+      padding-bottom: 0;
+      border-bottom: 0;
+    }
+  }
+
+  /* 返信フォーム */
+
+  &__submit {
+    margin: 2rem -2rem -2rem;
+    padding: 2rem;
+    background-color: global.$c-gray-1;
+
+    &.is-toukou {
+      margin: -2rem -2rem 0;
+      border-radius: 1rem 1rem 0 0;
+    }
+
+    &.is-reply {
+      margin: 0;
+      border-radius: 1rem;
+    }
+  }
+
+  /* ボタン */
+
+  .p-btns {
+    align-items: flex-start;
+  }
+
+  .c-form-file {
+    + span {
+      display: block;
+    }
+  }
+
+  @include global.mq-down(tabS) {
+    .p-btns {
+      flex-direction: column;
+
+      > * {
+        width: 100%;
+      }
+    }
+
+    .c-form-file {
+      .c-btn {
+        width: 100%;
+      }
+    }
+  }
+
+  @include global.mq-down(sp) {
+    header {
+      margin-bottom: 1rem;
+
+      h3 {
+        margin-top: 1rem;
+      }
+    }
+
+    /* 返信 */
+
+    &__children {
+      padding-left: 3rem;
+    }
+
+    /* 返信フォーム */
+
+    &__submit {
+      margin: 1.5rem -1.5rem -1.5rem;
+      padding: 2rem;
+      background-color: global.$c-gray-1;
+
+      &.is-toukou {
+        margin: -1.5rem -1.5rem 0;
+        border-radius: 1rem 1rem 0 0;
+      }
+
+      &.is-reply {
+        margin: 0;
+        border-radius: 1rem;
+      }
+    }
+  }
+}

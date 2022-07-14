@@ -1,0 +1,188 @@
+@use "../../global/" as global;
+
+/* --------------------------------------------------------------------------------
+   .c-btn-main : 学習ボタン各種
+----------------------------------------------------------------------------------- */
+
+.c-btn-main,
+a.c-btn-main {
+  position: relative;
+  display: inline-block;
+  min-width: 28rem;
+  height: 5rem;
+  padding: 0 2rem;
+  font-size: 1.6rem;
+  font-weight: bold;
+  line-height: 5rem;
+  text-align: center;
+  text-decoration: none;
+  letter-spacing: .1em;
+  color: global.$c-white;
+  outline: 0;
+  border-radius: .7rem;
+  border: 0;
+  background-color: global.$c-main;
+  background-repeat: no-repeat;
+  background-position: 0 0;
+  background-size: 200% 100%;
+  transition: all 0.2s linear;
+
+  &:visited {
+    text-decoration: none;
+    color: global.$c-white;
+  }
+
+  &:hover {
+    opacity: 1;
+    box-shadow: 0 .6rem .8rem rgba(0, 0, 0, 0.3);
+    background-position: 100% 0;
+  }
+
+  &:active {
+    box-shadow: 0 0 10rem rgba(0, 0, 0, 0.3) inset;
+  }
+
+  &.is-green {
+    background-image: linear-gradient(135deg, global.$c-main 25%, global.$c-green 50%, global.$c-main 100%);
+  }
+
+  &.is-gray {
+    background: global.$c-gray-1;
+    border: .1rem solid global.$c-gray-3;
+    color: global.$c-text;
+    font-weight: normal;
+  }
+
+  &.is-gray:hover {
+    box-shadow: 0 .6rem .8rem rgba(global.$c-black, 0.1);
+  }
+
+  &.is-purple {
+    background-image: linear-gradient(135deg, global.$c-main 25%, global.$c-purple 50%, global.$c-main 100%);
+  }
+
+  /* 教育担当者向け */
+
+  &.is-admin,
+  &.is-admin {
+    background-image: linear-gradient(135deg, #7d4775 25%, #A38030 50%, #7d4775 100%);
+  }
+
+  /* アイコン */
+
+  &.is-icon-book,
+  &.is-icon-video,
+  &.is-icon-study,
+  &.is-icon-review,
+  &.is-icon-repeat,
+  &.is-icon-tree,
+  &.is-icon-step, {
+    &::before {
+      content: '';
+      display: inline-block;
+      width: 2.4rem;
+      height: 2.4rem;
+      margin-right: 1rem;
+      vertical-align: middle;
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: contain;
+    }
+  }
+
+  &.is-icon-book::before {
+    background-image: url(../images/icon_btn_book.svg);
+  }
+
+  &.is-icon-video::before {
+    background-image: url(../images/icon_btn_video.svg);
+  }
+
+  &.is-icon-study::before {
+    background-image: url(../images/icon_btn_study.svg);
+  }
+
+  &.is-icon-review::before {
+    background-image: url(../images/icon_btn_review.svg);
+  }
+
+  &.is-icon-repeat::before {
+    background-image: url(../images/icon_btn_repeat.svg);
+  }
+
+  &.is-icon-tree::before {
+    background-image: url(../images/icon_tree_white.svg);
+  }
+
+  &.is-icon-step::before {
+    background-image: url(../images/icon_step_white.svg);
+  }
+
+  /* サイズ */
+
+  &.is-sm {
+    height: 4rem;
+    min-width: 20rem;
+    padding: 0 2rem;
+    font-size: 1.4rem;
+    line-height: 4rem;
+    border-radius: .5rem;
+
+    &.is-icon-book,
+    &.is-icon-video,
+    &.is-icon-study,
+    &.is-icon-review,
+    &.is-icon-repeat,
+    &.is-icon-tree,
+    &.is-icon-step {
+      line-height: 4rem;
+      padding-top: 0;
+
+      &::before {
+        position: static;
+        display: inline-block;
+        width: 2rem;
+        height: 2rem;
+        margin-right: 1rem;
+        vertical-align: middle;
+      }
+    }
+  }
+
+  &.is-lg {
+    height: 6rem;
+    padding: 0 2rem;
+    font-size: 1.6rem;
+    line-height: 6rem;
+
+    /* アイコン */
+
+    &.is-icon-book,
+    &.is-icon-video,
+    &.is-icon-study,
+    &.is-icon-review,
+    &.is-icon-repeat,
+    &.is-icon-tree,
+    &.is-icon-step {
+      padding-top: 2.7rem;
+      font-size: 1.4rem;
+      line-height: 3.5rem;
+
+      &::before {
+        content: '';
+        position: absolute;
+        left: calc(50% - 1.2rem);
+        top: 1rem;
+        width: 2.4rem;
+        height: 2.4rem;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: contain;
+      }
+    }
+  }
+
+  @include global.mq-down(tabS) {
+    min-width: 24rem;
+  }
+}

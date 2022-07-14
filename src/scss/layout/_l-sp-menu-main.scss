@@ -1,0 +1,86 @@
+@use "../global/" as global;
+
+/* --------------------------------------------------------------------------------
+   .l-sp-menu__main : SPメニューの中身（メインメニュー部分）
+----------------------------------------------------------------------------------- */
+
+.l-sp-menu__main {
+  @include global.mq-down(tabS) {
+    margin-bottom: 1rem;
+    border-radius: .5rem;
+    background-color: global.$c-white;
+
+    // 親項目
+
+    .l-sp-menu__parent {
+      > button {
+        width: 100%;
+        height: 5rem;
+        padding: 0 1.5rem;
+        font-size: 1.4rem;
+        font-weight: bold;
+        text-align: left;
+        color: global.$c-black;
+        outline: 0;
+        border: 0;
+        border-top: .1rem solid global.$c-gray-3;
+        background-color: transparent;
+        background: url(../images/icon_sp_submenu_open.svg) no-repeat 96% center;
+        background-size: 1.6rem;
+
+        &.is-active {
+          background-image: url(../images/icon_sp_submenu_close.svg);
+        }
+      }
+
+      &:first-child {
+        > button {
+          border-top: 0;
+        }
+      }
+    }
+
+    .l-sp-menu__child {
+      display: none;
+      margin: 0;
+      padding: 0 0 0 4rem;
+      border-top: .1rem solid global.$c-gray-3;
+
+      a {
+        display: flex;
+        align-items: center;
+        height: 5rem;
+        padding: 0 1.5rem 0 0;
+        font-size: 1.4rem;
+        font-weight: bold;
+        line-height: 1.3;
+        text-align: left;
+        text-decoration: none;
+        color: global.$c-black;
+        border-bottom: .1rem solid global.$c-gray-3;
+
+        &.l-sp-menu__sub {
+          font-weight: normal;
+          color: global.$c-text;
+        }
+      }
+
+      > li:last-child {
+        a {
+          border-bottom: 0;
+        }
+      }
+    }
+
+    .c-icon-notice {
+      margin-left: .5rem;
+    }
+
+    // 初回ログイン画面では表示しない
+
+    body.page_first_login_form &,
+    body.page_first_login_flow & {
+        display: none;
+    }
+  }
+}

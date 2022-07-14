@@ -1,0 +1,423 @@
+@use "../../global/" as global;
+
+/* --------------------------------------------------------------------------------
+   .p-calendar : カレンダー
+----------------------------------------------------------------------------------- */
+
+.p-calendar {
+
+  /* ヘッダ */
+
+  header {
+    display: flex;
+    align-items: center;
+    padding: 2rem;
+    border: .1rem solid global.$c-gray-3;
+    border-bottom: 0;
+    border-radius: 1rem 1rem 0 0;
+  }
+
+  &__month {
+    display: flex;
+    align-items: center;
+
+    h3 {
+      margin-right: 2rem;
+      font-size: 2rem;
+      line-height: 1.5;
+    }
+
+    &__prev,
+    &__next {
+      padding: 0;
+      min-width: 5rem;
+      margin-left: .5rem;
+
+      &::after,
+      &::before {
+        margin: 0;
+        padding: 0;
+      }
+    }
+
+    &__current {
+      min-width: 7rem;
+      margin-left: 1rem;
+    }
+  }
+
+  /* 凡例 */
+
+  &__legend {
+    display: flex;
+    align-items: center;
+    margin: 0;
+    margin-left: auto;
+    font-size: 1.2rem;
+    line-height: 1.5;
+
+    > li {
+      margin-left: 1.5rem;
+    }
+
+    ul {
+      margin: 0;
+    }
+  }
+
+  /* アイコンリスト */
+
+  &__icons {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    min-height: 4rem;
+    margin: 0;
+    line-height: 1;
+  }
+
+  /* アイコン */
+
+  &__icon {
+    width: 2rem;
+    padding: 0;
+    text-align: center;
+    outline: 0;
+    line-height: 2rem;
+    border: 0;
+    background-color: transparent;
+    transition: all .1s linear;
+
+    &.is-login,
+    &.is-study {
+      color: global.$c-gray-8;
+    }
+
+    &.is-deadline-theme {
+      color: global.$c-red;
+    }
+
+    &.is-deadline-other {
+      color: global.$c-purple;
+    }
+
+    &.is-send-theme {
+      color: global.$c-main;
+    }
+
+    &.is-send-other {
+      color: global.$c-green;
+    }
+
+    &.is-passed {
+      color: global.$c-accent;
+    }
+  }
+
+  button.p-calendar__icon {
+    &:hover {
+      transform: scale(1.2);
+    }
+  }
+
+  /* カレンダーセル */
+
+  table {
+    thead {
+      th {
+        width: 14.29%;
+        padding: .2rem 1rem;
+        font-size: 1.3rem;
+        text-align: right;
+        color: global.$c-gray-7;
+        background-color: global.$c-white;
+
+        &.p-calendar__sat {
+          color: global.$c-main-text;
+          background-color: global.$c-main-bg;
+        }
+
+        &.p-calendar__sun {
+          color: global.$c-red-text;
+          background-color: global.$c-red-bg;
+        }
+      }
+    }
+
+    tbody {
+      td {
+        position: relative;
+        padding: 2.5rem .5rem .7rem;
+        vertical-align: bottom;
+        color: global.$c-gray-7;
+        background-color: global.$c-gray-1;
+      }
+    }
+  }
+
+  &__date {
+    position: absolute;
+    right: 0.8rem;
+    top: 0;
+  }
+
+  /* フッタ */
+
+  footer {
+    display: flex;
+    padding: 2rem;
+    line-height: 1.8;
+    color: global.$c-white;
+    border-radius: 0 0 1rem 1rem;
+    background-color: global.$c-main-text-dark;
+
+    > dl {
+      width: 50%;
+      margin: 0;
+    }
+
+    a {
+      color: global.$c-white;
+    }
+  }
+
+  &__this-month {
+    dt {
+      font-weight: bold;
+      color: global.$c-green;
+    }
+  }
+
+  &__expire {
+    dt {
+      font-weight: bold;
+      color: global.$c-accent;
+    }
+  }
+
+  /* ツールチップ */
+
+  &__tip-wrapper {
+    position: relative;
+  }
+
+  &__tip {
+    z-index: 35; // モーダル、メガメニュー、吹き出し通知より下、ページトップより上
+    display: none;
+    position: absolute;
+    left: calc(100% + 1rem);
+    top: -1rem;
+    width: 25rem;
+    padding: 1rem 1.5rem;
+    text-align: left;
+    color: global.$c-white;
+    border-radius: 1rem;
+    background: global.$c-black;
+    box-shadow: 0 1rem 1rem rgba(global.$c-black, .1);
+
+    a {
+      color: global.$c-white;
+    }
+
+    &::after {
+      content: '';
+      position: absolute;
+      left: -2rem;
+      top: 1.6rem;
+      width: 2rem;
+      height: 2rem;
+      border: 1rem solid transparent;
+      border-right: 1rem solid global.$c-black;
+    }
+  }
+
+  /* 土日はツールチップを逆に出す */
+
+  tr {
+    td:nth-child(6),
+    td:nth-child(7) {
+      .p-calendar__tip {
+        left: auto;
+        right: calc(100% + 1rem);
+
+        &::after {
+          left: auto;
+          right: -2rem;
+          border-color: transparent;
+          border-left-color: global.$c-black;
+        }
+      }
+    }
+  }
+
+  &__tip-wrapper:hover .p-calendar__tip {
+    display: block;
+  }
+
+  @include global.mq-down(tab) {
+    margin: 0 -1rem -3rem;
+
+    /* ヘッダ */
+
+    header {
+      flex-direction: column-reverse;
+      padding: 0 1rem;
+      border: 0;
+    }
+
+    &__month {
+      margin-top: 1rem;
+      padding: 1rem 0 1.5rem;
+
+      h3 {
+        margin-right: 1rem;
+        white-space: nowrap;
+      }
+
+      &__prev,
+      &__next,
+      &__current {
+        width: 4rem !important;
+        min-width: 0;
+        margin-left: .5rem;
+      }
+    }
+
+    /* 凡例 */
+
+    &__legend {
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: .3rem 1rem;
+      width: 100%;
+      padding: 1rem;
+      font-size: 1rem;
+      border: .1rem solid global.$c-gray-3;
+      border-radius: .5rem;
+      background-color: global.$c-white;
+
+      > li {
+        margin-left: 0;
+      }
+
+      ul {
+        display: flex;
+        margin: 0;
+        gap: .3rem 1rem;
+      }
+
+      .p-calendar__icon {
+        width: 1.2rem;
+        margin-right: .5rem;
+      }
+    }
+
+
+    /* フッタ */
+
+    footer {
+      border-radius: 0;
+    }
+  }
+
+  @include global.mq-down(tabS) {
+
+    /* アイコン */
+
+    button.p-calendar__icon {
+      &:hover {
+        transform: scale(1.2);
+      }
+    }
+
+    /* カレンダーセル */
+
+    table {
+      thead {
+        th {
+          padding: .5rem;
+        }
+      }
+
+      tr > :first-child {
+        border-left: 0;
+      }
+
+      tr > :last-child {
+        border-right: 0;
+      }
+    }
+
+    /* ツールチップ */
+
+    &__tip {
+      position: fixed;
+      left: 5%;
+      top: 2rem;
+      width: 90%;
+      padding: 2rem;
+      line-height: 2;
+
+      &::after {
+        display: none;
+        left: calc(50% - 1rem);
+        top: 100%;
+        border-color: transparent;
+        border-top-color: global.$c-black;
+      }
+    }
+
+    /* PCの土日設定を上書き */
+
+    tr {
+      td:nth-child(6),
+      td:nth-child(7) {
+        .p-calendar__tip {
+          left: 5%;
+          right: auto;
+        }
+      }
+    }
+  }
+
+  @include global.mq-down(sp) {
+
+    /* 凡例 */
+
+    &__legend {
+      letter-spacing: -.05em;
+
+      ul {
+        gap: .3rem .5rem;
+      }
+
+      .p-calendar__icon {
+        margin-right: 0;
+      }
+    }
+
+    /* カレンダーセル */
+
+    table {
+      tbody {
+        td {
+          padding: 2.2rem 0 .7rem;
+        }
+      }
+    }
+
+    /* フッタ */
+
+    footer {
+      flex-direction: column;
+
+      > dl {
+        width: 100%;
+
+        &:not(:last-child) {
+          margin-bottom: 1rem;
+        }
+      }
+    }
+  }
+}

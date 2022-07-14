@@ -1,0 +1,72 @@
+@use "../global/" as global;
+
+/* --------------------------------------------------------------------------------
+   .login_form : ログインフォーム
+----------------------------------------------------------------------------------- */
+
+body.page_login .login_form {
+  height: 400px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: url('../images/page_login/login_bg.jpg') no-repeat center;
+  background-size: cover;
+
+  ._inner {
+    width: 400px;
+
+    h2 { // 教育担当者向けのみ
+      font-size: 28px;
+      letter-spacing: .1em;
+      text-align: center;
+      color: global.$c-white;
+    }
+
+    ._row {
+      margin: 10px 0;
+    }
+
+    .btn_main {
+      height: 50px;
+      line-height: 50px;
+      border-radius: 5px;
+    }
+
+    ._reminder {
+      display: flex;
+      align-items: center;
+
+      .checkbox {
+        span {
+          font-size: 14px;
+          color: global.$c-white;
+        }
+      }
+
+      a {
+        margin-left: auto;
+        font-size: 14px;
+        color: global.$c-white;
+      }
+    }
+  }
+
+  @include global.mq-down(tab) {
+  }
+
+  @include global.mq-down(sp) {
+    ._inner {
+      width: 300px;
+
+      ._reminder {
+        flex-direction: column;
+        align-items: flex-start;
+        margin-top: 20px;
+
+        a {
+          margin: 10px 0 0;
+        }
+      }
+    }
+  }
+}

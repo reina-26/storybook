@@ -1,0 +1,11 @@
+@use '../global/' as global;
+
+.page-study.is-report,
+.page-study.is-report-save,
+.page-study.is-report-all {
+  .p-form__group {
+    input[type=text] {
+      max-width: 12rem !important;
+    }
+  }
+}

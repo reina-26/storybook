@@ -1,9 +1,0 @@
-<% //初期値を設定%>
-<% if (typeof disabled === 'undefined') { var disabled = false; } %>
-<% if (typeof type === 'undefined') { var type = 'button'; } %>
-<% if (typeof label === 'undefined') { var label = ''; } %>
-<% if (typeof modefireClass === 'undefined') { var modefireClass = ''; } %>
-<% if (typeof jsClass === 'undefined') { var jsClass = ''; } %>
-<% //初期値を設定%>
-
-<button <%= disabled ? 'disabled' : '' %> type=<%= type %> class="<%= modefireClass %> <%= jsClass %>" ><%= label %></button>

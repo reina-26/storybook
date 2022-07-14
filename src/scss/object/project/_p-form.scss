@@ -1,0 +1,234 @@
+@use "../../global/" as global;
+
+/* --------------------------------------------------------------------------------
+.p-form : フォーム（ラベル左）
+   --------------------------------------------------------------------------------
+    - ラベルの幅（全体幅に対する％）を .is-label-10, is-label-20, ... で50%まで指定可能
+      （デフォルトは30、またスマホでは常に100%）
+----------------------------------------------------------------------------------- */
+
+.p-form {
+  margin: 2rem 0;
+
+  &:first-child {
+    margin-top: 0;
+  }
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+
+  &__item {
+    position: relative;
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 1rem;
+    border-radius: .5rem;
+    background-color: global.$c-gray-1;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+
+    &.is-error {
+      background-color: rgba(global.$c-red-text, .1);
+
+      > label {
+        color: global.$c-red-text;
+      }
+    }
+  }
+
+  &__label {
+    display: flex;
+    gap: 1rem;
+    justify-content: space-between;
+    align-items: center;
+    flex-shrink: 0;
+    width: 30%;
+    padding: .2rem 0 .2rem 1rem;
+
+    &__required {
+      display: inline-block;
+      width: 4rem;
+      font-size: 1.2rem;
+      line-height: 2rem;
+      text-align: center;
+      color: global.$c-white;
+      border-radius: .3rem;
+      background-color: global.$c-red-light;
+    }
+  }
+
+  &__input {
+    flex-grow: 1;
+    width: 100%; // IEで中の要素が折り返されない（flex-wrap: wrap が効かない）対処
+    padding: 0 0 0 1rem;
+  }
+
+  &__group {
+    display: flex;
+    align-items: center;
+  }
+
+  &__group-wrap {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  &__note {
+    display: flex;
+    justify-content: space-between;
+    padding: 0 .5rem;
+    font-size: 1.3rem;
+    color: global.$c-gray-7;
+  }
+
+  &__error {
+    color: global.$c-red-text;
+
+    &::before {
+      content: '\f071';
+      margin-right: .3rem;
+      font-family: 'Font Awesome 5 Free';
+      font-weight: 600;
+      line-height: 1;
+    }
+  }
+
+  /* 項目ラベルの幅調整 */
+
+  &.is-label-10 {
+    .p-form__label {
+      width: 10%;
+    }
+  }
+
+  &.is-label-20 {
+    .p-form__label {
+      width: 20%;
+    }
+  }
+
+  &.is-label-30 {
+    .p-form__label {
+      width: 30%;
+    }
+  }
+
+  &.is-label-40 {
+    .p-form__label {
+      width: 40%;
+    }
+  }
+
+  &.is-label-50 {
+    .p-form__label {
+      width: 50%;
+    }
+  }
+
+  /* 縦型のフォーム */
+
+  &.is-vertical {
+    .p-form__item {
+      flex-direction: column;
+      margin-bottom: 2rem;
+      background-color: transparent;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+
+      &.is-error {
+        background-color: transparent;
+      }
+    }
+
+    .p-form__label {
+      justify-content: flex-start;
+      width: 100%;
+      font-weight: bold;
+      padding: 0;
+    }
+
+    .p-form__input {
+      width: 100%;
+      padding: 0;
+    }
+
+    /* 縦型は項目ラベルは幅100% */
+
+    &.is-label-10,
+    &.is-label-20,
+    &.is-label-30,
+    &.is-label-40,
+    &.is-label-50 {
+      .p-form__label {
+        width: 100%;
+      }
+    }
+  }
+
+  @include global.mq-down(tab) {
+  }
+
+  @include global.mq-down(sp) {
+
+    /* スマホでは .is-vertical の有無に関わらず縦型フォームとする */
+
+    .p-form__item {
+      flex-direction: column;
+      margin-bottom: 1rem;
+      background-color: transparent;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+
+      &.is-error {
+        background-color: transparent;
+      }
+    }
+
+    .p-form__label {
+      justify-content: flex-start;
+      width: 100%;
+      font-weight: bold;
+      padding: 0;
+    }
+
+    .p-form__input {
+      width: 100%;
+      padding: 0;
+    }
+
+    .p-form__group {
+      flex-wrap: wrap;
+      justify-content: flex-start;
+      gap: .5rem;
+
+      > * {
+        width: auto !important;
+      }
+    }
+
+    /* 縦型は項目ラベルは幅100% */
+
+    &.is-label-10,
+    &.is-label-20,
+    &.is-label-30,
+    &.is-label-40,
+    &.is-label-50 {
+      .p-form__label {
+        width: 100%;
+      }
+    }
+
+    &.is-vertical {
+      .p-form__item {
+        margin-bottom: 1rem;
+      }
+    }
+  }
+}

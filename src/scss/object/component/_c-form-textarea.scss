@@ -1,0 +1,66 @@
+@use "../../global/" as global;
+
+/* --------------------------------------------------------------------------------
+   .c-form-textarea : textarea 要素
+   --------------------------------------------------------------------------------
+    - 以下のバリエーションを用意しています
+        1. エラー時（当該要素、または先祖要素に .is-error を付加）
+        2. disabled 属性
+----------------------------------------------------------------------------------- */
+
+.c-form-textarea {
+  width: 100%;
+  max-width: 100%;
+  padding: 1rem 1.5rem;
+  font-size: 1.4rem;
+  border: 1px solid global.$c-gray-3;
+  border-radius: .5rem;
+
+  &:hover {
+    outline: global.$c-gray-4 auto .1rem;
+  }
+
+  &:focus {
+    outline: global.$c-main auto 2px;
+  }
+
+  // エラー時のスタイル
+
+  &.is-error,
+  .is-error & {
+    color: global.$c-red-text;
+    outline: global.$c-red auto 2px;
+
+    &:disabled {
+      color: global.$c-gray-6;
+      outline: 0;
+    }
+  }
+
+  /* disabled */
+
+  &:disabled {
+    color: global.$c-gray-6;
+    outline: none;
+    border-color: global.$c-gray-3;
+    background-color: global.$c-gray-2;
+  }
+
+  /* サイズ */
+
+  &.is-lg {
+    font-size: 1.6rem;
+  }
+
+  &.is-sm {
+    padding: 0 .5rem;
+    font-size: 1.3rem;
+    border-radius: .2rem;
+  }
+
+  @include global.mq-down(tab) {
+  }
+
+  @include global.mq-down(sp) {
+  }
+}

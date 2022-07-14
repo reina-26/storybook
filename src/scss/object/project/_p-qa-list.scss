@@ -1,0 +1,110 @@
+@use "../../global/" as global;
+
+/* --------------------------------------------------------------------------------
+   .p-qa-list : 質問リスト
+----------------------------------------------------------------------------------- */
+
+.p-qa-list {
+  margin: 2rem 0;
+  border: .1rem solid global.$c-gray-3;
+  border-radius: 1rem;
+
+  &:first-child {
+    margin-top: 0;
+  }
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+
+  a {
+    text-decoration: none;
+    color: global.$c-text;
+  }
+
+  &__item {
+    display: block;
+    padding: 2rem;
+    border-bottom: .1rem solid global.$c-gray-3;
+
+    &:hover {
+      background-color: global.$c-main-bg;
+    }
+  }
+
+  li:nth-child(2n) &__item {
+    background-color: global.$c-gray-1;
+
+    &:hover {
+      background-color: global.$c-main-bg;
+    }
+  }
+
+  &__q,
+  &__a {
+    display: flex;
+    gap: 3rem;
+  }
+
+  .c-qa-label {
+    flex-shrink: 0;
+    transform: scale(.75);
+  }
+
+  &__date {
+    white-space: nowrap;
+  }
+
+
+
+  &__more {
+    color: global.$c-main-text;
+    text-decoration: underline;
+  }
+
+  /* 空の場合 */
+
+  &.is-empty {
+    li {
+      padding: 5rem;
+      text-align: center;
+    }
+  }
+
+  /* IE対応 */
+
+  @media all and (-ms-high-contrast: none) {
+    &__q > *:not(:last-child),
+    &__a > *:not(:last-child) {
+      margin-right: 3rem;
+    }
+  }
+
+  @include global.mq-down(tab) {
+  }
+
+  @include global.mq-down(sp) {
+    &__item {
+      padding: 1.5rem;
+    }
+
+    &__q,
+    &__a {
+      flex-wrap: wrap;
+      gap: 0 1rem;
+    }
+
+    &__a {
+      margin-top: 1.5rem;
+    }
+
+    .c-qa-label {
+      flex-grow: 0;
+    }
+
+    &__date {
+      width: 80%;
+      font-weight: bold;
+    }
+  }
+}

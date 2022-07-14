@@ -1,0 +1,21 @@
+@use "../../global/" as global;
+
+/* --------------------------------------------------------------------------------
+   .p-news-detail : ニュース詳細
+----------------------------------------------------------------------------------- */
+
+.p-news-detail {
+  header {
+    margin-bottom: 2rem;
+
+    h3 {
+      margin-top: 0;
+    }
+  }
+
+  @include global.mq-down(tab) {
+  }
+
+  @include global.mq-down(sp) {
+  }
+}

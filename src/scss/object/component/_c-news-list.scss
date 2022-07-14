@@ -1,0 +1,119 @@
+@use "../../global/" as global;
+
+/* --------------------------------------------------------------------------------
+   .c-news-list : ニュースリスト
+----------------------------------------------------------------------------------- */
+
+.c-news-list {
+  position: relative;
+  margin: 0 0 2rem;
+  background-color: global.$c-white;
+  overflow: hidden;
+
+  &:first-child {
+    margin-top: 0;
+  }
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+
+  > li {
+    &:nth-child(2n) {
+      background-color: global.$c-gray-1;
+    }
+
+    > a {
+      display: flex;
+      padding: 2.4rem;
+      line-height: 1.5;
+      text-decoration: none;
+      color: global.$c-text;
+      border: .1rem solid global.$c-gray-3;
+      border-width: .1rem 0;
+
+      &:hover {
+        color: global.$c-main-text;
+        border-color: rgba(global.$c-main, .5);
+      }
+    }
+  }
+
+  &__date {
+    width: 15rem;
+  }
+
+  &__text {
+    width: calc(100% - 15rem);
+  }
+
+  /* トップページ用のコンパクトな一覧 */
+
+  &.is-compact {
+    margin: 0;
+    border: .1rem solid global.$c-gray-3;
+    border-radius: 1rem;
+
+    > li {
+      > a {
+        flex-direction: column;
+        padding: 1rem 2rem;
+        border-width: 0 0 .1rem;
+
+        &:hover {
+          color: global.$c-main-text;
+          border-color: global.$c-gray-3;
+        }
+      }
+
+      &:last-child a {
+        border: 0;
+      }
+    }
+
+    .c-news-list__date {
+      width: auto;
+      font-weight: bold;
+      line-height: 2.1rem; /* 連絡BOXの日付（ラベル付きで少し行間が高い）と合わせる */
+    }
+
+    .c-news-list__text {
+      width: auto;
+      font-size: 1.4rem;
+    }
+  }
+
+
+  @include global.mq-down(tab) {
+  }
+
+  @include global.mq-down(tabS) {
+    > li {
+      > a {
+        display: block;
+        padding: 1rem;
+      }
+    }
+
+    &__date {
+      display: block;
+      width: auto;
+      font-size: 1.2rem;
+    }
+
+    &__text {
+      display: block;
+      width: auto;
+    }
+
+    /* トップページ用のコンパクトな一覧 */
+
+    &.is-compact {
+      > li {
+        > a {
+          padding: 1rem;
+        }
+      }
+    }
+  }
+}

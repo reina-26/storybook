@@ -1,0 +1,51 @@
+@use '../global/' as global;
+
+.page-guide {
+  .u-ls-login {
+    & li {
+      display: list-item;
+
+      & span:nth-child(1) {
+        display: block;
+        font-weight: bold;
+      }
+
+      & span:nth-child(2) {
+        display: none;
+      }
+    }
+
+    &.is-mark li::before {
+      display: none;
+    }
+
+    // > li {
+    //   position: relative;
+    //   display: flex;
+    //   & span:nth-child(1) {
+    //     flex: 0 0 170px;
+    //   }
+    //   & span:nth-child(2) {
+    //     padding-right: 2rem;
+    //   }
+    //   & span:nth-child(3) {
+    //     width: 100%;
+    //   }
+    // }
+
+    // &.is-mark li::before {
+    //   content: "";
+    //   position: absolute;
+    //   top: 50%;
+    //   left: -15px;
+    //   transform: translateY(-50%);
+    //   width: 8px;
+    //   height: 8px;
+    //   border-radius: 50%;
+    //   background: #343a40;
+    // }
+  }
+
+  @include global.mq-down(sp) {
+  }
+}

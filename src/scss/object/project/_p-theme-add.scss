@@ -1,0 +1,30 @@
+@use "../../global/" as global;
+
+/* --------------------------------------------------------------------------------
+   .p-theme-add : テーマ追加モーダル
+----------------------------------------------------------------------------------- */
+
+.p-theme-add {
+  @include global.mq-down(tab) {
+  }
+
+  @include global.mq-down(sp) {
+    .l-modal__container {
+      > footer {
+        > .p-btns {
+          flex-direction: row;
+          flex-wrap: wrap;
+
+          > p {
+            width: 35%;
+            text-align: right;
+          }
+
+          > select {
+            width: 60%;
+          }
+        }
+      }
+    }
+  }
+}

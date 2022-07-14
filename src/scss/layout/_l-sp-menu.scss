@@ -1,0 +1,57 @@
+@use "../global/" as global;
+
+/* --------------------------------------------------------------------------------
+   .l-sp-menu : SPメニュー
+----------------------------------------------------------------------------------- */
+
+.l-sp-menu {
+  display: none;
+
+  @include global.mq-down(tabS) {
+    z-index: 50; // モーダルより下
+    display: none;
+    position: absolute;
+    left: 0;
+    top: 50px;
+    width: 100%;
+    padding: 20px 3vw;
+    text-align: center;
+    color: global.$c-white;
+    background-image: linear-gradient(to right, darken(global.$c-main, 10%) 0, darken(global.$c-main, 0%) 100%);
+    box-shadow: 0 5px 5px rgba(global.$c-black, .2);
+
+    // 受講期間
+
+    ._datespan {
+      flex-grow: 0;
+      flex-shrink: 0;
+      font-size: 13px;
+      margin-left: auto;
+      white-space: nowrap;
+    }
+
+    // 閉じるボタン
+
+    .l-sp-menu__close {
+      width: 240px;
+      height: 40px;
+      margin-top: 20px;
+      font-size: 14px;
+      font-weight: bold;
+      color: global.$c-main;
+      outline: 0;
+      border: 0;
+      border-radius: 40px;
+      background-color: rgba(global.$c-white, .7);
+    }
+
+    // 初回ログイン画面ではポイントを表示しない
+
+    body.page_first_login_form &,
+    body.page_first_login_flow & {
+      ._point {
+        display: none;
+      }
+    }
+  }
+}

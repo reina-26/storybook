@@ -1,0 +1,25 @@
+@use "../../global/" as global;
+
+/* --------------------------------------------------------------------------------
+   .c-icon-notice : お知らせアイコン
+----------------------------------------------------------------------------------- */
+
+.c-icon-notice {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  font-size: 12px;
+  font-weight: bold;
+  line-height: 16px;
+  text-align: center;
+  color: global.$c-white;
+  border: 0;
+  border-radius: 100%;
+  background: #f00;
+
+  @include global.mq-down(tab) {
+  }
+
+  @include global.mq-down(sp) {
+  }
+}

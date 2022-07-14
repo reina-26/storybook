@@ -1,0 +1,36 @@
+@use "../../global/" as global;
+
+/* --------------------------------------------------------------------------------
+   .c-status-label : ステータスラベル
+----------------------------------------------------------------------------------- */
+
+.c-status-label {
+  display: inline-block;
+  min-width: 5rem;
+  padding: 0 .4rem;
+  font-size: 1.3rem;
+  line-height: 2rem;
+  text-align: center;
+  color: global.$c-white;
+  border-radius: .3rem;
+  background-color: global.$c-gray-6;
+
+  &.is-submitted {
+    background-color: global.$c-main-light;
+  }
+  &.is-not-submitted {
+    background-color: global.$c-red-light;
+  }
+  &.is-confirmed {
+    background-color: global.$c-main-light;
+  }
+  &.is-not-confirmed {
+    background-color: global.$c-red-light;
+  }
+
+  @include global.mq-down(tab) {
+  }
+
+  @include global.mq-down(sp) {
+  }
+}

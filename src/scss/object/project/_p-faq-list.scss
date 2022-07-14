@@ -1,0 +1,43 @@
+@use "../../global/" as global;
+
+/* --------------------------------------------------------------------------------
+   .p-faq-list : FAQリスト
+----------------------------------------------------------------------------------- */
+
+.p-faq-list {
+  &__q {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    font-weight: bold;
+  }
+
+  &__a {
+    display: flex;
+    gap: 2rem;
+  }
+
+  &__mark {
+    flex-shrink: 0;
+  }
+
+  &__text {
+    flex-grow: 1;
+  }
+
+  /* IE対応 */
+
+  @media all and (-ms-high-contrast: none) {
+    &__q > *,
+    &__a > * {
+      margin-left: 1rem;
+      margin-right: 1rem;
+    }
+  }
+
+  @include global.mq-down(tab) {
+  }
+
+  @include global.mq-down(sp) {
+  }
+}

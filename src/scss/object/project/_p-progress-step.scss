@@ -1,0 +1,91 @@
+@use "../../global/" as global;
+
+/* --------------------------------------------------------------------------------
+   .p-progress-step : プログレスステップ
+----------------------------------------------------------------------------------- */
+
+.p-progress-step {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 4rem;
+
+  li {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 20%;
+    height: 8rem;
+    line-height: 1.5;
+    text-align: center;
+    border-radius: 1rem;
+    background-color: global.$c-gray-1;
+
+    &:not(:last-child)::after {
+      content: '';
+      position: absolute;
+      left: 113.5%;
+      width: 1.4rem;
+      height: 1.8rem;
+      border: 1px solid transparent;
+      border-width: .9rem 0 .8rem 1.4rem;
+      border-left-color: global.$c-black;
+    }
+
+    em {
+      display: block;
+      font-size: 1.6rem;
+      color: global.$c-main-text;
+    }
+
+    span {
+      display: block;
+      font-size: 1.3rem;
+      color: global.$c-main-text;
+    }
+
+    /* カレントステップ */
+
+    &.p-progress-step__current {
+      background-color: global.$c-main;
+
+      em,
+      span {
+        color: global.$c-white;
+      }
+    }
+  }
+
+  @include global.mq-down(tab) {
+  }
+
+  @include global.mq-down(sp) {
+    border-radius: .5rem;
+    overflow: hidden;
+
+    li {
+      width: 25%;
+      height: 11rem;
+      padding: 1rem .5rem;
+      border-radius: 0;
+
+      &:not(:last-child) {
+        border-right: .1rem solid global.$c-white;
+
+        &::after {
+          display: none;
+        }
+      }
+
+      span {
+        font-size: 1.1rem;
+
+        br {
+          display: none;
+        }
+      }
+    }
+  }
+}

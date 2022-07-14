@@ -1,25 +1,185 @@
 @charset "UTF-8";
-// =============================================
+
 // foundation
-// =============================================
-@forward "./foundation/";
-// =============================================
+@use "./foundation/reset";
+@use "./foundation/font";
+@use "./foundation/base";
+
 // layout
-// =============================================
-@forward "./layout/";
-// =============================================
+@use "./layout/l-bread";
+@use "./layout/l-page-ttl";
+@use "./layout/l-container";
+@use "./layout/l-footer";
+@use "./layout/l-gnav";
+@use "./layout/l-header";
+@use "./layout/l-info-bar";
+@use "./layout/l-info-bar-err";
+@use "./layout/l-main";
+@use "./layout/l-mega-menu";
+@use "./layout/l-pagetop";
+@use "./layout/l-sp-menu-btn";
+@use "./layout/l-sp-menu-main";
+@use "./layout/l-sp-menu-others";
+@use "./layout/l-sp-menu";
+@use "./layout/l-section";
+@use "./layout/l-modal";
+@use "./layout/l-mini-msg";
+@use "./layout/l-baloon";
+
 // component
-// =============================================
-@forward "./object/component/";
-// =============================================
+@use "./object/component/c-btn-main"; // 学習ボタン各種
+@use "./object/component/c-btn"; // ボタン
+@use "./object/component/c-btn-more"; // さらに表示ボタン
+@use "./object/component/c-form-text"; // フォーム - テキストフィールド
+@use "./object/component/c-form-textarea"; // フォーム - テキストエリア
+@use "./object/component/c-form-select"; // フォーム - セレクト
+@use "./object/component/c-form-radio"; // フォーム - ラジオボタン
+@use "./object/component/c-form-checkbox"; // フォーム - チェックボックス
+@use "./object/component/c-form-file"; // フォーム - ファイル選択
+@use "./object/component/c-form-file-drop"; // フォーム - ファイルドロップエリア
+@use "./object/component/c-tag"; // タグ
+@use "./object/component/c-attachment"; // 添付ファイル
+@use "./object/component/c-ttl-1"; // 見出し（レベル1）
+@use "./object/component/c-ttl-2"; // 見出し（レベル2）
+@use "./object/component/c-ttl-3"; // 見出し（レベル3）
+@use "./object/component/c-ttl-4"; // 見出し（レベル4）
+@use "./object/component/c-note"; // 備考・補足テキスト
+@use "./object/component/c-link"; // テキストリンク（アイコン付きのやつ）
+@use "./object/component/c-box"; // ボックス
+@use "./object/component/c-chart"; // チャート（画像）
+@use "./object/component/c-tbl"; // テーブル
+@use "./object/component/c-pager"; // ページャー
+@use "./object/component/c-msgbox"; // メッセージボックス
+@use "./object/component/c-theme-label"; // 学習テーマラベル
+@use "./object/component/c-status-label"; // ステータスラベル
+@use "./object/component/c-qa-label"; // QAラベル
+@use "./object/component/c-info-tip"; // インフォチップ
+@use "./object/component/c-chat-header"; // ビュッフェチャットのヘッダ情報
+@use "./object/component/c-news-list"; // ニュース一覧
+@use "./object/component/c-accordion"; // アコーディオン
+@use "./object/component/c-column"; // カラム
+@use "./object/component/c-report-q"; // レポートの問
+@use "./object/component/c-report-nav"; // レポートの問ナビ
+@use "./object/component/c-report-score"; // レポートの評点
+@use "./object/component/c-dropdown-menu";
+@use "./object/component/c-icon-notice";
+@use "./object/component/c-archive";//規約
+@use "./object/component/c-rule";//規約
+@use "./object/component/c-chapter-list";//動画チャプター一覧
+
 // project
-// =============================================
-@forward "./object/project/";
-// =============================================
+@use "./object/project/p-form"; // フォーム（ラベル左）
+@use "./object/project/p-form-vertical"; // フォーム（ラベル上）
+@use "./object/project/p-btns"; // ボタンエリア
+@use "./object/project/p-info-tip-list"; // インフォチップリスト
+@use "./object/project/p-theme-detail"; // 学習テーマ詳細
+@use "./object/project/p-theme-card"; // テーマカード
+@use "./object/project/p-theme-card-list"; // テーマカードリスト
+@use "./object/project/p-theme-card-horizontal"; // 学習テーマカード（横）
+@use "./object/project/p-osusume-list"; // おすすめの学習ステップリスト
+@use "./object/project/p-osusume-summary"; // おすすめの学習ステップリスト上部エリア
+@use "./object/project/p-attachment-list"; // 添付ファイル一覧
+@use "./object/project/p-report-score-wrapper"; // レポートの評点のラッパー
+@use "./object/project/p-report-header"; // レポートヘッダ
+@use "./object/project/p-report-footer"; // レポート下部固定ボタン
+@use "./object/project/p-renraku-list"; // 連絡BOX一覧
+@use "./object/project/p-qa-list"; // 質問リスト
+@use "./object/project/p-qa-detail"; // 質問と回答
+@use "./object/project/p-management-qa-item"; // マネジメントQ&Aアイテム
+@use "./object/project/p-news-detail"; // ニュース詳細
+@use "./object/project/p-renraku-detail"; // 連絡BOX詳細
+@use "./object/project/p-renraku-list-compact"; // 学習トップ・連絡BOX
+@use "./object/project/p-chat-list-header"; // ビュッフェチャット一覧ヘッダ
+@use "./object/project/p-chat-list"; // ビュッフェチャット一覧
+@use "./object/project/p-chat-detail"; // ビュッフェチャット詳細
+@use "./object/project/p-guide-nav"; // ご利用ガイドナビ
+@use "./object/project/p-faq-nav"; // FAQナビ
+@use "./object/project/p-faq-list"; // FAQリスト
+@use "./object/project/p-progress-step"; // プログレスステップ
+@use "./object/project/p-enq-header"; // フロー
+@use "./object/project/p-enq-point-scale"; // アンケート（4-5件法）
+@use "./object/project/p-enq-choose-one"; // アンケート（択一式）
+@use "./object/project/p-chart-leader"; // 診断結果（リーダー像）
+@use "./object/project/p-chart-jissen"; // 診断結果（実践度）
+@use "./object/project/p-badge-list"; // バッジ一覧
+@use "./object/project/p-badge-detail"; // バッジ詳細
+@use "./object/project/p-your-stage"; // バッジ獲得数とステージ
+@use "./object/project/p-stage-tbl"; // ステージ説明
+@use "./object/project/p-bonus-list"; // ボーナスコンテンツ一覧
+@use "./object/project/p-tantou-msg"; // 担当者からのメッセージ
+@use "./object/project/p-osusume-box"; // おすすめボックス
+@use "./object/project/p-osusume-theme"; // おすすめテーマ
+@use "./object/project/p-plan-usage"; // 学習計画の使い方
+@use "./object/project/p-plan-list"; // 学習計画リスト
+@use "./object/project/p-plan-alert"; // 学習計画遅れ＆計画未設定のメッセージ
+@use "./object/project/p-theme-filter"; // テーマフィルタ
+@use "./object/project/p-selected-theme"; // 選択中テーマ
+@use "./object/project/p-chart-progress"; // 学習実績グラフ
+@use "./object/project/p-calendar"; // カレンダー
+@use "./object/project/p-legend"; // 凡例リスト
+@use "./object/project/p-progress-table"; // 学習実績一覧
+@use "./object/project/p-datatables-filter"; // 学習実績一覧のフィルタエリア
+@use "./object/project/p-login"; // ログインフォーム
+@use "./object/project/p-top-list01"; // アイコンテキストリスト
+@use "./object/project/p-flow"; // 学習の流れ・フローチャート
+@use "./object/project/p-start"; // 学習の流れ・始めよう
+@use "./object/project/p-theme-add"; // 学習の流れ・始めよう
+
 // utility
-// =============================================
-@forward "./object/utility/";
-// =============================================
-// pages
-// =============================================
-@forward "./pages/";
+@use "./object/utility/u-cl"; // カラー（color）
+@use "./object/utility/u-w"; // 幅（width）
+@use "./object/utility/u-h"; // 高さ（height）
+@use "./object/utility/u-m"; // マージン（margin）
+@use "./object/utility/u-p"; // パディング（padding）
+@use "./object/utility/u-ls"; // リスト（ul, ol, dl）
+@use "./object/utility/u-fs"; // フォントサイズ（font-size）
+@use "./object/utility/u-lh"; // 行間（line-height）
+@use "./object/utility/u-txt"; // テキスト関連（行揃えなど）
+@use "./object/utility/u-misc"; // その他（表示/非表示など）
+
+
+/* ================================================================================
+  TODO: 以下は古いSCSS。整理が必要。
+  ================================================================================ */
+
+//ログインページ
+@use "page_login/login_form";
+@use "page_login/login_guide_links";
+@use "page_login/login_news";
+@use "page_login/login_service";
+
+// 初回ログイン時画面（フォーム）
+@use "page_first_login_form/first_login_form_wrapper";
+@use "page_first_login_form/first_login_form_kiyaku";
+
+// 学習トップ
+@use "page-study/page-study";
+
+// レポートページ
+@use "page_report/comp";
+@use "page-study-is-report/page-study-is-report";
+
+// qaページ
+@use "page_qa/page-a04-qa-submit";
+@use "page_qa/page-a04-qa-err";
+@use "page_qa/page-a04-qa-a-submit";
+@use "page_qa/page-a04-qa-a-err";
+
+// 学習する 動画一覧
+@use "page_mov/page-mov";
+
+// 学習計画
+@use "page-study-plan/page-study-plan";
+
+// 学習計画 ③テーマ一覧から追加
+@use "page-recommend/page-recommend";
+
+// ニュース
+@use "page-news/page-news";
+
+// ビュッフェチャット
+@use "page-chat/page-chat-is-post";
+
+// ご利用ガイド
+@use "page-guide/page-login";
+@use "page-guide/page-guide";

@@ -1,0 +1,158 @@
+@use '../global/' as global;
+
+.page-study-plan {
+  &__osusume {
+    position: relative;
+  }
+
+  /* おすすめの学習ステップ・隠すボタン */
+
+  &__hide,
+  &__show {
+    position: absolute;
+    right: 2rem;
+    top: 2rem;
+    color: global.$c-gray-7;
+
+    &::before {
+      color: global.$c-main-light;
+    }
+  }
+
+  /* おすすめの学習ステップ・表示ボタン */
+
+  &__show {
+    display: none;
+  }
+
+  /* おすすめの学習ステップ */
+
+  &__osusume {
+    min-height: 6rem;
+
+    &.is-hide {
+      .page-study-plan__hide,
+      .p-osusume-list {
+        display: none;
+      }
+
+      .page-study-plan__show {
+        display: block;
+      }
+    }
+  }
+
+  /* 学習計画から開くモーダルのis-fillerを非表示 */
+  &.is-diagnose-comp-add,
+  &.is-style-add-result {
+    .l-modal {
+      .p-theme-card-list {
+        .is-filler {
+          display: none;
+        }
+      }
+    }
+  }
+
+  @include global.mq-down(tab) {
+
+    /* モーダル：学習テーマ一覧から追加 */
+
+    &.is-list-add {
+      .page-list-add__body {
+        padding-bottom: 6rem;
+
+        > p.u-txt-center {
+          br {
+            display: none;
+          }
+        }
+      }
+    }
+  }
+
+  @include global.mq-down(tabS) {
+
+    /* モーダル：学習スタイルから追加：結果 */
+
+    &.is-style-add-result {
+      .l-modal__body {
+        > p.u-txt-center {
+          br {
+            display: none;
+          }
+        }
+      }
+    }
+
+    /* モーダル：診断結果からのおすすめ */
+
+    &.is-diagnose-comp-add {
+      .l-modal__body {
+        > p.u-txt-center {
+          br {
+            display: none;
+          }
+        }
+      }
+
+      footer {
+        .c-column {
+          gap: 1rem;
+
+          > button {
+            width: auto !important;
+            padding: 0 1rem;
+            min-width: 0;
+          }
+
+          .p-btns {
+            gap: 1rem;
+          }
+        }
+      }
+    }
+  }
+
+  @include global.mq-down(sp) {
+
+    /* モーダル：学習スタイルから追加：結果 */
+    /* モーダル：学習テーマ一覧から追加 */
+
+    &.is-style-add-result,
+    &.is-list-add {
+      footer {
+        .p-btns {
+          flex-direction: row;
+
+          button {
+            width: auto;
+            min-width: 0;
+            padding: 0 1rem;
+          }
+        }
+      }
+    }
+
+    /* モーダル：診断結果からのおすすめ */
+
+    &.is-diagnose-comp-add {
+      footer {
+        .c-column {
+          flex-direction: row;
+
+          .p-btns {
+            button {
+              min-width: 0;
+              padding: 0 1.5rem;
+
+              &.l-modal__close-btn {
+                display: none;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

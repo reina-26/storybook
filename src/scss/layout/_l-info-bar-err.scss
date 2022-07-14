@@ -1,0 +1,30 @@
+@use "../global/" as global;
+
+/* --------------------------------------------------------------------------------
+   .l-info-bar : 上部のアカウント名などを表示する青バー
+----------------------------------------------------------------------------------- */
+
+.l-info-bar-err {
+  position: relative;
+  display: flex;
+  align-items: center;
+  height: 2.4rem;
+  padding: 0 1.5rem;
+  font-size: 1.3rem;
+  color: #D34C4C;
+  border: 1px solid#D34C4C;
+  background-color: #FAF2F2;
+
+  // IE対応
+
+  @media all and (-ms-high-contrast: none) {
+    padding-right: 23rem;
+  }
+
+  @include global.mq-down(tab) {
+  }
+
+  @include global.mq-down(tabS) {
+    display: none;
+  }
+}

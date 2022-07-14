@@ -1,0 +1,70 @@
+@use "../../global/" as global;
+
+/* --------------------------------------------------------------------------------
+   .p-qa-detail : 質問と回答
+----------------------------------------------------------------------------------- */
+
+.p-qa-detail {
+  &__q,
+  &__a {
+    display: flex;
+    gap: 2rem;
+    padding: 2rem;
+    border: .1rem solid global.$c-gray-3;
+    border-radius: 1rem;
+    background-color: global.$c-gray-1;
+  }
+
+  &__a {
+    margin-top: 2rem;
+    background-color: global.$c-white;
+  }
+
+  .c-qa-label {
+    flex-shrink: 0;
+  }
+
+  dl,
+  p {
+    margin: 0;
+  }
+
+  &__text {
+    font-weight: bold;
+  }
+
+  &__body {
+    margin-top: 2rem;
+    padding-top: 2rem;
+    border-top: .1rem solid global.$c-gray-3;
+  }
+
+  /* IE対応 */
+
+  @media all and (-ms-high-contrast: none) {
+    &__q > :first-child,
+    &__a > :first-child {
+      margin-right: 2rem;
+    }
+  }
+
+  @include global.mq-down(tab) {
+  }
+
+  @include global.mq-down(sp) {
+    &__q,
+    &__a {
+      flex-direction: column;
+    }
+
+    dl {
+      margin-top: -5rem;
+    }
+
+    &__date {
+      display: block;
+      margin-left: 4rem;
+      margin-bottom: 2rem;
+    }
+  }
+}

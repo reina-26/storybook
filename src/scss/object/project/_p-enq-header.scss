@@ -1,0 +1,22 @@
+@use "../../global/" as global;
+
+/* --------------------------------------------------------------------------------
+   .p-enq-header
+----------------------------------------------------------------------------------- */
+
+.p-enq-header {
+  display: flex;
+  font-weight: bold;
+  font-size: 1.6rem;
+
+  & dt {
+    margin-right: 2.4rem;
+  }
+
+
+  @include global.mq-down(tab) {
+  }
+
+  @include global.mq-down(sp) {
+  }
+}

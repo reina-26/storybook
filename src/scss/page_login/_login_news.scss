@@ -1,0 +1,36 @@
+@use "../global/" as global;
+
+/* --------------------------------------------------------------------------------
+   .login_news : ログインページのニュース
+----------------------------------------------------------------------------------- */
+
+body.page_login {
+  .login_news {
+    margin: 50px 0;
+
+    h2 {
+      margin-bottom: 15px;
+      font-size: 20px;
+      font-weight: bold;
+      line-height: 1.5;
+      letter-spacing: .1em;
+      color: global.$c-main;
+    }
+
+    @include global.mq-down(tab) {
+    }
+
+    @include global.mq-down(sp) {
+    }
+  }
+
+  // 教育担当者向け画面
+
+  &._kyoiku {
+    .login_news {
+      h2 {
+        color: global.$c-main-kyoiku;
+      }
+    }
+  }
+}

@@ -1,0 +1,186 @@
+@use '../global/' as global;
+
+.page-study {
+
+  /* 上部のお知らせ欄 */
+
+  &__top {
+    display: flex;
+    padding: 2rem;
+    background-color: global.$c-main-bg;
+
+    &__renraku-list {
+      display: flex;
+      flex-direction: column;
+      width: 37%;
+      margin-right: 2rem;
+
+      .p-renraku-list-compact {
+        flex-grow: 1;
+      }
+    }
+
+    &__news-list {
+      display: flex;
+      flex-direction: column;
+      width: 37%;
+      margin-right: 2rem;
+
+      .c-news-list {
+        flex-grow: 1;
+      }
+    }
+
+    &__osusume-box {
+      display: flex;
+      flex-direction: column;
+      width: 25%;
+
+      h2 {
+        letter-spacing: -.05em;
+      }
+
+      .p-osusume-box {
+        flex-grow: 1;
+      }
+    }
+
+    /* タイトル */
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      padding: 0 .5rem;
+
+      h2 {
+        margin-left: .5rem;
+        font-weight: bold;
+      }
+    }
+  }
+
+  /* おすすめの学習ステップについて */
+
+  &__about-osusume-step {
+    padding: .5rem;
+    line-height: 1.5;
+    text-align: center;
+    color: global.$c-accent-text;
+    background-color: global.$c-accent-bg;
+  }
+
+  /* テーマリストヘッダ */
+
+  &__theme-list-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 2rem;
+
+    .p-legend {
+      margin: 0;
+    }
+
+    &__links {
+      display: flex;
+      margin: 0 0 0 auto;
+
+      > li {
+        margin-left: 2em;
+      }
+    }
+  }
+
+  /* 期間学習 */
+
+  &.is-period {
+    .page-study__top__renraku-list,
+    .page-study__top__news-list {
+      width: 50%;
+    }
+  }
+
+  @include global.mq-down(tab) {
+    &__top {
+      &__renraku-list,
+      &__news-list {
+        margin-right: 1rem;
+      }
+
+      header,
+      &__osusume-box h2 {
+        font-size: 1.2rem;
+        line-height: 1.5;
+      }
+    }
+
+    /* テーマリストヘッダ */
+
+    &__theme-list-header {
+      flex-wrap: wrap;
+    }
+  }
+
+  @include global.mq-down(tabS) {
+    &__top {
+      padding: 1rem;
+    }
+  }
+
+  @include global.mq-down(sp) {
+
+    /* 上部のお知らせ欄 */
+
+    &__top {
+      flex-direction: column;
+      gap: 1rem;
+      padding: 1rem;
+
+      &__renraku-list,
+      &__news-list,
+      &__osusume-box {
+        width: 100%;
+        margin: 0;
+      }
+
+      /* タイトル */
+
+      h2 {
+        margin-left: .5rem;
+        letter-spacing: 0;
+      }
+    }
+
+    /* おすすめの学習ステップについて */
+
+    &__about-osusume-step {
+      padding: 1rem;
+      text-align: left;
+
+      span {
+        display: block;
+      }
+    }
+
+    /* テーマリストヘッダ */
+
+    &__theme-list-header {
+      display: block;
+
+      &__links {
+        > li {
+          margin: 1rem;
+          margin-left: 0;
+        }
+      }
+    }
+
+  /* 期間学習 */
+
+  &.is-period {
+    .page-study__top__renraku-list,
+    .page-study__top__news-list {
+      width: 100%;
+    }
+  }
+  }
+}

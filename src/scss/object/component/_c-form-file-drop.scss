@@ -1,0 +1,55 @@
+@use "../../global/" as global;
+
+/* --------------------------------------------------------------------------------
+   .c-form-file-drop : フォーム - ファイルドロップエリア
+----------------------------------------------------------------------------------- */
+
+.c-form-file-drop {
+  padding: 3rem;
+  line-height: 2.5;
+  text-align: center;
+  color: global.$c-main-text-dark;
+  border: .2em dashed global.$c-gray-3;
+  border-radius: 1rem;
+  background-color: global.$c-gray-1;
+
+  span {
+    font-weight: bold;
+    line-height: 1.5;
+  }
+
+  small {
+    display: block;
+    margin-top: 1rem;
+    font-size: 1.4rem;
+    line-height: 1.5;
+  }
+
+  &.is-white {
+    background-color: global.$c-white;
+  }
+
+  .c-form-file {
+    align-items: center;
+
+    &__value {
+      font-weight: normal;
+    }
+  }
+
+  /* ドラッグオーバー時 */
+
+  &.is-over {
+    border-color: global.$c-main;
+    background-color: global.$c-main-bg;
+  }
+
+  @include global.mq-down(tab) {
+  }
+
+  @include global.mq-down(sp) {
+    span:first-child {
+      display: none;
+    }
+  }
+}

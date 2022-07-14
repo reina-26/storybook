@@ -1,0 +1,51 @@
+@use "../../global/" as global;
+
+.c-archive01 {
+  margin: 2rem auto;
+  &__ttl-main {
+    color: global.$c-main-text;
+    font-size: 2rem;
+  }
+  &__item {
+    margin-bottom: 1rem;
+  }
+  &__link {
+    display: flex;
+    padding: 1em;
+    text-decoration: none;
+    color: global.$c-text!important;
+    border: .1rem solid global.$c-gray-3;
+    border-radius: .5rem;
+    transition: all 0.2s linear;
+    cursor: pointer;
+    &:hover {
+      opacity: 1;
+      color: global.$c-main-text!important;
+      border-color: rgba(0, 156, 225, 0.5)!important;
+    }
+  }
+  &__date {
+    width: 15rem;
+  }
+  &__ttl {
+    width: calc(100% - 15rem);
+  }
+  @include global.mq-down(sp) {
+    &__item {
+      margin: 0 auto;
+      & + & {
+        margin-top: 1rem;
+      }
+    }
+    &__link {
+      display: block;
+    }
+    &__date {
+      width: auto;
+      display: block;
+    }
+    &__ttl {
+      width: auto;
+    }
+  }
+}

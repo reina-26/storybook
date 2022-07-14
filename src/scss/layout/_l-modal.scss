@@ -1,0 +1,179 @@
+@use '../global/' as global;
+
+/* --------------------------------------------------------------------------------
+   .l-modal : モーダル
+----------------------------------------------------------------------------------- */
+
+.l-modal {
+  z-index: 100;
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  padding: 2rem 5rem;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(global.$c-black, .5);
+
+  /* 表示中 */
+
+  &.is-visible {
+    display: flex;
+  }
+
+  /* モーダル本体のフレーム */
+
+  &__container {
+    position: relative;
+    min-width: 64rem;
+    max-width: 150rem;
+    max-height: 100%;
+    border-radius: 1rem;
+    background-color: global.$c-white;
+    @include global.scrollbar(.8rem);
+
+    /* ヘッダ */
+
+    > header {
+      z-index: 100;
+      position: sticky;
+      top: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 2rem;
+      height: 5rem;
+      padding: 0 2rem;
+      border-bottom: .1rem solid global.$c-gray-3;
+      background-color: rgba(global.$c-white, .95);
+      box-shadow: 0 .1rem .1rem rgba(global.$c-main-text-dark, .15);
+
+      > h1 {
+        padding: 0 7rem;
+        font-size: 1.6rem;
+        line-height: 1.3;
+        text-align: center;
+      }
+    }
+
+    /* フッタ */
+
+    > footer {
+      position: sticky;
+      bottom: 0;
+      display: flex;
+      align-items: center;
+      height: 7rem;
+      background-color: rgba(global.$c-gray-1, .95);
+      box-shadow: 0 -.1rem .1rem rgba(global.$c-main-text-dark, .15);
+
+      > * {
+        flex-grow: 1;
+      }
+    }
+  }
+
+  /* ヘッダのボタン */
+
+  &__back,
+  &__close {
+    position: absolute;
+    padding: 0;
+    white-space: nowrap;
+    outline: 0;
+    border: 0;
+    background: none;
+  }
+
+  &__back {
+    left: 2rem;
+    color: global.$c-main-text;
+
+    &::before {
+      content: '\f053';
+      margin-right: .5em;
+      font-family: 'Font Awesome 5 Free';
+      font-weight: 600;
+      line-height: 1;
+    }
+  }
+
+  &__close {
+    right: 2rem;
+    font-size: 2.8rem;
+    color: global.$c-gray-4;
+
+    &:hover {
+      color: global.$c-main;
+    }
+  }
+
+  /* ボディ */
+
+  &__body {
+    padding: 2rem;
+  }
+
+  @include global.mq-down(tabS) {
+    &__container {
+      min-width: 56rem;
+    }
+  }
+
+  @include global.mq-down(sp) {
+    padding: 2rem 1rem;
+
+    /* モーダル本体のフレーム */
+
+    &__container {
+      width: 100%;
+      min-width: 0;
+      max-width: none;
+
+      /* ヘッダ */
+
+      > header {
+        gap: 1rem;
+        height: auto;
+        min-height: 5rem;
+        padding: 1rem 0;
+
+        > h1 {
+          padding: 0 5.5rem;
+          font-size: 1.4rem;
+        }
+      }
+
+      /* フッタ */
+
+      > footer {
+        height: auto;
+        padding: 1rem;
+      }
+    }
+
+    /* ヘッダのボタン */
+
+    &__back {
+      left: 1rem;
+      font-size: 1.2rem;
+
+      &::before {
+        margin-right: .5rem;
+      }
+    }
+
+    &__close {
+      right: 1rem;
+      font-size: 2rem;
+    }
+
+    /* ボディ */
+
+    &__body {
+      padding: 1.5rem;
+    }
+  }
+}

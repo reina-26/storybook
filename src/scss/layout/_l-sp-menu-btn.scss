@@ -1,0 +1,79 @@
+@use "../global/" as global;
+
+/* --------------------------------------------------------------------------------
+   .l-sp-menu-btn : スマホメニューボタン
+----------------------------------------------------------------------------------- */
+
+.l-sp-menu-btn {
+  display: none;
+
+  @include global.mq-down(tab) {
+  }
+
+  @include global.mq-down(tabS) {
+    display: block;
+    position: relative;
+    width: 6rem;
+    height: 5rem;
+    padding: 0;
+    outline: 0;
+    border: 0;
+    border-radius: 0;
+    background-color: global.$c-white;
+    -webkit-transition: all .2s linear;
+    transition: all .2s linear;
+
+    span:not(.c-icon-notice) {
+      position: absolute;
+      left: 25%;
+      width: 50%;
+      height: .2rem;
+      background-color: global.$c-text;
+      -webkit-transition: all .2s linear;
+      transition: all .2s linear;
+
+      &:nth-of-type(1) {
+        top: 30%;
+      }
+
+      &:nth-of-type(2),
+      &:nth-of-type(3) {
+        top: 50%;
+      }
+
+      &:nth-of-type(4) {
+        top: 70%;
+      }
+    }
+
+    &.is-active {
+      height: 5rem;
+      background-color: global.$c-main;
+
+      span:not(.c-icon-notice) {
+        position: absolute;
+        width: 50%;
+        background-color: global.$c-white;
+
+        &:nth-of-type(1),
+        &:nth-of-type(4) {
+          opacity: 0;
+        }
+
+        &:nth-of-type(2) {
+          transform: rotate(45deg);
+        }
+
+        &:nth-of-type(3) {
+          transform: rotate(-45deg);
+        }
+      }
+    }
+
+    .c-icon-notice {
+      position: absolute;
+      right: .5rem;
+      top: .5rem;
+    }
+  }
+}

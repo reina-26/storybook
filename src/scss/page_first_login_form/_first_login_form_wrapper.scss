@@ -1,0 +1,18 @@
+@use "../global/" as global;
+
+/* --------------------------------------------------------------------------------
+   .first_login_form_wrapper : 初回ログインページのフォームのラッパー
+----------------------------------------------------------------------------------- */
+
+body.page_first_login_form .first_login_form_wrapper {
+  width: 800px;
+  margin: 30px auto 100px;
+
+  @include global.mq-down(tab) {
+    width: 100%;
+  }
+
+  @include global.mq-down(sp) {
+    margin: 30px auto 50px;
+  }
+}

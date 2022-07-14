@@ -1,0 +1,45 @@
+@use '../../global/' as global;
+
+/* --------------------------------------------------------------------------------
+   ユーティリティクラス - line-height
+   --------------------------------------------------------------------------------
+     - u-lh-1, u-lh-11, u-lh-12, ... , u-lh-99, u-lh-10
+     - sp-lh-1, sp-lh-11, sp-lh-12, ... , sp-lh-99, sp-lh-10
+     - それぞれ line-height: 1, 1.1, 1.2, ... , 9.9, 10
+----------------------------------------------------------------------------------- */
+
+$value: 10;
+@while $value <= 100 {
+  $num: $value;
+
+  // 整数のとき
+  @if $value % 10 == 0 {
+    $num: calc($value / 10);
+  }
+
+  .u-lh-#{$num} {
+    line-height: #{calc($value / 10)} !important;
+  }
+
+  $value: $value + 1;
+}
+
+/* SP版：プリフィクス sp- を付加 */
+
+@include global.mq-down(sp) {
+  $value: 10;
+  @while $value <= 100 {
+    $num: $value;
+
+    // 整数のとき
+    @if $value % 10 == 0 {
+      $num: calc($value / 10);
+    }
+
+    .u-sp-lh-#{$num} {
+      line-height: #{calc($value / 10)} !important;
+    }
+
+    $value: $value + 1;
+  }
+}

@@ -1,0 +1,45 @@
+@use "../../global/" as global;
+
+/* --------------------------------------------------------------------------------
+   .p-chat-list : ビュッフェチャット一覧
+----------------------------------------------------------------------------------- */
+
+.p-chat-list {
+  > li:not(:last-child) {
+    margin-bottom: 2rem;
+  }
+
+  a {
+    color: global.$c-text;
+  }
+
+  &__item {
+    display: block;
+    padding: 2rem;
+    text-decoration: none;
+    border: .1rem solid global.$c-gray-3;
+    border-radius: 1rem;
+    transition: all .1s linear;
+
+    &:hover {
+      background-color: global.$c-main-bg;
+    }
+  }
+
+  h3 {
+    color: global.$c-main;
+  }
+
+  p {
+    margin: 0;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+  }
+
+  @include global.mq-down(tab) {
+  }
+
+  @include global.mq-down(sp) {
+  }
+}

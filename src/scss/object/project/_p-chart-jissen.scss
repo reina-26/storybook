@@ -1,0 +1,86 @@
+@use "../../global/" as global;
+
+/* --------------------------------------------------------------------------------
+   .p-chart-jissen : 診断結果（実践度）＆アンケート結果
+----------------------------------------------------------------------------------- */
+
+.p-chart-jissen {
+  position: relative;
+  width: 100%;
+  max-width: 55rem;
+  height: 35rem;
+  margin: 0 auto;
+  padding: 3rem;
+
+  &.is-enq-1,
+  &.is-enq-2 {
+    margin-top: 3rem;
+  }
+
+  &__label {
+    position: absolute;
+    font-size: 1.3rem;
+    line-height: 1.3;
+    white-space: nowrap;
+  }
+
+  &.is-enq-1,
+  &.is-enq-2 {
+    .p-chart-jissen__label.is-1 {
+      white-space: normal;
+      text-align: right;
+    }
+  }
+
+  /* アンケート結果の凡例 */
+
+  &__legend {
+    position: absolute;
+    left: 0;
+    top: -4rem;
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    width: 100%;
+    font-size: 1.3rem;
+    line-height: 1.3;
+
+    li {
+      display: flex;
+      align-items: center;
+      gap: .5rem;
+
+      &::before {
+        content: '';
+        display: inline-block;
+        width: 3rem;
+        height: 80%;
+        border: .2rem solid global.$c-red;
+        background-color: rgba(global.$c-red, .2);
+      }
+
+      &.is-1::before {
+        border-color: global.$c-main;
+        background-color: rgba(global.$c-main, .2);
+      }
+    }
+  }
+
+  @include global.mq-down(sp) {
+    height: calc(100vw - 10rem);
+  }
+
+  @include global.mq-down(spS) {
+    &__label {
+      position: absolute;
+      font-size: 1.1rem;
+      line-height: 1.3;
+    }
+
+    /* アンケート結果の凡例 */
+
+    &__legend {
+      font-size: 1rem;
+    }
+  }
+}

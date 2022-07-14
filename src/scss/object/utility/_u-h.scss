@@ -1,0 +1,93 @@
+@use '../../global/' as global;
+
+/* --------------------------------------------------------------------------------
+   ユーティリティクラス - 高さ
+   --------------------------------------------------------------------------------
+     - 単位 px → u-h-5,   u-h-10  ... u-h-100, u-h-110, u-h-120, ..., u-h-1000
+     - 100pxまでは5px刻み、以降は10px刻み
+       ※実際の指定では px ではなく rem が使われている（10px = 1rem）
+     - 単位 em → u-h-1em, u-h-2em ... u-h-10em
+     - 単位 %  → u-h-1p,  u-h-2p  ... u-h-100p
+     - 単位 vw → u-h-5v,  u-h-10v ... u-h-100v
+     - u- の後ろに sp- を付加するとスマホ用のクラスになる
+----------------------------------------------------------------------------------- */
+
+/* 単位：em */
+@for $value from 1 through 10 {
+  .u-h-#{$value}em {
+    height: #{$value}em !important;
+  }
+}
+
+/* 単位：px（rem） */
+$value: 5;
+@while $value < 100 {
+  .u-h-#{$value} {
+    height: #{calc($value / 10)}rem !important;
+  }
+  $value : $value + 5;
+}
+
+/* 単位：100px以上は10px刻み */
+$value: 100;
+@while $value <= 1000 {
+  .u-h-#{$value} {
+    height: #{calc($value / 10)}rem !important;
+  }
+  $value : $value + 10;
+}
+
+/* 単位：パーセント、vw */
+$value: 1;
+@while $value <= 100 {
+  .u-h-#{$value}p {
+    // %の場合だけCompassのコンパイルでDEPRECATION WARNINGが出たので、推奨に従い unquote する
+    height: unquote("#{$value}% !important");
+  }
+  .u-h-#{$value}v {
+    height: #{$value}vw !important;
+  }
+  $value : $value + 1;
+}
+
+/* SP版：プリフィクス sp- を付加 */
+
+@include global.mq-down(sp) {
+  /* 単位：em */
+  @for $value from 1 through 10 {
+    .u-sp-h-#{$value}em {
+      height: #{$value}em !important;
+    }
+  }
+
+  /* 単位：px（rem） */
+  $value: 5;
+  @while $value < 100 {
+    .u-sp-h-#{$value} {
+      height: #{calc($value / 10)}rem !important;
+    }
+    $value : $value + 5;
+  }
+
+  /* 単位：100px以上は10px刻み */
+  $value: 100;
+  @while $value <= 1000 {
+    .u-sp-h-#{$value} {
+      height: #{calc($value / 10)}rem !important;
+    }
+    $value : $value + 10;
+  }
+
+  /* 単位：パーセント、vw */
+  $value: 5;
+  @while $value <= 100 {
+    .u-sp-h-#{$value}p {
+      // %の場合だけCompassのコンパイルでDEPRECATION WARNINGが出たので、推奨に従い unquote する
+      height: unquote("#{$value}% !important");
+    }
+    .u-sp-h-#{$value}v {
+      height: #{$value}vw !important;
+    }
+    $value : $value + 5;
+  }
+}

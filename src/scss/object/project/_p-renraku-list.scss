@@ -1,0 +1,146 @@
+@use "../../global/" as global;
+
+/* --------------------------------------------------------------------------------
+   .p-renraku-list : 連絡BOX一覧
+----------------------------------------------------------------------------------- */
+
+.p-renraku-list {
+  thead {
+    th {
+      white-space: nowrap;
+    }
+  }
+
+  tr {
+    > :nth-child(1),
+    > :nth-child(2) {
+      width: 13rem;
+      text-align: center;
+    }
+
+    > :nth-child(3) {
+      width: 10rem;
+      text-align: center;
+    }
+  }
+
+  tbody {
+    tr {
+      cursor: pointer;
+
+      a {
+        text-decoration: none;
+        color: global.$c-text;
+      }
+
+      &:hover {
+        th,
+        td {
+          background-color: global.$c-main-bg;
+        }
+      }
+    }
+    th {
+      font-weight: normal;
+    }
+  }
+
+  &__alert {
+    font-weight: bold;
+    color: global.$c-red-text;
+  }
+  &__over {
+    font-weight: bold;
+    color: global.$c-main-text;
+  }
+
+  @include global.mq-down(tab) {
+  }
+
+  @include global.mq-down(sp) {
+    table,
+    thead,
+    tbody,
+    tr,
+    th,
+    td {
+      display: block;
+    }
+
+    thead {
+      display: none;
+    }
+
+    tr {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: flex-start;
+      margin-top: -.1rem;
+      border: .1rem solid global.$c-gray-3;
+    }
+
+    th,
+    td {
+      border: 0;
+      background-color: global.$c-white !important;
+    }
+
+    tr {
+      > :nth-child(1),
+      > :nth-child(2),
+      > :nth-child(3) {
+        padding: 1rem 1rem 0;
+      }
+
+      > :nth-child(1) {
+        width: 30%;
+        font-weight: bold;
+        text-align: left;
+      }
+
+      > :nth-child(2) {
+        flex-grow: 1;
+        margin-left: auto;
+        text-align: right;
+
+        &::before {
+          content: '期限 ';
+        }
+      }
+
+      > :nth-child(3) {
+        width: 6rem;
+        padding-left: 0;
+      }
+    }
+
+    tbody {
+      tr {
+        cursor: pointer;
+
+        a {
+          text-decoration: none;
+          color: global.$c-text;
+        }
+
+        &:hover {
+          th,
+          td {
+            background-color: global.$c-main-bg;
+          }
+        }
+      }
+      th {
+        font-weight: normal;
+      }
+    }
+  }
+
+  @include global.mq-down(spS) {
+    tr {
+      > * {
+        font-size: 1.2rem;
+      }
+    }
+  }
+}

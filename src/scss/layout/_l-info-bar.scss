@@ -1,0 +1,69 @@
+@use "../global/" as global;
+
+/* --------------------------------------------------------------------------------
+   .l-info-bar : 上部のアカウント名などを表示する青バー
+----------------------------------------------------------------------------------- */
+
+.l-info-bar {
+  position: relative;
+  display: flex;
+  align-items: center;
+  height: 2.4rem;
+  padding: 0 1.5rem;
+  color: global.$c-white;
+  background-color: global.$c-main-text;
+
+  // IE対応
+
+  @media all and (-ms-high-contrast: none) {
+    padding-right: 23rem;
+  }
+
+  a {
+    color: global.$c-white;
+  }
+
+  // アカウント名
+
+  &__username {
+    font-size: 1.3rem;
+    font-weight: bold;
+    white-space: nowrap;
+  }
+
+  // 受講期間
+
+  &__datespan {
+    flex-grow: 0;
+    flex-shrink: 0;
+    margin-left: auto;
+    font-size: 1.3rem;
+    white-space: nowrap;
+
+      // IEは右にはみ出すので絶対配置にする
+      @media all and (-ms-high-contrast: none) {
+        position: absolute;
+        right: 1.5rem;
+        top: 0;
+        bottom: 0;
+        height: 2.6rem;
+        margin: auto;
+      }
+    }
+
+  // 初回ログイン画面ではアカウント名のみ表示
+
+  body.page_first_login_form &,
+  body.page_first_login_flow & {
+    &__datespan {
+      display: none;
+    }
+  }
+
+  @include global.mq-down(tab) {
+  }
+
+  @include global.mq-down(tabS) {
+    display: none;
+  }
+}

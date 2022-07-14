@@ -1,0 +1,54 @@
+// メインカラー
+
+$c-main          : #019CE1;
+$c-main-text     : #007EB8; // 主に文字色として
+$c-main-text-dark: #0A416A; // 主に文字色として（濃いめ）
+$c-main-bg       : #F0F6FC; // 主に背景色として
+$c-main-light    : #79A2C9; // 主にボーダー色として
+
+// アクセントカラー
+
+$c-accent        : #D8B844;
+$c-accent-text   : #714D09; // 主に文字色として
+$c-accent-bg     : #FFFAEA; // 主に背景色として
+$c-accent-light  : #B1A167; // 主にボーダー色として
+
+// サポートカラー
+
+$c-red           : #D34C4C; // 赤
+$c-red-text      : #C73D3D; // 赤：主に文字色として
+$c-red-bg        : #FAF2F2; // 赤：主に背景色として
+$c-red-light     : #C96161; // 赤：主にボーダー色として
+$c-green         : #80C35D; // 緑
+$c-green-text    : #165F27; // 緑：主に文字色として
+$c-green-bg      : #F4FCF2; // 緑：主に背景色として
+$c-green-light   : #7AB170; // 緑：主にボーダー色として
+$c-purple        : #866EC8; // 紫
+$c-purple-text   : #412a7e; // 紫：主に文字色として
+$c-purple-bg     : #f1ecff; // 紫：主に背景色として
+$c-purple-light  : #9083b6; // 紫：主にボーダー色として
+
+// グレースケール
+
+$c-white         : #FFFFFF;
+$c-gray-1        : #F2F3F4; // 標準のグレー背景色
+$c-gray-2        : #E9ECEF;
+$c-gray-3        : #DAE0E6; // 標準のボーダー色
+$c-gray-4        : #CAD1D9;
+$c-gray-5        : #AEB7BF;
+$c-gray-6        : #949DA6;
+$c-gray-7        : #7A838C;
+$c-gray-8        : #565E66;
+$c-gray-9        : #343A40; // 標準の文字色
+$c-black         : #000000;
+
+// テキスト
+
+$c-text          : $c-gray-9;  // 本文
+$c-text-em       : $c-black; // 強調
+$c-text-sub      : $c-gray-7;  // サブテキスト
+$c-link          : $c-main-text; // テキストリンク
+$c-link-visited  : $c-main-text-dark; // テキストリンク（visited）
+
+// 教育担当者向け（削除予定、とりあえずコンパイル通すため）
+$c-main-kyoiku : #7d4775; // 教育担当者用

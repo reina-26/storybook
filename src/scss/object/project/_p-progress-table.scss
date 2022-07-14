@@ -1,0 +1,397 @@
+@use "../../global/" as global;
+
+/* --------------------------------------------------------------------------------
+   .p-progress-table : 学習実績一覧
+----------------------------------------------------------------------------------- */
+
+table.p-progress-table {
+  position: relative;
+  margin-top: 1rem;
+  border-bottom: 0 !important; /* datatables のスタイルの上書き */
+
+  thead {
+    position: sticky;
+    top: 0;
+
+    th {
+      padding: 1rem;
+      font-size: 1.2rem;
+      font-weight: normal !important;
+      line-height: 1.5;
+      text-align: center;
+      white-space: nowrap;
+
+      &:nth-child(2) {
+        text-align: left;
+      }
+    }
+  }
+
+  tbody {
+
+    /* テーマ名 */
+
+    th {
+      padding: 1rem;
+
+      a {
+        display: block;
+        color: global.$c-text;
+        text-decoration: none;
+
+        &:hover {
+          color: global.$c-main-text;
+        }
+      }
+
+      small {
+        display: block;
+        font-weight: normal;
+      }
+
+      span {
+        display: block;
+      }
+    }
+
+    /* その他 */
+
+    td {
+      padding: 1rem;
+      text-align: right;
+      vertical-align: middle;
+      font-size: 1.2rem;
+      text-align: center;
+      color: global.$c-gray-7;
+      background-color: global.$c-white;
+
+      /* サムネール */
+
+      &.p-progress-table__thumb {
+        width: 12rem;
+        background-size: cover;
+
+        > div {
+          border: 1px solid red;
+          height: 100%;
+        }
+
+        img {
+          width: 12.8rem;
+        }
+      }
+
+      /* ステータス */
+
+      &.p-progress-table__status {
+        font-size: 1.2rem;
+
+        em {
+          display: block;
+          white-space: nowrap;
+        }
+      }
+
+      /* レポート、合格証 */
+
+      &.p-progress-table__report,
+      &.p-progress-table__passed {
+        a {
+          display: block;
+          font-size: 2.4rem;
+          text-decoration: none;
+          transition: all .1s linear;
+
+          &:hover {
+            transform: scale(1.2);
+          }
+        }
+      }
+
+      &.p-progress-table__passed {
+        a {
+          color: global.$c-accent;
+        }
+      }
+
+      /* 学習予定月 */
+
+      &.p-progress-table__date-plan {
+        white-space: nowrap;
+      }
+    }
+
+    /* 予定月未設定の行 */
+
+    tr.is-not-scheduled {
+      td,
+      th {
+        background-color: global.$c-accent-bg;
+      }
+
+      .p-progress-table__date-plan a {
+        font-weight: bold;
+        color: global.$c-accent-text;
+      }
+    }
+
+    /* 期限遅れの行 */
+    /* NOTE: 期限遅れの行のスタイル定義は、必ず予定月未設定の行のそれより後ろにすること。is-behind と is-not-scheduled 両方が設定されている場合 is-behind のスタイルを優先するため */
+
+    tr.is-behind {
+      td,
+      th {
+        background-color: global.$c-red-bg;
+      }
+
+      .p-progress-table__status,
+      .p-progress-table__status em {
+        color: global.$c-red-text;
+      }
+    }
+  }
+
+  @include global.mq-down(pcS) {
+    tbody {
+      td.p-progress-table__thumb {
+        width: 5rem;
+      }
+    }
+  }
+
+  @include global.mq-down(tab) {
+    display: block;
+
+    table,
+    tbody,
+    tr {
+      display: block;
+      width: 100%;
+    }
+
+    thead {
+      display: none;
+    }
+
+    tr {
+      display: grid;
+      grid-template-columns: repeat(22, 1fr);
+      margin: 1rem 0;
+      overflow: hidden;
+      border: .1rem solid global.$c-gray-3;
+      border-radius: .5rem;
+
+      &:nth-child(2n) {
+        th,
+        td {
+          background-color: global.$c-white;
+        }
+      }
+    }
+
+    tbody {
+      td.p-progress-table__thumb {
+        grid-column: 1 / 5;
+        width: auto;
+      }
+
+      th.p-progress-table__name {
+        grid-column: 5 / 23;
+      }
+
+      td.p-progress-table__status {
+        grid-column: 1 / 5;
+      }
+
+      td.p-progress-table__score {
+        grid-column: 5 / 7;
+      }
+
+      td.p-progress-table__report {
+        grid-column: 7 / 9;
+      }
+
+      td.p-progress-table__passed {
+        grid-column: 9 / 11;
+      }
+
+      td.p-progress-table__date-plan {
+        grid-column: 11 / 14;
+      }
+
+      td.p-progress-table__date-start {
+        grid-column: 14 / 17;
+      }
+
+      td.p-progress-table__date-report {
+        grid-column: 17 / 20;
+      }
+
+      td.p-progress-table__date-passed {
+        grid-column: 20 / 23;
+      }
+
+      /* 期間学習は学習予定なし */
+
+      .page-study-achive.is-period & {
+        td.p-progress-table__date-start {
+          grid-column: 11 / 15;
+        }
+
+        td.p-progress-table__date-report {
+          grid-column: 15 / 19;
+        }
+
+        td.p-progress-table__date-passed {
+          grid-column: 19 / 23;
+        }
+      }
+
+      th,
+      td {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin: -.1rem;
+        font-size: 1.4rem;
+        text-align: center;
+        border: .1rem solid global.$c-gray-3;
+      }
+
+      th.p-progress-table__name {
+        align-items: flex-start;
+        text-align: left;
+
+        small {
+          font-size: 1.3rem;
+        }
+
+        span {
+          font-size: 1.6rem;
+        }
+      }
+
+      td {
+        &.p-progress-table__date-plan,
+        &.p-progress-table__date-start,
+        &.p-progress-table__date-report,
+        &.p-progress-table__date-passed {
+          font-size: 1.2rem;
+          white-space: normal;
+
+          &::before {
+            display: block;
+            font-size: 1.2rem;
+            font-weight: bold;
+            white-space: nowrap;
+          }
+        }
+
+        &.p-progress-table__date-plan::before {
+          content: '学習予定月';
+        }
+
+        &.p-progress-table__date-start::before {
+          content: '学習開始';
+        }
+
+        &.p-progress-table__date-report::before {
+          content: 'レポート提出';
+        }
+
+        &.p-progress-table__date-passed::before {
+          content: '合格';
+        }
+      }
+    }
+  }
+
+  @include global.mq-down(sp) {
+    tr {
+      grid-template-columns: repeat(20, 1fr);
+    }
+
+    tbody {
+      td.p-progress-table__thumb {
+        grid-column: 1 / 5;
+      }
+
+      th.p-progress-table__name {
+        grid-column: 5 / 21;
+      }
+
+      td.p-progress-table__status {
+        grid-column: 1 / 9;
+      }
+
+      td.p-progress-table__score {
+        grid-column: 9 / 13;
+      }
+
+      td.p-progress-table__report {
+        grid-column: 13 / 17;
+      }
+
+      td.p-progress-table__passed {
+        grid-column: 17 / 21;
+      }
+
+      td.p-progress-table__date-plan {
+        grid-column: 1 / 6;
+      }
+
+      td.p-progress-table__date-start {
+        grid-column: 6 / 11;
+      }
+
+      td.p-progress-table__date-report {
+        grid-column: 11 / 16;
+      }
+
+      td.p-progress-table__date-passed {
+        grid-column: 16 / 21;
+      }
+
+      td.p-progress-table__date-plan,
+      td.p-progress-table__date-start,
+      td.p-progress-table__date-report,
+      td.p-progress-table__date-passed {
+        border: 0;
+        border-top: .1rem solid global.$c-gray-3;
+        background-color: global.$c-gray-1;
+      }
+
+      /* 期間学習は学習予定なし */
+
+      .page-study-achive.is-period & {
+        td.p-progress-table__date-start {
+          grid-column: 1 / 8;
+        }
+
+        td.p-progress-table__date-report {
+          grid-column: 8 / 15;
+        }
+
+        td.p-progress-table__date-passed {
+          grid-column: 15 / 21;
+        }
+      }
+    }
+  }
+
+  @include global.mq-down(spS) {
+    tbody td {
+      &.p-progress-table__date-plan,
+      &.p-progress-table__date-start,
+      &.p-progress-table__date-report,
+      &.p-progress-table__date-passed {
+        font-size: 1.1rem;
+
+        &::before {
+          font-size: 1rem;
+        }
+      }
+    }
+  }
+}

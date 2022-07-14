@@ -1,0 +1,56 @@
+@use "../../global/" as global;
+
+/* --------------------------------------------------------------------------------
+   .c-dropdown-menu : ドロップダウンメニュー（ヘルプなどで使用）
+----------------------------------------------------------------------------------- */
+
+.c-dropdown-menu {
+  z-index: 50; // モーダルより下
+  display: none;
+  margin: 0;
+  min-width: 200px;
+  border: 1px solid #eee;
+  border-radius: 5px;
+  background-color: global.$c-white;
+  box-shadow: 0 5px 5px rgba(global.$c-black, .15);
+
+  &:hover {
+    display: block;
+  }
+
+  li {
+    border-bottom: 1px solid #ddd;
+
+    &:last-child {
+      border: 0;
+    }
+  }
+
+  a {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 15px;
+    font-size: 14px;
+    line-height: 1.5;
+    white-space: nowrap;
+    text-decoration: none;
+    color: global.$c-text;
+
+    &:hover {
+      color: global.$c-main-text;
+      background-color: #f2f2f2;
+    }
+  }
+
+  .icon-notice {
+    margin-left: 20px;
+  }
+
+  @include global.mq-down(tab) {
+  }
+
+  @include global.mq-down(sp) {
+    min-width: 0;
+  }
+}

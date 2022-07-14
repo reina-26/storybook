@@ -1,0 +1,207 @@
+@use '../../global/' as global;
+
+/* --------------------------------------------------------------------------------
+   .c-box : ボックス
+   --------------------------------------------------------------------------------
+    - 背景白、罫線グレーのボックス
+    - パディングはデフォルトで 2rem
+    - is-pad-0, is-pad-10, ... の形式で 1rem 刻みで最大 5rem まで設定可能
+    - .is-gray 付与で薄いグレーのボックス
+    - 最初の要素に .c-box__title を付与するとタイトルバーになる
+    - フッタにボタンを並べるには .c-box__btns 要素を最後に配置する
+    - スマホではパディングの値は最大1.5rem
+----------------------------------------------------------------------------------- */
+
+.c-box {
+  margin: 2rem 0;
+  padding: 2rem;
+  border: .1rem solid global.$c-gray-3;
+  border-radius: 1rem;
+  background-color: global.$c-white;
+
+  &.is-gray {
+    background-color: global.$c-gray-1;
+  }
+
+  &.is-pad-0 {
+    margin: 1rem 0;
+    padding: 0;
+  }
+
+  &.is-pad-10 {
+    margin: 1rem 0;
+    padding: 1rem;
+  }
+
+  &.is-pad-20 {
+    margin: 2rem 0;
+    padding: 2rem;
+  }
+
+  &.is-pad-30 {
+    margin: 2rem 0;
+    padding: 3rem;
+  }
+
+  &.is-pad-40 {
+    margin: 2rem 0;
+    padding: 4rem;
+  }
+
+  &.is-pad-50 {
+    margin: 2rem 0;
+    padding: 5rem;
+  }
+
+  &:first-child {
+    margin-top: 0;
+  }
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+
+  /* タイトルバー */
+
+  &__title {
+    margin: -2.1rem -2.1rem 2rem; /* .1rem はボーダーも隠すため */
+    padding: 1rem 1.5rem;
+    font-size: 1.6rem;
+    line-height: 1.5;
+    color: global.$c-white;
+    background-color: global.$c-main-text;
+    border-radius: .5rem .5rem 0 0;
+  }
+
+  &.is-pad-0 {
+    .c-box__title {
+      margin: -.1rem -.1rem 0;
+    }
+  }
+
+  &.is-pad-10 {
+    .c-box__title {
+      margin: -1.1rem -1.1rem 1rem;
+    }
+  }
+
+  &.is-pad-20 {
+    .c-box__title {
+      margin: -2.1rem -2.1rem 2rem;
+    }
+  }
+
+  &.is-pad-30 {
+    .c-box__title {
+      margin: -3.1rem -3.1rem 3rem;
+    }
+  }
+
+  &.is-pad-40 {
+    .c-box__title {
+      margin: -4.1rem -4.1rem 4rem;
+    }
+  }
+
+  &.is-pad-50 {
+    .c-box__title {
+      margin: -5.1rem -5.1rem 5rem;
+    }
+  }
+
+  /* フッタボタン */
+
+  &__footer {
+    margin: 2rem -2rem -2rem !important;
+    padding: 2rem;
+    background-color: global.$c-gray-1;
+    border-radius: 0 0 .5rem .5rem;
+  }
+
+  &.is-pad-0 {
+    .c-box__footer {
+      margin: 0 !important;
+    }
+  }
+
+  &.is-pad-10 {
+    .c-box__footer {
+      margin: 1rem -1rem -1rem !important;
+    }
+  }
+
+  &.is-pad-20 {
+    .c-box__footer {
+      margin: 2rem -2rem -2rem !important;
+    }
+  }
+
+  &.is-pad-30 {
+    .c-box__footer {
+      margin: 3rem -3rem -3rem !important;
+    }
+  }
+
+  &.is-pad-40 {
+    .c-box__footer {
+      margin: 4rem -4rem -4rem !important;
+    }
+  }
+
+  &.is-pad-50 {
+    .c-box__footer {
+      margin: 5rem -5rem -5rem !important;
+    }
+  }
+
+  @include global.mq-down(tab) {
+  }
+
+  @include global.mq-down(sp) {
+    padding: 1.5rem;
+
+    &.is-pad-20,
+    &.is-pad-30,
+    &.is-pad-40,
+    &.is-pad-50 {
+      padding: 1.5rem;
+    }
+
+    /* タイトルバー */
+
+    &__title {
+      margin: -1.6rem -1.6rem 1.5rem; /* .1rem はボーダーも隠すため */
+    }
+
+    &.is-pad-0 {
+      .c-box__title {
+        margin: -.1rem -.1rem 0;
+      }
+    }
+
+    &.is-pad-20,
+    &.is-pad-30,
+    &.is-pad-40,
+    &.is-pad-50 {
+      .c-box__title {
+        margin: -1.6rem -1.6rem 1.5rem;
+      }
+    }
+
+    /* フッタボタン */
+
+    &__footer {
+      margin: 1.5rem -1.5rem -1.5rem !important;
+      padding: 1rem;
+    }
+
+    &.is-pad-20,
+    &.is-pad-30,
+    &.is-pad-40,
+    &.is-pad-50 {
+      .c-box__footer {
+        margin: 1.5rem -1.5rem -1.5rem !important;
+      }
+    }
+  }
+}

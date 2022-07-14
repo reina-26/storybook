@@ -1,0 +1,34 @@
+@use "../../global/" as global;
+
+/* --------------------------------------------------------------------------------
+   .c-ttl-2 : 見出し（レベル2）
+----------------------------------------------------------------------------------- */
+
+.c-ttl-2 {
+  margin-top: 3rem;
+  margin-bottom: 2rem;
+  padding-left: 1.5rem;
+  font-size: 2rem;
+  font-weight: bold;
+  line-height: 1.4;
+  color: global.$c-main;
+  border-left: .3rem solid global.$c-main;
+
+  &:first-child {
+    margin-top: 0;
+  }
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+
+  small {
+    font-weight: normal;
+  }
+
+  @include global.mq-down(tab) {
+  }
+
+  @include global.mq-down(sp) {
+  }
+}

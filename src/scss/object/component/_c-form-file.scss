@@ -1,0 +1,43 @@
+@use "../../global/" as global;
+
+/* --------------------------------------------------------------------------------
+   .c-form-file : フォーム - ファイル選択
+   --------------------------------------------------------------------------------
+    - 次のように記述することを想定
+        <label class="c-form-file">
+          <input type="file" name="" id="">
+          <span class="c-form-file__btn">ファイルを選択</span>
+        </label>
+
+    - 以下のバリエーションを用意しています
+        1. エラー時（当該要素、または先祖要素に .is-error を付加）
+        2. サイズ → .is-lg, .is-sm
+----------------------------------------------------------------------------------- */
+
+.c-form-file {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+
+  input[type="file"] {
+    display: none;
+  }
+
+  &__value {
+    display: inline-block;
+    max-width: 100%;
+    margin: 1rem 0 0;
+    font-size: 1.3rem;
+    color: global.$c-main-text-dark;
+  }
+
+  /* ファイル選択の次にある容量制限のテキスト */
+  /* NOTE: .c-form-file の次に必ず容量制限があるとは限らないので注意が必要 */
+
+  + span {
+    display: block;
+  }
+
+  @include global.mq-down(sp) {
+  }
+}

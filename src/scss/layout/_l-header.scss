@@ -1,0 +1,176 @@
+@use "../global/" as global;
+
+/* --------------------------------------------------------------------------------
+   .l-header : サイトヘッダ
+----------------------------------------------------------------------------------- */
+
+.l-header {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 5rem;
+  background-color: global.$c-white;
+  box-shadow: 0 .1rem .1rem rgba(global.$c-black, .2);
+
+  // ロゴ
+
+  h1 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-width: 15rem;
+    padding: 0 2rem;
+
+    // ログイン画面用
+
+    .page-login & {
+      padding: 0;
+
+      // 英文ロゴ
+
+      > img {
+        margin: 0 3.75rem;
+      }
+
+      // 和文タイトル画像
+
+      span {
+        display: flex;
+        align-items: center;
+        width: 17.4rem;
+        padding-top: .4rem;
+      }
+    }
+
+    // 教育担当者向けのみ
+
+    em {
+      display: inline-block;
+      margin-left: 1em;
+      padding: 0 1em;
+      font-size: 1.4rem;
+      font-weight: bold;
+      line-height: 3rem;
+      letter-spacing: .1em;
+      color: global.$c-white;
+      border-radius: .5rem;
+      background-color: global.$c-main-kyoiku;
+    }
+  }
+
+  // レポート画面でのユーザ名
+
+  &__username {
+    margin: 0;
+    font-weight: bold;
+  }
+
+  // レポート画面での閉じる
+
+  &__close {
+    margin-left: auto;
+    margin-right: 2rem;
+    font-size: 1.4rem;
+    text-decoration: none;
+  }
+
+  // SPユーザー名
+
+  &__sp-username {
+    display: none;
+  }
+
+  // その他メニュー
+
+  &__others {
+    position: relative;
+    display: flex;
+    align-items: center;
+    margin: 0;
+    margin-left: auto;
+    margin-right: 1em;
+    font-size: 1.3rem;
+
+    > li {
+      margin: 0 .7em;
+
+      > a {
+        text-decoration: none;
+        color: global.$c-text;
+
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+    }
+
+    // ヘルプのドロップダウン
+
+    &__dropdown {
+      position: absolute;
+      top: 100%;
+      right: 0;
+    }
+  }
+
+  @include global.mq-down(tabS) {
+    min-width: 0;
+    height: 5rem;
+
+    h1 {
+      padding: 0 1rem;
+      min-width: 9.4rem;
+
+      > img {
+        width: 73.33.3rem;
+        height: 4.4rem;
+      }
+
+      span {
+        display: none;
+      }
+
+      // ログイン画面用
+
+      .page-login & {
+        > img {
+          margin: 0 1rem;
+        }
+      }
+    }
+
+    // その他メニュー
+
+    &__others {
+      display: none;
+    }
+
+    // SPユーザー名
+
+    &__sp-username {
+      display: flex;
+      align-items: center;
+      margin-left: auto;
+      margin-right: .8rem;
+      font-size: 1.2rem;
+      font-weight: bold;
+      line-height: 1.2;
+    }
+  }
+}
+
+// 期間学習向け
+.is-period {
+  .l-header {
+    h1 {
+      padding: 0 1rem;
+    }
+    &__others {
+      > li {
+        @include global.mq-down(tab) {
+        margin: 0 .6em;
+        }
+      }
+    }
+  }
+}

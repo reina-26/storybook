@@ -1,0 +1,122 @@
+@use '../global/' as global;
+
+/* --------------------------------------------------------------------------------
+   .l-page-ttl : ページタイトル
+----------------------------------------------------------------------------------- */
+
+.l-page-ttl {
+  display: flex;
+  align-items: center;
+  height: 8rem;
+  padding: 0 5vw; // IE向けフォールバック
+  padding: 0 min(10rem, 5vw);
+  color: global.$c-white;
+  background: url(../images/bg_page_title.jpg) no-repeat center top;
+  background-size: cover;
+
+  h1 {
+    padding-left: 5rem;
+    font-size: 2.4rem; // IE向けフォールバック
+    font-size: min(3.2rem, 2vw);
+    font-weight: bold;
+    line-height: 2.4rem;
+    letter-spacing: .4em;
+    white-space: nowrap;
+    background-repeat: no-repeat;
+    background-position: left center;
+    background-size: auto 2.4rem;
+  }
+
+  p {
+    margin-left: 5vw; // IE向けフォールバック
+    padding-left: 5vw; // IE向けフォールバック
+    margin-left: min(10rem, 5vw);
+    padding-left: min(10rem, 5vw);
+    line-height: 1.5;
+    border-left: .1rem solid rgba(global.$c-white, .5);
+  }
+
+  &.is-book h1 {
+    background-image: url(../images/icon_book_white.svg)
+  }
+  &.is-enquete h1 {
+    background-image: url(../images/icon_enquete_white.svg)
+  }
+  &.is-forum h1 {
+    background-image: url(../images/icon_title_forum.svg)
+  }
+  &.is-question h1 {
+    background-image: url(../images/icon_question_white.svg)
+  }
+  &.is-newspaper h1 {
+    background-image: url(../images/icon_newspaper_white.svg)
+  }
+  &.is-step h1 {
+    background-image: url(../images/icon_step_white.svg)
+  }
+  &.is-graph h1 {
+    background-image: url(../images/icon_graph_white.svg)
+  }
+  &.is-review h1{
+    background-image: url(../images/icon_review_white.svg)
+  }
+  &.is-comment h1{
+    background-image: url(../images/icon_comment_white.svg)
+  }
+  &.is-forum h1{
+    background-image: url(../images/icon_forum_white.svg)
+  }
+  &.is-badge h1{
+    background-image: url(../images/icon_badge_white.svg)
+  }
+  &.is-edit h1{
+    background-image: url(../images/icon_edit_note_white.svg)
+  }
+  &.is-bonus h1{
+    background-image: url(../images/icon_bonus_white.svg)
+  }
+
+  &.is-qa-list h1 {
+    background-image: url(../images/icon_question_answer_white.svg)
+  }
+  &.is-question h1{
+    background-image: url(../images/icon_question_white.svg)
+  }
+
+
+  @include global.mq-down(tab) {
+    padding: 0 2rem;
+
+    h1 {
+      padding-left: 4rem;
+      font-size: 1.8rem;
+      letter-spacing: .1em;
+    }
+
+    p {
+      margin-left: 2rem;
+      padding-left: 2rem;
+    }
+  }
+
+  @include global.mq-down(sp) {
+    flex-direction: column;
+    align-items: flex-start;
+    height: auto;
+    padding: 2rem 2rem 1.5rem;
+
+    h1 {
+      margin-bottom: 1rem;
+      font-size: 2rem;
+      line-height: 2.4rem;
+      background-size: auto 2.4rem;
+    }
+
+    p {
+      margin-left: 0;
+      padding-left: 0;
+      font-size: 1.2rem;
+      border: 0;
+    }
+  }
+}

@@ -1,0 +1,138 @@
+@use "../../global/" as global;
+
+/* --------------------------------------------------------------------------------
+   .p-selected-theme : テーマフィルタ
+----------------------------------------------------------------------------------- */
+
+.p-selected-theme {
+  position: sticky;
+  bottom: 7rem;
+  display: flex;
+  padding: 1.5rem 3rem;
+  line-height: 2;
+  background-color: global.$c-main-text-dark;
+
+  > h2 {
+    margin-right: 3rem;
+    font-size: 1.4rem;
+    color: global.$c-accent;
+    white-space: nowrap;
+  }
+
+  /* テーマリスト */
+
+  &__list {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0;
+
+    li {
+      margin-right: 1em;
+    }
+
+    a {
+      font-size: 1.4rem;
+      color: global.$c-white;
+    }
+  }
+
+  /* 削除ボタン */
+
+  &__delete {
+    padding: 0;
+    outline: 0;
+    border: 0;
+    font-size: 1.4rem;
+    color: rgba(global.$c-white, .7);
+    background-color: transparent;
+
+    &:hover {
+      color: global.$c-accent;
+    }
+  }
+
+  @include global.mq-down(tab) {
+    z-index: 101; // モーダルより上
+    position: fixed;
+    left: 10rem;
+    bottom: 7.5rem;
+    width: calc(100% - 20rem);
+    flex-direction: column;
+    height: 0;
+    padding: 0;
+    background-color: transparent;
+    transition: all .2s linear;
+
+    /* h2をボタンとして使う */
+
+    h2 {
+      position: absolute;
+      left: calc(50% - 7rem);
+      top: -5rem;
+      width: 14rem !important;
+      margin: 0 auto;
+      font-size: 1.2rem;
+      line-height: 3rem;
+      text-align: center;
+      cursor: pointer;
+      border-radius: 3rem;
+      background-color: global.$c-main-text-dark;
+      box-shadow: 0 .2rem 1rem rgba(global.$c-black, .2);
+
+      &::after {
+        content: 'のテーマ \f106';
+        font-family: 'Font Awesome 5 Free';
+        font-weight: 600;
+        line-height: 1;
+      }
+    }
+
+    &__list {
+      display: none;
+    }
+
+    /* 表示中 */
+
+    .p-list-add.is-open-selected & {
+      bottom: 7rem;
+      height: calc(100% - 14rem);
+      padding: 0 0 0;
+      border-radius: 1rem;
+      background-color: global.$c-main-text-dark;
+      box-shadow: 0 1rem 1rem rgba(global.$c-black, .2);
+
+      h2 {
+        position: static;
+        width: 100% !important;
+        font-size: 1.4rem;
+        line-height: 4rem;
+        box-shadow: none;
+        background-color: transparent;
+
+        &::after {
+          content: 'のテーマ \f107';
+        }
+      }
+
+      &__list {
+        position: relative;
+        display: block;
+        overflow-y: auto;
+        height: calc(100% - 4rem);
+        padding: 0 2rem 2rem;
+      }
+    }
+  }
+
+  @include global.mq-down(sp) {
+    left: 1rem;
+    width: calc(100% - 2rem);
+
+    /* 表示中 */
+
+    .p-list-add.is-open-selected & {
+      bottom: 2rem;
+      height: calc(100% - 4rem);
+    }
+  }
+}

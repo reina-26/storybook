@@ -1,0 +1,58 @@
+@use "../../global/" as global;
+
+/* --------------------------------------------------------------------------------
+   .p-chat-list-header : ビュッフェチャット一覧ヘッダ
+----------------------------------------------------------------------------------- */
+
+.p-chat-list-header {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 5rem;
+
+  &__cat {
+    flex-shrink: 1;
+    flex-grow: 0;
+    margin: 0;
+    margin-right: auto;
+
+    dl {
+      display: flex;
+      align-items: center;
+      margin: 0;
+    }
+
+    dt {
+      margin: 0 1em 0 .5em;
+      font-weight: bold;
+      white-space: nowrap;
+    }
+
+    dd {
+      flex-shrink: 1;
+      flex-grow: 0;
+
+      select {
+        max-width: 34rem;
+      }
+    }
+
+    p {
+      margin: .5em 1em 0 .5em;
+    }
+  }
+
+  .c-btn.is-lg {
+    min-width: 12rem;
+  }
+
+  @include global.mq-down(tabS) {
+  }
+
+  @include global.mq-down(sp) {
+    flex-direction: column;
+
+    &__cat {
+      margin-bottom: 1rem;
+    }
+  }
+}

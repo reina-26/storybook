@@ -1,0 +1,19 @@
+@use "../../global/" as global;
+
+.c-rule01 {
+  height: 400px;
+  margin: 30px 0;
+  padding: 20px;
+  overflow: auto;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  line-height: 2;
+  @include global.scrollbar(.8rem);
+  &::-webkit-scrollbar-thumb {
+    background-color: global.$c-gray-4;
+
+    &:hover {
+      background-color: global.$c-gray-3;
+    }
+  }
+}

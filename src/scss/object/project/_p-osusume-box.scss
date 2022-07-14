@@ -1,0 +1,83 @@
+@use "../../global/" as global;
+
+/* --------------------------------------------------------------------------------
+   .p-osusume-box : おすすめボックス
+----------------------------------------------------------------------------------- */
+
+.p-osusume-box {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+  text-decoration: none;
+  border: .1rem solid global.$c-gray-3;
+  border-radius: 1rem;
+  background-color: global.$c-white;
+
+  &:hover {
+    box-shadow: 0 .3rem .3rem rgba(global.$c-black, .1);
+  }
+
+  h3 {
+    font-size: 1.4rem;
+  }
+
+  p {
+    margin: 0 0 1rem;
+    font-size: 1.2rem;
+    line-height: 1.5;
+    color: global.$c-text;
+  }
+
+  &__more {
+    margin-left: .5em;
+    text-decoration: underline;
+    color: global.$c-main-text;
+  }
+
+  &__img {
+    img {
+      height: 2.8rem;
+    }
+  }
+
+  .c-btn {
+    min-width: 0;
+    padding: .7rem;
+  }
+
+  /* 学習テーマの場合 */
+
+  &.is-theme {
+    .p-osusume-box__img {
+      img {
+        height: 6rem;
+        border-radius: .5rem;
+      }
+    }
+
+    h3 {
+      width: 100%;
+      line-height: 1.5;
+      text-align: center;
+
+      small {
+        display: block;
+        font-weight: normal;
+      }
+
+      span {
+        display: block;
+      }
+    }
+  }
+
+  @include global.mq-down(tabS) {
+    padding: 1rem;
+  }
+
+  @include global.mq-down(sp) {
+    padding: 2rem;
+  }
+}

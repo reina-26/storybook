@@ -1,0 +1,103 @@
+@use '../../global/' as global;
+
+/* --------------------------------------------------------------------------------
+   ユーティリティクラス - その他
+     - クリアフィクス（そろそろ使用非推奨）
+     - display 制御
+     - フロート
+----------------------------------------------------------------------------------- */
+
+/* クリアフィクス（そろそろ使用非推奨） */
+
+.u-clearfix {
+  *zoom: 1;
+}
+
+.u-clearfix::after {
+  content: '';
+  display: block;
+  clear: both;
+}
+
+/* display制御 */
+
+.u-hide {
+  display: none;
+}
+
+.u-inline {
+  display: inline;
+}
+
+.u-block {
+  display: block;
+}
+
+.u-inline-block {
+  display: inline-block;
+}
+.u-flex {
+  display: flex;
+}
+
+.u-align-center {
+  align-items: center;
+}
+
+.u-justfy-center {
+  justify-content: center;
+}
+.u-justify-content-end {
+  justify-content: flex-end;
+}
+.u-justfy-space-between {
+  justify-content: space-between;
+}
+
+.u-flex-direction-column {
+  flex-direction: column;
+}
+
+.u-w-auto {
+  min-width: auto!important;
+}
+
+@include global.mq-down(sp) {
+  .u-sp-hide {
+    display: none !important;
+  }
+  .u-sp-inline {
+    display: inline !important;
+  }
+  .u-sp-block {
+    display: block !important;
+  }
+  .u-sp-inline-block {
+    display: inline-block !important;
+  }
+}
+
+@include global.mq-up(tabS) {
+  .u-pc-hide {
+    display: none !important;
+  }
+  .u-pc-inline {
+    display: inline !important;
+  }
+  .u-pc-block {
+    display: block !important;
+  }
+  .u-pc-inline-block {
+    display: inline-block !important;
+  }
+}
+
+/* フロート */
+
+.u-float-l {
+  float: left;
+}
+
+.u-float-r {
+  float: right;
+}

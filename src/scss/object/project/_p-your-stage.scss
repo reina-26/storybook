@@ -1,0 +1,52 @@
+@use "../../global/" as global;
+
+/* --------------------------------------------------------------------------------
+   .p-your-stage : バッジ獲得数とステージ
+----------------------------------------------------------------------------------- */
+
+.p-your-stage {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+  text-align: center;
+  border-radius: 1rem;
+  background-color: global.$c-main-bg;
+
+  h3 {
+    font-size: 1.8rem;
+    line-height: 1.5;
+    color: global.$c-main-text;
+  }
+
+  &__stage {
+    margin: 1rem 0;
+    font-size: 1.6rem;
+    font-weight: bold;
+
+    > * {
+      vertical-align: middle;
+    }
+  }
+
+  p {
+    margin: 0;
+  }
+
+  @include global.mq-down(tab) {
+    .page-bonus & {
+      margin-left: -3rem;
+    }
+  }
+
+  @include global.mq-down(sp) {
+    .page-bonus & {
+      margin-left: 0;
+    }
+
+    h3 {
+      font-size: 1.6rem;
+    }
+  }
+}

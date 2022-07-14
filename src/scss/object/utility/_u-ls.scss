@@ -1,0 +1,210 @@
+@use '../../global/' as global;
+
+/* --------------------------------------------------------------------------------
+   ユーティリティクラス - 汎用リスト
+----------------------------------------------------------------------------------- */
+
+ul.u-ls-normal {
+  list-style-type: disc;
+  padding-left: 1.3em;
+}
+
+ol.u-ls-normal {
+  list-style-type: decimal;
+  padding-left: 1.3em;
+}
+
+dl.u-ls-normal {
+  > dt {
+    font-weight: bold;
+  }
+}
+
+dl.u-ls-inline {
+  > dt {
+    display: inline;
+    margin-right: .5em;
+    font-weight: bold;
+  }
+
+  > dd {
+    display: inline;
+  }
+}
+
+/* 米印（※）リスト */
+
+ul.u-ls-kome {
+  margin-left: 1.2em;
+
+  > li {
+    text-indent: -1.2em;
+
+    &::before {
+      content: '※';
+      margin-right: .2em;
+      /* San Francisco や Segoe はリストマークがいまいちなのでヒラギノとメイリオを使用 */
+      font-family: 'Hiragino Sans', 'Hiragino Kaku Gothic ProN', Meiryo, monospace;
+    }
+  }
+}
+
+/* 大きな黒丸（●）リスト */
+
+ul.u-ls-large-disc {
+  margin-left: 1.2em;
+
+  > li {
+    text-indent: -1.2em;
+
+    &::before {
+      content: '●';
+      margin-right: .2em;
+      /* San Francisco や Segoe はリストマークがいまいちなのでヒラギノとメイリオを使用 */
+      font-family: 'Hiragino Sans', 'Hiragino Kaku Gothic ProN', Meiryo, monospace;
+      color: global.$c-accent;
+    }
+  }
+}
+
+/* 大きな白丸（○）リスト */
+
+ul.u-ls-large-circle {
+  margin-left: 1.2em;
+
+  > li {
+    text-indent: -1.2em;
+
+    &::before {
+      content: '○';
+      margin-right: .2em;
+      /* San Francisco や Segoe はリストマークがいまいちなのでヒラギノとメイリオを使用 */
+      font-family: 'Hiragino Sans', 'Hiragino Kaku Gothic ProN', Meiryo, monospace;
+      color: global.$c-accent;
+    }
+  }
+}
+
+/* 連番付き※印のリスト（※1, ※2, ...） */
+/* 連番は2桁まで。3桁以上はリスト本文テキストと重なるので適宜調整のこと */
+
+ol.u-ls-kome {
+  margin-left: 2.7em;
+  list-style: none;
+  counter-reset: number;
+
+  > li {
+    text-indent: -2.7em;
+
+    &::before {
+      content: '※'counter(number);
+      counter-increment: number;
+      display: inline-block;
+      width: 2.2em;
+      margin-right: .5em;
+      /* San Francisco や Segoe はリストマークがいまいちなので游ゴシック、ヒラギノ、メイリオを使用 */
+      font-family: MyYuGothicM, YuGothic, 'Hiragino Sans', 'Hiragino Kaku Gothic ProN', Meiryo, monospace;
+      line-height: 0;
+      text-indent: 0;
+      white-space: nowrap;
+    }
+  }
+}
+
+/* かっこ付き数字リスト */
+
+ol.u-ls-bracket {
+  margin-left: 2em;
+  list-style: none;
+  counter-reset: number;
+
+  > li {
+    text-indent: -2em;
+
+    &::before {
+      content: '(' counter(number) ') ';
+      counter-increment: number;
+      display: marker;
+      width: 1.5em;
+      margin-right: .5em;
+      text-indent: 0;
+      white-space: nowrap;
+    }
+  }
+}
+
+/* 丸数字リスト（最大20） */
+
+ol.u-ls-circle {
+  margin-left: 1.2em;
+
+  > li {
+    text-indent: -1.2em;
+
+    &::before {
+      margin-right: .2em;
+      /* San Francisco や Segoe はリストマークがいまいちなのでヒラギノとメイリオを使用 */
+      font-family: 'Hiragino Sans', 'Hiragino Kaku Gothic ProN', Meiryo, monospace;
+    }
+    &:nth-of-type(1)::before {
+      content: '①';
+    }
+    &:nth-of-type(2)::before {
+      content: '②';
+    }
+    &:nth-of-type(3)::before {
+      content: '③';
+    }
+    &:nth-of-type(4)::before {
+      content: '④';
+    }
+    &:nth-of-type(5)::before {
+      content: '⑤';
+    }
+    &:nth-of-type(6)::before {
+      content: '⑥';
+    }
+    &:nth-of-type(7)::before {
+      content: '⑦';
+    }
+    &:nth-of-type(8)::before {
+      content: '⑧';
+    }
+    &:nth-of-type(9)::before {
+      content: '⑨';
+    }
+    &:nth-of-type(10)::before {
+      content: '⑩';
+    }
+    &:nth-of-type(11)::before {
+      content: '⑪';
+    }
+    &:nth-of-type(12)::before {
+      content: '⑫';
+    }
+    &:nth-of-type(13)::before {
+      content: '⑬';
+    }
+    &:nth-of-type(14)::before {
+      content: '⑭';
+    }
+    &:nth-of-type(15)::before {
+      content: '⑮';
+    }
+    &:nth-of-type(16)::before {
+      content: '⑯';
+    }
+    &:nth-of-type(17)::before {
+      content: '⑰';
+    }
+    &:nth-of-type(18)::before {
+      content: '⑱';
+    }
+    &:nth-of-type(19)::before {
+      content: '⑲';
+    }
+    &:nth-of-type(20)::before {
+      content: '⑳';
+    }
+  }
+}

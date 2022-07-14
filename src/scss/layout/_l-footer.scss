@@ -1,0 +1,86 @@
+@use "../global/" as global;
+
+/* --------------------------------------------------------------------------------
+   .l-footer : フッタ
+----------------------------------------------------------------------------------- */
+
+.l-footer {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  gap: 5rem;
+  height: 10rem;
+  margin-top: auto;
+  padding: 0 5rem;
+  font-size: 1.4rem;
+  border-top: .1rem solid global.$c-gray-3;
+
+  &__left {
+    ul {
+      display: flex;
+      gap: 3em;
+      margin: 0;
+    }
+
+    a {
+      text-decoration: none;
+      color: global.$c-text;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+
+    p {
+      margin: 0;
+    }
+  }
+  &__jmam {
+    margin-left: auto;
+    padding: 10px 20px 0;
+  }
+
+  /* IE対応 */
+
+  @media all and (-ms-high-contrast: none) {
+    > * {
+      margin-right: 5rem;
+    }
+
+    &__left {
+      ul > * {
+        margin-right: 3em;
+      }
+    }
+  }
+
+  @include global.mq-down(tab) {
+  }
+
+  @include global.mq-down(tabS) {
+    position: relative;
+    gap: 1rem;
+    height: auto;
+    padding: 2rem 1rem 5rem;
+    font-size: 1rem;
+
+    &__ssl {
+      width: 3rem;
+    }
+
+    &__left {
+      ul {
+        gap: 1em;
+      }
+    }
+
+    &__jmam {
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 100%;
+      padding: 10px;
+      text-align: center;
+    }
+  }
+}

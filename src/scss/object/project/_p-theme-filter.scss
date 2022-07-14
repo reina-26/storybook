@@ -1,0 +1,161 @@
+@use "../../global/" as global;
+
+/* --------------------------------------------------------------------------------
+   .p-theme-filter : テーマフィルタ
+----------------------------------------------------------------------------------- */
+
+.p-theme-filter {
+  position: relative;
+  display: flex;
+  padding: 1.5rem 3rem;
+  background-color: global.$c-gray-1;
+
+  > h2 {
+    margin-right: 5rem;
+    font-size: 1.8rem;
+    color: global.$c-main-text;
+    white-space: nowrap;
+  }
+
+  &__clear {
+    position: absolute;
+    left: 3rem;
+    top: 6.5rem;
+    padding: 0;
+    outline: 0;
+    border: 0;
+    font-size: 1.4rem;
+    text-decoration: underline;
+    color: global.$c-main-text;
+    background-color: transparent;
+
+    &:hover {
+      text-decoration: none;
+    }
+  }
+
+  &__conditions {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0;
+
+    dl {
+      display: flex;
+      padding: .2rem 3rem .2rem 0;
+
+      dt {
+        margin-right: 1em;
+        font-weight: bold;
+        white-space: nowrap;
+      }
+    }
+
+    a {
+      text-decoration: none;
+
+      &:hover {
+        color: global.$c-accent;
+      }
+    }
+  }
+
+  &__checkbox {
+    input[type="checkbox"] {
+      + span {
+        background-color: global.$c-white;
+      }
+    }
+  }
+
+  @include global.mq-down(tab) {
+    position: relative;
+    display: block;
+    width: 100%;
+    height: 4rem;
+    overflow: hidden;
+    padding: 0;
+    background-color: global.$c-main-text;
+
+    /* h2をボタンとして使う */
+
+    > h2 {
+      position: relative;
+      width: 100%;
+      font-size: 1.4rem;
+      line-height: 4rem;
+      text-align: center;
+      color: global.$c-accent-bg;
+      cursor: pointer;
+
+      &::after {
+        content: ' \f107';
+        margin-left: .5rem;
+        font-family: 'Font Awesome 5 Free';
+        font-weight: 600;
+        line-height: 1;
+      }
+      .u-sp-hide {
+        display: none!important;
+      }
+      .u-pc-hide {
+        display: block!important;
+      }
+    }
+
+    /* クリアボタン */
+
+    &__clear {
+      display: none;
+      left: auto;
+      right: 1rem;
+      top: 1rem;
+      font-size: 1.2rem;
+      color: global.$c-white;
+    }
+
+    /* 絞り込み条件 */
+
+    &__conditions {
+      padding: 0 2rem 2rem;
+
+      dl {
+        dt {
+          color: global.$c-white;
+
+          i.fas {
+            color: global.$c-white;
+          }
+        }
+      }
+    }
+
+    /* 表示中 */
+
+    .p-list-add.is-open-filter & {
+      > h2 {
+        &::after {
+          content: ' \f106';
+        }
+      }
+
+      &__clear {
+        display: block;
+      }
+    }
+  }
+
+  @include global.mq-down(sp) {
+    &__conditions {
+      display: flex;
+      flex-direction: column;
+      padding: 0 2rem 2rem;
+
+      dl {
+        dt {
+          margin: 0;
+          min-width: 7rem;
+        }
+      }
+    }
+  }
+}

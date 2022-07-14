@@ -1,0 +1,89 @@
+@use '../../global/' as global;
+
+/* --------------------------------------------------------------------------------
+   .c-link : テキストリンク
+   --------------------------------------------------------------------------------
+    .c-link.is-arrow:   （前）矢印付きリンク
+    .c-link.is-close:   （前）閉じるアイコン付きリンク
+    .c-link.is-external:（後）外部サイトリンク
+    .c-link.is-excel:   （後）アイコン付きリンク（Excel）
+    .c-link.is-pdf:     （後）アイコン付きリンク（pdf）
+----------------------------------------------------------------------------------- */
+
+.c-link,
+a.c-link {
+  /* ボタン要素を使用した場合のスタイルリセット */
+
+  padding: 0;
+  outline: 0;
+  border: 0;
+  background-color: transparent;
+
+  /* 基本スタイル */
+
+  &::before,
+  &::after {
+    display: none;
+    font-family: 'Font Awesome 5 Free';
+    font-weight: 600;
+    color: global.$c-link;
+  }
+
+  &::before {
+    margin-right: .3em;
+    text-decoration: none;
+  }
+
+  &::after {
+    margin-left: .3em;
+    text-decoration: none;
+  }
+
+  /* （前）矢印付きリンク */
+
+  &.is-arrow {
+    &::before {
+      content: '\f0da';
+      display: inline-block;
+      text-decoration: none;
+    }
+  }
+
+  /* （前）閉じる */
+
+  &.is-close {
+    &::before {
+      content: '\f057';
+      display: inline-block;
+    }
+  }
+
+  /* （後）外部リンク */
+
+  &.is-external {
+    &::after {
+      content: '\f35d';
+      display: inline-block;
+    }
+  }
+
+  /* （後）PDF */
+
+  &.is-pdf {
+    &::after {
+      content: '\f1c1';
+      display: inline-block;
+      color: global.$c-red;
+    }
+  }
+
+  /* （後）エクセル */
+
+  &.is-excel {
+    &::after {
+      content: '\f1c3';
+      display: inline-block;
+      color: global.$c-green-text;
+    }
+  }
+}

@@ -1,0 +1,28 @@
+@use "../../global/" as global;
+
+/* --------------------------------------------------------------------------------
+   .p-management-qa-item : マネジメントQ&Aアイテム
+----------------------------------------------------------------------------------- */
+
+.p-management-qa-item {
+  margin-bottom: 5rem;
+
+  .c-column {
+    margin-bottom: 3rem;
+  }
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+
+  @include global.mq-down(tab) {
+  }
+
+  @include global.mq-down(sp) {
+    margin-bottom: 3rem;
+
+    .c-column {
+      margin-bottom: 1rem !important;
+    }
+  }
+}

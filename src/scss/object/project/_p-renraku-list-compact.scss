@@ -1,0 +1,87 @@
+@use "../../global/" as global;
+
+/* --------------------------------------------------------------------------------
+   .p-renraku-list-compact : 学習トップ・連絡BOX
+----------------------------------------------------------------------------------- */
+
+.p-renraku-list-compact {
+  position: relative;
+  margin: 0;
+  border: .1rem solid global.$c-gray-3;
+  border-radius: 1rem;
+  background-color: global.$c-white;
+  overflow: hidden;
+
+  > li {
+    &:nth-child(2n) {
+      background-color: global.$c-gray-1;
+    }
+
+    > a {
+      display: flex;
+      flex-direction: column;
+      padding: 1rem 2rem;
+      line-height: 1.5;
+      text-decoration: none;
+      color: global.$c-text;
+      border: .1rem solid global.$c-gray-3;
+      border-width: 0 0 .1rem;
+
+      &:hover {
+        color: global.$c-main-text;
+      }
+    }
+
+    &:last-child a {
+      border: 0;
+    }
+  }
+
+  &__info {
+    display: flex;
+    align-items: center;
+  }
+
+  &__date {
+    font-weight: bold;
+  }
+
+  &__deadline {
+    margin-left: auto;
+    margin-right: 1rem;
+
+    &.is-warning {
+      color: global.$c-accent-text;
+    }
+
+    &.is-danger {
+      color: global.$c-red-text;
+    }
+  }
+
+  &__text {
+    font-size: 1.4rem;
+  }
+
+  @include global.mq-down(tab) {
+  }
+
+  @include global.mq-down(tabS) {
+    > li {
+      > a {
+        padding: 1rem;
+      }
+    }
+
+    &__info {
+      margin-bottom: .5rem;
+      font-size: 1.2rem;
+    }
+  }
+
+  @include global.mq-down(spS) {
+    &__info {
+      font-size: 1.2rem;
+    }
+  }
+}

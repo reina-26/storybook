@@ -1,0 +1,83 @@
+/* --------------------------------------------------------------------------------
+   .c-form-text : テキストフィールド
+   --------------------------------------------------------------------------------
+    - 以下のバリエーションを用意しています
+        1. エラー時（当該要素、または先祖要素に .is-error を付加）
+        2. disabled 属性
+----------------------------------------------------------------------------------- */
+
+textarea.c-form-text:hover {
+  outline: #CAD1D9 auto 0.1rem;
+}
+textarea.c-form-text:focus {
+  outline: #019CE1 auto 2px;
+}
+
+input[type=text].c-form-text,
+input[type=email].c-form-text,
+input[type=password].c-form-text {
+  max-width: 100%;
+  height: 3.6rem;
+  padding: 0 1rem;
+  font-size: 1.4rem;
+  line-height: 1;
+  border: 1px solid #DAE0E6;
+  border-radius: 0.5rem;
+  /* エラー時のスタイル */
+  /* disabled */
+  /* サイズ */
+}
+input[type=text].c-form-text:hover,
+input[type=email].c-form-text:hover,
+input[type=password].c-form-text:hover {
+  outline: #CAD1D9 auto 0.1rem;
+}
+input[type=text].c-form-text:focus,
+input[type=email].c-form-text:focus,
+input[type=password].c-form-text:focus {
+  outline: #019CE1 auto 2px;
+}
+input[type=text].c-form-text.is-error, .is-error input[type=text].c-form-text,
+input[type=email].c-form-text.is-error,
+.is-error input[type=email].c-form-text,
+input[type=password].c-form-text.is-error,
+.is-error input[type=password].c-form-text {
+  color: #C73D3D;
+  outline: #D34C4C auto 2px;
+}
+input[type=text].c-form-text.is-error:disabled, .is-error input[type=text].c-form-text:disabled,
+input[type=email].c-form-text.is-error:disabled,
+.is-error input[type=email].c-form-text:disabled,
+input[type=password].c-form-text.is-error:disabled,
+.is-error input[type=password].c-form-text:disabled {
+  color: #949DA6;
+  outline: 0;
+}
+input[type=text].c-form-text:disabled,
+input[type=email].c-form-text:disabled,
+input[type=password].c-form-text:disabled {
+  color: #949DA6;
+  border-color: #DAE0E6;
+  background-color: #E9ECEF;
+}
+input[type=text].c-form-text.is-lg,
+input[type=email].c-form-text.is-lg,
+input[type=password].c-form-text.is-lg {
+  height: 4.8rem;
+  font-size: 1.6rem;
+}
+input[type=text].c-form-text.is-sm,
+input[type=email].c-form-text.is-sm,
+input[type=password].c-form-text.is-sm {
+  height: 2.4rem;
+  padding: 0 0.4rem;
+  font-size: 1.3rem;
+  border-radius: 0.2rem;
+}
+@media print, screen and (max-width: 599px) {
+  input[type=text].c-form-text,
+input[type=email].c-form-text,
+input[type=password].c-form-text {
+    width: 100%;
+  }
+}

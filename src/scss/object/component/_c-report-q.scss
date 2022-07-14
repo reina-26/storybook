@@ -1,0 +1,38 @@
+@use "../../global/" as global;
+
+/* --------------------------------------------------------------------------------
+   .c-report-q : レポートの問
+----------------------------------------------------------------------------------- */
+
+.c-report-q {
+  display: flex;
+  gap: 1em;
+  margin-top: 3rem;
+  margin-bottom: 1.5rem;
+  font-size: 1.6rem;
+  font-weight: bold;
+  line-height: 1.5;
+  color: global.$c-gray-9;
+
+  &:first-child {
+    margin-top: 0;
+  }
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+
+  /* IE対応 */
+
+  @media all and (-ms-high-contrast: none) {
+    em {
+      margin-right: 1em;
+    }
+  }
+
+  @include global.mq-down(tab) {
+  }
+
+  @include global.mq-down(sp) {
+  }
+}

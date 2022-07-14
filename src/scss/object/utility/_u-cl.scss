@@ -1,0 +1,103 @@
+@use "../../global/" as global;
+
+// メインカラー
+.u-cl-main {
+  color: global.$c-main!important;
+}
+.u-cl-main-text {
+  color: global.$c-main-text!important; // 主に文字色として
+}
+
+.u-cl-main-text-dark  {
+  color: global.$c-main-text-dark!important;// 主に文字色として（濃いめ）
+}
+.u-cl-main-bg {
+  color: global.$c-main-bg!important;// 主に背景色として
+}
+.u-cl-main-light {
+  color: global.$c-main-light!important; // 主にボーダー色として
+}
+
+// アクセントカラー
+
+.u-cl-accent {
+  color: global.$c-accent!important;
+}
+.u-cl-accent-text {
+  color: global.$c-accent-text!important; // 主に文字色として
+}
+.u-cl-accent-bg {
+  color: global.$c-accent-bg!important; // 主に背景色として
+}
+
+.u-cl-accent-light {
+  color: global.$c-accent-light!important; // 主にボーダー色として
+}
+
+// サポートカラー
+
+.u-cl-red {
+  color: global.$c-red!important; // 赤
+}
+.u-cl-red-text {
+  color: global.$c-red-text!important; // 赤：主に文字色として
+}
+
+.u-cl-red-bg {
+  color: global.$c-red-bg!important; // 赤：主に背景色として
+}
+.u-cl-red-light {
+  color: global.$c-red-light!important; // 赤：主にボーダー色として
+}
+.u-cl-green {
+  color: global.$c-green!important; // 緑
+}
+
+.u-cl-green-text {
+  color: global.$c-green-text!important; // 緑：主に文字色として
+}
+.u-cl-green-bg {
+  color: global.$c-green-bg!important; // 緑：主に背景色として
+}
+.u-cl-green-light {
+  color: global.$c-green-light!important; // 緑：主にボーダー色として
+}
+.u-cl-purple {
+  color: global.$c-purple!important; // 紫
+}
+
+// グレースケール
+
+.u-cl-white {
+  color: global.$c-white!important;
+}
+.u-cl-gray-1 {
+  color: global.$c-gray-1!important; // 標準のグレー背景色
+}
+.u-cl-gray-2 {
+  color: global.$c-gray-2!important;
+}
+.u-cl-gray-3 {
+  color: global.$c-gray-3!important; // 標準のボーダー色
+}
+.u-cl-gray-4 {
+  color: global.$c-gray-4!important;
+}
+.u-cl-gray-5 {
+  color: global.$c-gray-5!important;
+}
+.u-cl-gray-6 {
+  color: global.$c-gray-6!important;
+}
+.u-cl-gray-7 {
+  color: global.$c-gray-7!important;
+}
+.u-cl-gray-8 {
+  color: global.$c-gray-8!important;
+}
+.u-cl-gray-9 {
+  color: global.$c-gray-9!important; // 標準の文字色
+}
+.u-cl-black {
+  color: global.$c-black!important;
+}

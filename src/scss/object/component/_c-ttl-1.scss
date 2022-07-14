@@ -1,0 +1,115 @@
+@use "../../global/" as global;
+
+/* --------------------------------------------------------------------------------
+   .c-ttl-1 : 見出し（レベル1）
+----------------------------------------------------------------------------------- */
+
+.c-ttl-1 {
+  margin-top: 5rem;
+  margin-bottom: 2rem;
+  padding-left: 4rem;
+  font-size: 2.8rem;
+  font-weight: bold;
+  line-height: 1.2;
+  letter-spacing: .15em;
+  color: global.$c-main;
+  background-repeat: no-repeat;
+  background-position: left center;
+  background-size: 2.8rem;
+
+  &:first-child {
+    margin-top: 0;
+  }
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+
+  small {
+    font-weight: normal;
+  }
+
+  &.is-step {
+    background-image: url(../images/icon_title_step.svg);
+  }
+  &.is-theme {
+    background-image: url(../images/icon_title_theme.svg);
+  }
+  &.is-info {
+    background-image: url(../images/icon_title_info.svg);
+  }
+  &.is-forum {
+    background-image: url(../images/icon_title_forum.svg);
+  }
+  &.is-flow {
+    background-image: url(../images/icon_study_blue.svg);
+  }
+  &.is-rocket {
+    background-image: url(../images/icon_rocket_blue.svg);
+  }
+  &.is-mail {
+    background-image: url(../images/icon_mail_blue.svg);
+  }
+  &.is-enquete {
+    background-image: url(../images/icon_enquete_blue.svg);
+  }
+  &.is-book {
+    background-image: url(../images/icon_book_blue.svg);
+  }
+  &.is-paragraph {
+    background-image: url(../images/icon_stairs_blue.svg);
+  }
+  &.is-bar_chart {
+    background-image: url(../images/icon_bar_chart_blue.svg);
+  }
+  &.is-question {
+    background-image: url(../images/icon_question_blue.svg);
+  }
+  &.is-newspaper{
+    background-image: url(../images/icon_newspaper_blue.svg)
+  }
+  &.is-calendar{
+    background-image: url(../images/icon_calendar_blue.svg)
+  }
+  &.is-step{
+    background-image: url(../images/icon_step_blue.svg)
+  }
+  &.is-comment{
+    background-image: url(../images/icon_comment_blue.svg)
+  }
+  &.is-forum{
+    background-image: url(../images/icon_forum_blue.svg)
+  }
+  &.is-badge{
+    background-image: url(../images/icon_badge_blue.svg)
+  }
+  &.is-question{
+    background-image: url(../images/icon_question_blue.svg)
+  }
+  &.is-edit{
+    background-image: url(../images/icon_edit_note_blue_.svg)
+  }
+  &.is-review{
+    background-image: url(../images/icon_review_blue.svg)
+  }
+  &.is-info_book{
+    background-image: url(../images/icon_info_book_blue.svg)
+  }
+  &.is-faq{
+    background-image: url(../images/icon_faq_blue.svg)
+  }
+  &.is-wifi{
+    background-image: url(../images/icon_wifi_blue.svg)
+  }
+  &.is-bonus{
+    background-image: url(../images/icon_bonus_blue.svg)
+  }
+
+  @include global.mq-down(tab) {
+}
+
+  @include global.mq-down(pcS) {
+    font-size: 2.4rem;
+    letter-spacing: 0;
+  }
+}

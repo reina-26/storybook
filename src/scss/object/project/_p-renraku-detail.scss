@@ -1,0 +1,50 @@
+@use "../../global/" as global;
+
+/* --------------------------------------------------------------------------------
+   .p-renraku-detail : 連絡BOX詳細
+----------------------------------------------------------------------------------- */
+
+.p-renraku-detail {
+  header {
+    margin-bottom: 2rem;
+
+    h3 {
+      margin-top: 0;
+    }
+  }
+
+  /* 提出欄 */
+
+  &__submit {
+    margin: 2rem -2rem -2rem;
+    padding: 2rem;
+    border-radius: 0 0 1rem 1rem;
+    background-color: global.$c-gray-1;
+  }
+
+  /* 提出済み表示 */
+
+  &__submitted {
+    font-size: 2.4rem;
+    font-weight: bold;
+    text-align: center;
+    color: global.$c-main;
+
+    &::before {
+      content: '\f058';
+      margin-right: .5em;
+      font-family: 'Font Awesome 5 Free';
+      font-weight: 600;
+      line-height: 1;
+    }
+  }
+
+  @include global.mq-down(tab) {
+  }
+
+  @include global.mq-down(sp) {
+    &__submit {
+      margin: 2rem -1.5rem -1.5rem;
+    }
+  }
+}

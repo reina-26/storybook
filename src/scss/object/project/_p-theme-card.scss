@@ -1,0 +1,574 @@
+@use "../../global/" as global;
+
+/* --------------------------------------------------------------------------------
+   .p-theme-card : テーマカード
+   --------------------------------------------------------------------------------
+   - パターン一覧
+     - サムネイルのオーバレイ：なし, 完了, 添削中, 再レポート, 計画遅れ, 追加済み
+     - チェックボックス：あり, なし
+     - 削除ボタン：あり, なし
+     - ラベル：なし, 必須, 推奨, 診断, 必須＋診断, 推奨＋診断
+     - 学習期限：なし, あり
+     - 学習開始予定月：なし, あり
+     - 学習開始予定月の選択：なし, あり
+----------------------------------------------------------------------------------- */
+
+.p-theme-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  text-decoration: none;
+  color: global.$c-text;
+  border: .1rem solid global.$c-gray-3;
+  border-radius: .5rem;
+  background-color: global.$c-white;
+  box-shadow: 0 .3rem 0 rgba(global.$c-black, 0.1);
+
+  /* サムネイル */
+
+  &__img {
+    position: relative;
+    height: 10rem;
+    overflow: hidden;
+    border-bottom: .1rem solid global.$c-gray-3;
+    border-radius: .5rem .5rem 0 0;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    background-color: global.$c-gray-3;
+
+    /* サムネイルのオーバレイ */
+
+    &__overlay {
+      position: absolute;
+      left: 0;
+      top: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      height: 100%;
+      font-size: 1.4rem;
+      font-weight: bold;
+      line-height: 1.3;
+      text-align: center;
+
+      &::before {
+        margin-bottom: 1rem;
+        font-family: 'Font Awesome 6 Free';
+        font-size: 3.2rem;
+        font-weight: 900;
+        font-style: normal;
+        line-height: 1;
+      }
+      /* 完了 */
+
+      &.is-completed {
+        font-family: 'Roboto', sans-serif;
+        font-style: italic;
+        letter-spacing: .1em;
+        color: global.$c-green;
+        background-color: rgba(global.$c-black, 0.65);
+
+        &::before {
+          content: '\f058';
+        }
+      }
+
+      /* 添削中 */
+
+      &.is-on-review {
+        color: global.$c-main-text;
+        background-color: rgba(global.$c-main-bg, 0.8);
+
+        &::before {
+          content: '\f044';
+        }
+      }
+
+      /* 再レポート */
+
+      &.is-re-report {
+        color: global.$c-red;
+        background-color: rgba(global.$c-main-bg, 0.8);
+
+        &::before {
+          content: '\f363';
+        }
+      }
+
+      /* 計画遅れ、期限超過 */
+
+      &.is-behind,
+      &.is-behind-of-deadline {
+        left: calc(50% - 6rem);
+        top: calc(50% - 4.5rem);
+        width: 12rem;
+        height: 9rem;
+        color: global.$c-accent-text;
+        border-radius: 1rem;
+        background-color: rgba(global.$c-main-bg, 0.9);
+
+        &::before {
+          content: '\f071';
+          color: global.$c-accent;
+        }
+      }
+
+      /* 期限超過 */
+
+      &.is-behind-of-deadline {
+        color: global.$c-red;
+
+        &::before {
+          color: global.$c-red;
+        }
+      }
+
+      /* 追加済み */
+
+      &.is-added {
+        font-size: 2rem;
+        color: global.$c-white;
+        background-color: rgba(global.$c-gray-6, 0.95);
+      }
+    }
+  }
+
+  /* テーマタイトル */
+
+  &__text {
+    flex-grow: 1;
+    padding: .7rem;
+
+    h3 span {
+      display: block;
+      margin-bottom: .5rem;
+      font-size: 1.2rem;
+      font-weight: normal;
+      line-height: 1.2;
+      color: global.$c-text;
+      transition: all 0.1s linear;
+    }
+
+    h3 em {
+      display: block;
+      font-size: 1.5rem;
+      font-weight: bold;
+      line-height: 1.2;
+      letter-spacing: .1em;
+      color: global.$c-black;
+      transition: all 0.1s linear;
+    }
+  }
+
+  /* テーマラベル、所要時間 */
+
+  &__info {
+    display: flex;
+    padding: 0 1rem 1rem;
+
+    > * {
+      margin-right: .5rem;
+    }
+
+    .p-theme-card__time {
+      margin-left: auto;
+      margin-right: 0;
+      padding-left: 1.8rem;
+      font-size: 1.2rem;
+      line-height: 2rem;
+      color: global.$c-text;
+      background: url(../images/icon_info_time.svg) no-repeat left center;
+      background-size: 1.4rem;
+    }
+  }
+
+  /* 期限、学習予定月 */
+
+  &__date {
+    display: flex;
+  }
+
+  &__deadline,
+  &__plan {
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 2.4rem;
+    margin: 0;
+    font-size: 1.2rem;
+    line-height: 1.5;
+
+    dt {
+      margin-right: .3rem;
+    }
+  }
+
+  &__deadline {
+    color: global.$c-red-text;
+    background-color: global.$c-red-bg;
+  }
+
+  &__plan {
+    color: global.$c-accent-text;
+    background-color: global.$c-accent-bg;
+
+    &.is-not-scheduled::before {
+      content: '\f071';
+      font-family: 'Font Awesome 6 Free';
+      font-weight: 900;
+      font-size: 1.2rem;
+      line-height: 1;
+      color: global.$c-accent;
+    }
+  }
+
+  &__deadline.is-behind,
+  &__plan.is-behind {
+    font-weight: bold;
+    color: global.$c-red-text !important;
+    background-color: global.$c-red-bg !important;
+
+    &::before {
+      content: '\f071';
+      font-family: 'Font Awesome 6 Free';
+      font-weight: 900;
+      font-size: 1.2rem;
+      line-height: 1;
+      color: global.$c-red;
+    }
+  }
+
+  /* 学習月選択 */
+
+  &__select-month {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    height: 3.2rem;
+    margin: 0 -.1rem; // ボーダーの上にかぶせる
+    padding: 0 .5rem;
+    font-size: 1.3rem;
+    color: global.$c-white;
+    border-radius: 0 0 .5rem .5rem;
+    background-color: global.$c-main-light;
+
+    dt {
+      margin-right: 1em;
+    }
+
+    select {
+      width: 12rem;
+    }
+  }
+
+  /* 削除ボタン */
+
+  &__delete {
+    position: absolute;
+    right: -1rem;
+    top: -1rem;
+    padding: 0;
+    font-size: 3.2rem;
+    line-height: 0;
+    color: global.$c-red;
+    outline: 0;
+    border: .3rem solid global.$c-white;
+    border-radius: 100%;
+
+    &:hover {
+      color: global.$c-red-text;
+    }
+  }
+
+  /* チェックボックス */
+
+  &__check {
+    position: absolute;
+    left: -.1rem;
+    top: -.1rem;
+
+    input[type="checkbox"] {
+      position: absolute;
+      opacity: 0;
+
+      + span {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 3.2rem;
+        height: 3.2rem;
+        font-size: 2.4rem;
+        line-height: 0;
+        color: global.$c-gray-3;
+        border: .1rem solid global.$c-gray-5;
+        border-radius: .5rem 0 .5rem 0;
+        background-color: global.$c-white;
+        transition: all .2s ease;
+
+        @media (hover: hover) and (pointer: fine) {
+          &:hover {
+            color: global.$c-main;
+            border: .1rem solid global.$c-main;
+            background-color: lighten(global.$c-main, 50%);
+          }
+        }
+      }
+
+      &:checked {
+        + span {
+          color: global.$c-white;
+          border-color: global.$c-white;
+          background-color: global.$c-main;
+        }
+      }
+    }
+  }
+
+  /* ドラッグハンドル */
+
+  &__handle {
+    display: none;
+  }
+
+  body.is-enable-theme-drag-handle &.is-handle {
+    padding-top: 3rem;
+
+    .p-theme-card__img {
+      border-radius: 0;
+    }
+
+    .p-theme-card__handle {
+      display: flex;
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 3rem;
+      justify-content: center;
+      align-items: center;
+      color: global.$c-gray-5;
+      cursor: grab;
+    }
+  }
+
+  /* ホバーデバイスのみにホバースタイルを適用 */
+
+  @media (hover: hover) and (pointer: fine) {
+    &:hover {
+      opacity: 1;
+      box-shadow: 0 .6rem .8rem rgba(global.$c-black, 0.1);
+
+      .p-theme-card__text h3 span {
+        color: global.$c-main;
+      }
+
+      .p-theme-card__text h3 em {
+        color: global.$c-main;
+      }
+    }
+  }
+
+  /* タッチデバイスでタップ時に focus 効果が消えるのでその対処 */
+
+  &:active {
+    opacity: .8;
+  }
+
+  @include global.mq-down(tab) {
+  }
+
+  @include global.mq-down(sp) {
+    padding-left: 30%;
+
+    /* サムネイル */
+
+    &__img {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 30%;
+      height: 100%;
+      border-right: .1rem solid global.$c-gray-3;
+      border-bottom: 0;
+      border-radius: .5rem 0 0 .5rem;
+
+      /* サムネイルのオーバレイ */
+
+      &__overlay {
+        font-size: 1.1rem;
+
+        /* 計画遅れ、期限超過 */
+
+        &.is-behind,
+        &.is-behind-of-deadline {
+          left: 5%;
+          width: 90%;
+        }
+        &.is-added {
+          font-size: 1.4rem;
+        }
+      }
+    }
+
+    /* 期限、学習予定月 */
+
+    &__deadline,
+    &__plan {
+      font-size: 1.1rem;
+    }
+
+    /* 学習月選択 */
+
+    &__select-month {
+      select {
+        width: 8rem;
+      }
+    }
+
+    /* ドラッグハンドル */
+
+    body.is-enable-theme-drag-handle &.is-handle {
+      padding-top: 0;
+      padding-left: 35%;
+
+      .p-theme-card__img {
+        left: 10%;
+        width: 25%;
+      }
+
+      .p-theme-card__handle {
+        width: 10%;
+        height: 100%;
+      }
+    }
+
+    /* スマホで hover 状態が残っても大丈夫なように hover に通常スタイルを当てる */
+
+    &__check {
+      input[type="checkbox"] {
+        + span:hover {
+          color: global.$c-gray-3;
+          border-color: global.$c-gray-5;
+          background-color: global.$c-white;
+        }
+
+        /* :checked のときはちゃんとチェックがつくようにする */
+
+        &:checked + span,
+        &:checked + span:hover {
+          color: global.$c-white;
+          border-color: global.$c-white;
+          background-color: global.$c-main;
+        }
+      }
+    }
+  }
+}
+
+/* 横タイプ */
+
+.p-theme-card.is-horizontal {
+  flex-direction: row;
+  min-height: 6rem;
+  box-shadow: none;
+
+  .p-theme-card__handle {
+    display: none;
+  }
+
+  .p-theme-card__date,
+  .p-theme-card__select-month {
+    display: none;
+  }
+
+  .p-theme-card__img {
+    flex-shrink: 0;
+    width: 15.6rem;
+    height: auto;
+    min-height: 6rem;
+    border-radius: .5rem 0 0 .5rem;
+    border-right: .1rem solid global.$c-gray-3;
+
+    &__overlay {
+      font-size: 1.2rem;
+
+      &::before {
+        font-size: 2rem;
+        margin-bottom: .3rem;
+      }
+
+      /* 計画遅れだけ少しスタイル調整 */
+
+      &.is-behind,
+      &.is-behind-of-deadline {
+        top: 0;
+        bottom: 0;
+        margin: auto;
+        height: 5.6rem;
+        font-size: 1.1rem;
+
+        &::before {
+          margin-bottom: .3rem;
+        }
+      }
+    }
+  }
+
+  .p-theme-card__text {
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+    padding: 1rem 1rem 1rem 2rem;
+  }
+
+  .p-theme-card__info {
+    margin-right: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: .5rem;
+    padding: 1rem;
+
+    > * {
+      margin-right: 0;
+    }
+  }
+
+  @include global.mq-down(tab) {
+  }
+
+  @include global.mq-down(sp) {
+    flex-direction: column;
+    padding-left: 30%;
+
+    .p-theme-card__img {
+      position: absolute;
+      width: 30%;
+      height: 100%;
+    }
+
+    .p-theme-card__text {
+      padding: 1rem;
+    }
+
+    .p-theme-card__info {
+      margin-top: auto;
+      margin-right: 0;
+      flex-direction: row;
+      padding-right: .5rem;
+    }
+
+    .p-theme-card__time {
+      margin-left: auto;
+      padding-left: 1.4rem;
+      font-size: 1.1rem;
+      background-size: 1.2rem;
+    }
+  }
+}

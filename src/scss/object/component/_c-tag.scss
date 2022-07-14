@@ -1,0 +1,89 @@
+@use '../../global/' as global;
+
+/* --------------------------------------------------------------------------------
+   .c-tag : タグ
+   --------------------------------------------------------------------------------
+    - 次のように記述することを想定（span 必須）
+        <label class="c-tag">
+          <input type="checkbox">
+          <span>ラベル</span>
+        </label>
+
+    - 表示のみのときは is-readonly 付与（テーマ詳細画面など）
+
+    （補足）
+    HTMLのチェックボックスは readonly 属性がないので上記対応とする
+----------------------------------------------------------------------------------- */
+
+.c-tag {
+  input[type="checkbox"],
+  input[type="radio"] {
+    position: absolute;
+    opacity: 0;
+
+    + span {
+      display: inline-block;
+      margin: .3em 0;
+      padding: 0 1.2em;
+      font-size: 1.4rem;
+      line-height: 3rem;
+      color: global.$c-main-text-dark;
+      border-radius: 3rem;
+      background-color: global.$c-gray-2;
+      transition: all .1s linear;
+
+      &:hover {
+        color: global.$c-main-text;
+        background-color: global.$c-main-bg;
+      }
+    }
+
+    &:checked {
+      + span {
+        color: global.$c-white;
+        background-color: global.$c-main;
+      }
+    }
+  }
+
+  /* 表示のみのタグ */
+
+  &.is-readonly {
+    input[type="checkbox"] {
+      + span {
+        cursor: default;
+
+        &:hover {
+          color: global.$c-main-text-dark;
+          background-color: global.$c-gray-2;
+        }
+      }
+
+      &:checked {
+        + span {
+          color: global.$c-main-text-dark;
+          background-color: global.$c-gray-2;
+        }
+      }
+    }
+  }
+
+  /* サイズ */
+
+  &.is-sm {
+    input[type="checkbox"] {
+      + span {
+        margin: 0;
+        padding: 0 1em;
+        font-size: 1.2rem;
+        line-height: 2.4rem;
+      }
+    }
+  }
+
+  @include global.mq-down(tab) {
+  }
+
+  @include global.mq-down(sp) {
+  }
+}

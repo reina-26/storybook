@@ -1,0 +1,48 @@
+@use '../../global/' as global;
+
+/* --------------------------------------------------------------------------------
+   .p-login : ログインフォーム
+----------------------------------------------------------------------------------- */
+
+.p-login {
+  height: 28rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: url("../images/bg_page_title.jpg") no-repeat center;
+  background-size: cover;
+
+  &__inner {
+    width: 40rem;
+  }
+
+  &__row {
+    margin: 0 0 0.8rem;
+  }
+
+  &__reminder {
+    margin: 0;
+
+    span,
+    a {
+      color: global.$c-white;
+    }
+  }
+
+  @media all and (-ms-high-contrast: none) {
+    .checkbox input[type=checkbox] + span::before {
+      border-radius: 0;
+    }
+  }
+
+  @include global.mq-down(tab) {
+  }
+
+  @include global.mq-down(sp) {
+    padding: 3rem;
+
+    &__inner {
+      width: 100%;
+    }
+  }
+}

@@ -1,0 +1,164 @@
+@use '../../global/' as global;
+
+/* --------------------------------------------------------------------------------
+   ユーティリティクラス - パディング
+   --------------------------------------------------------------------------------
+     - 単位 px ※実際の指定では px ではなく rem が使われている（10px = 1rem）
+         パディング　: u-p-0,  u-p-5  ... u-p-150,  u-p-auto
+         上パディング: u-pt-0, u-pt-5 ... u-pt-150, u-pt-auto
+         下パディング: u-pb-0, u-pb-5 ... u-pb-150, u-pb-auto
+         左パディング: u-pl-0, u-pl-5 ... u-pl-150, u-pl-auto
+         右パディング: u-pr-0, u-pr-5 ... u-pr-150, u-pr-auto
+         横パディング: u-py-0, u-py-5 ... u-py-150, u-py-auto
+         縦パディング: u-px-0, u-px-5 ... u-px-150, u-px-auto
+
+     - 単位 em（0.5em から 0.5em 刻みで 10em まで）
+         パディング　: u-p-0em,  u-p-05em,  u-p-1em,  u-p-15em,  u-p-2em  ... u-p-10em
+         上パディング: u-pt-0em, u-pt-05em, u-pt-1em, u-pt-15em, u-pt-2em ... u-pt-10em
+         下パディング: u-pb-0em, u-pb-05em, u-pb-1em, u-pb-15em, u-pb-2em ... u-pb-10em
+         左パディング: u-pl-0em, u-pl-05em, u-pl-1em, u-pl-15em, u-pl-2em ... u-pl-10em
+         右パディング: u-pr-0em, u-pr-05em, u-pr-1em, u-pr-15em, u-pr-2em ... u-pr-10em
+         横パディング: u-py-0em, u-py-05em, u-py-1em, u-py-15em, u-py-2em ... u-py-10em
+         縦パディング: u-px-0em, u-px-05em, u-px-1em, u-px-15em, u-px-2em ... u-px-10em
+
+     - u- の後ろに sp- を付加するとスマホ用のクラスになる
+----------------------------------------------------------------------------------- */
+
+/* 単位: px */
+
+@for $value from 0 through 30 {
+  .u-p-#{$value * 5} {
+    padding        : calc(5rem * $value / 10) !important;
+  }
+  .u-pt-#{$value * 5} {
+    padding-top    : calc(5rem * $value / 10) !important;
+  }
+  .u-pb-#{$value * 5} {
+    padding-bottom : calc(5rem * $value / 10) !important;
+  }
+  .u-pl-#{$value * 5} {
+    padding-left   : calc(5rem * $value / 10) !important;
+  }
+  .u-pr-#{$value * 5} {
+    padding-right  : calc(5rem * $value / 10) !important;
+  }
+  .u-py-#{$value * 5} {
+    padding-top    : calc(5rem * $value / 10) !important;
+    padding-bottom : calc(5rem * $value / 10) !important;
+  }
+  .u-px-#{$value * 5} {
+    padding-left   : calc(5rem * $value / 10) !important;
+    padding-right  : calc(5rem * $value / 10) !important;
+  }
+}
+
+/* 単位: em */
+
+$value: 5;
+@while $value <= 100 {
+  $num: $value;
+
+  // 0.5em と整数 em のとき
+  @if $value == 5 {
+    $num: '05';
+  } @else if $value % 10 == 0 {
+    $num: calc($value / 10);
+  }
+
+  .u-p-#{$num}em {
+    padding        : #{calc($value / 10)}em !important;
+  }
+  .u-pt-#{$num}em {
+    padding-top    : #{calc($value / 10)}em !important;
+  }
+  .u-pb-#{$num}em {
+    padding-bottom : #{calc($value / 10)}em !important;
+  }
+  .u-pl-#{$num}em {
+    padding-left   : #{calc($value / 10)}em !important;
+  }
+  .u-pr-#{$num}em {
+    padding-right  : #{calc($value / 10)}em !important;
+  }
+  .u-py-#{$num}em {
+    padding-top    : #{calc($value / 10)}em !important;
+    padding-bottom : #{calc($value / 10)}em !important;
+  }
+  .u-px-#{$num}em {
+    padding-left   : #{calc($value / 10)}em !important;
+    padding-right  : #{calc($value / 10)}em !important;
+  }
+  $value: $value + 5;
+}
+
+/* SP版：プリフィクス sp- を付加 */
+
+@include global.mq-down(sp) {
+
+  /* 単位: px */
+
+  @for $value from 0 through 30 {
+    .u-sp-p-#{$value * 5} {
+      padding: calc(5rem * $value / 10) !important;
+    }
+    .u-sp-pt-#{$value * 5} {
+      padding-top: calc(5rem * $value / 10) !important;
+    }
+    .u-sp-pb-#{$value * 5} {
+      padding-bottom: calc(5rem * $value / 10) !important;
+    }
+    .u-sp-pl-#{$value * 5} {
+      padding-left: calc(5rem * $value / 10) !important;
+    }
+    .u-sp-pr-#{$value * 5} {
+      padding-right: calc(5rem * $value / 10) !important;
+    }
+    .u-sp-py-#{$value * 5} {
+      padding-top: calc(5rem * $value / 10) !important;
+      padding-bottom: calc(5rem * $value / 10) !important;
+    }
+    .u-sp-px-#{$value * 5} {
+      padding-left: calc(5rem * $value / 10) !important;
+      padding-right: calc(5rem * $value / 10) !important;
+    }
+  }
+
+  /* 単位: em */
+
+  $value: 5;
+  @while $value <= 100 {
+    $num: $value;
+
+    // 0.5em と整数 em のとき
+    @if $value == 5 {
+      $num: '05';
+    } @else if $value % 10 == 0 {
+      $num: calc($value / 10);
+    }
+
+    .u-sp-p-#{$num}em {
+      padding       : #{calc($value / 10)}em !important;
+    }
+    .u-sp-pt-#{$num}em {
+      padding-top   : #{calc($value / 10)}em !important;
+    }
+    .u-sp-pb-#{$num}em {
+      padding-bottom: #{calc($value / 10)}em !important;
+    }
+    .u-sp-pl-#{$num}em {
+      padding-left  : #{calc($value / 10)}em !important;
+    }
+    .u-sp-pr-#{$num}em {
+      padding-right : #{calc($value / 10)}em !important;
+    }
+    .u-sp-py-#{$num}em {
+      padding-top   : #{calc($value / 10)}em !important;
+      padding-bottom: #{calc($value / 10)}em !important;
+    }
+    .u-sp-px-#{$num}em {
+      padding-left  : #{calc($value / 10)}em !important;
+      padding-right : #{calc($value / 10)}em !important;
+    }
+    $value: $value + 5;
+  }
+}

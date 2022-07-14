@@ -1,0 +1,31 @@
+@use "../../global/" as global;
+
+/* --------------------------------------------------------------------------------
+   .c-chart : チャート（画像）
+----------------------------------------------------------------------------------- */
+
+.c-chart {
+  margin: 5rem 0;
+  text-align: center;
+
+  &:first-child {
+    margin-top: 0;
+  }
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+
+  figcaption {
+    margin: .5em 0;
+    font-weight: bold;
+    line-height: 1.5;
+    text-align: left;
+  }
+
+  @include global.mq-down(tab) {
+  }
+
+  @include global.mq-down(sp) {
+  }
+}

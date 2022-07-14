@@ -1,0 +1,89 @@
+@use "../../global/" as global;
+
+/* --------------------------------------------------------------------------------
+   .p-start : 学習の流れ・始めよう
+----------------------------------------------------------------------------------- */
+
+.p-start {
+  position: relative;
+  padding: 6rem 0 5rem;
+  text-align: center;
+  border-top: .1rem solid global.$c-main;
+  background-color: rgba(global.$c-main, .05);
+
+  /* 上の三角矢印 */
+
+  &::before {
+    content: '';
+    position: absolute;
+    left: calc(50% - 2rem);
+    top: -2rem;
+    width: 4rem;
+    height: 4rem;
+    border: .1rem solid #009CE1;
+    border-left: 0;
+    border-top: 0;
+    background-color: global.$c-white;
+    box-shadow: .5rem .5rem .5rem rgb(0 0 0 / 5%);
+    transform-origin: center;
+    transform: rotate(45deg);
+  }
+
+  /* 見出し */
+
+  h2 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 3rem;
+    padding: 0;
+    font-size: 2.4rem;
+    text-align: left;
+    color: global.$c-main;
+
+    &::before {
+      content: '';
+      width: 4.8rem;
+      height: 4.8rem;
+      margin-right: 1.5rem;
+      background: url(../images/icon_rocket_blue.svg) no-repeat center;
+      background-size: contain;
+    }
+  }
+
+  h3 {
+    margin-bottom: 2.5rem;
+    font-size: 2rem;
+    font-weight: bold;
+    line-height: 1.5;
+    letter-spacing: .15em;
+    text-align: center;
+    color: global.$c-main;
+  }
+
+  @include global.mq-down(tab) {
+  }
+
+  @include global.mq-down(sp) {
+    padding: 5rem 1rem;
+
+    h2 {
+      font-size: 2rem;
+
+      &::before {
+        width: 3.2rem;
+        height: 3.2rem;
+      }
+    }
+
+    h3 {
+      font-size: 1.6rem;
+    }
+
+    p {
+      br {
+        display: none;
+      }
+    }
+  }
+}
